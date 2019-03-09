@@ -169,7 +169,7 @@
 		   distclean ........................... Remove all generated files
 
  
-### Ran OpenRefine and viewed in Firebox
+### Ran OpenRefine and viewed in Firefox
 
 -   Started openrefine from the ~/openrefine-3.1 directory:
 		
