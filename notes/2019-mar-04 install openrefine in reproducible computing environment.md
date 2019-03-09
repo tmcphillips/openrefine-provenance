@@ -1,13 +1,13 @@
-### 2019-mar-04 Install OpenRefine in reproducible computing environment
+## 2019-mar-04 Install OpenRefine in reproducible computing environment
 
-#### Found requirements for installing OpenRefine 3.1 release
+### Found requirements for installing OpenRefine 3.1 release
 
 -   OpenRefine home page: [http://openrefine.org/](http://openrefine.org/)
 -   Download page: [http://openrefine.org/download.html](http://openrefine.org/download.html)
 -   Linux installation instructions: [https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions](https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions)
 -   Only installation prerequisite is 64-bit JRE: [https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions#requirements](https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions#requirements)
 
-#### Installed JDK 8 in WSL Debian environment
+### Installed JDK 8 in WSL Debian environment
 
 -   Confirmed Java not installed in WSL-Debian:
 
@@ -63,7 +63,7 @@
 		(.venv-ansible-playbooks) tmcphill@circe-win10:wsl-debian$ javac -version
 		javac 1.8.0_181
 
-#### Installed OpenRefine
+### Installed OpenRefine
 
 -   Found download link for Linux tarball: [https://github.com/OpenRefine/OpenRefine/releases/download/3.1/openrefine-linux-3.1.tar.gz](https://github.com/OpenRefine/OpenRefine/releases/download/3.1/openrefine-linux-3.1.tar.gz)
 
@@ -169,9 +169,7 @@
 		   distclean ........................... Remove all generated files
 
  
-#### Ran OpenRefine and viewed in Firebox
-
-  
+### Ran OpenRefine and viewed in Firebox
 
 -   Started openrefine from the ~/openrefine-3.1 directory:
 		
