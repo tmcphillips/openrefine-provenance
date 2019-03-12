@@ -1,11 +1,11 @@
-## 2019-Mar-05 Explore project storage for a data set newly imported into OpenRefine
+# 2019-03-05 Explore project storage for a data set newly imported into OpenRefine
 
-### Objectives
+## Objectives
 - Load a data set into OpenRefine.
 - Find where it stores project state and history information.
 - Try to understand how it represents and organizes project history.
 
-### Started OpenRefine and located default workspace directory
+## Started OpenRefine and located default workspace directory
 
 - Listed home directory before running OpenRefine:
 
@@ -113,7 +113,7 @@
 		  }
 		}    
 
-### Started first OpenRefine project and noted new project directory and files in workspace
+## Started first OpenRefine project and noted new project directory and files in workspace
 
 - Obtained zip file with sample data sets (code files) for the book Using Open Refine:
 
