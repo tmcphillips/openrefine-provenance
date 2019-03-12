@@ -8,7 +8,7 @@
 ### Started OpenRefine and located default workspace directory
 
 - Listed home directory before running OpenRefine:
-	 ```console
+```console
 	tmcphill@circe-win10:~$ ls -alrt
 	total 12
 	drwxr-xr-x 1 root     root     4096 Mar  3 16:17 ..
@@ -27,7 +27,7 @@
 	-rw------- 1 tmcphill tmcphill 1879 Mar  4 14:04 .bash_history
 	drwxrwxrwx 1 tmcphill tmcphill 4096 Mar  4 15:44 openrefine-3.1
 	drwxr-xr-x 1 tmcphill tmcphill 4096 Mar  5 16:10 .
-  ```
+ ```
   
 - Started OpenRefine in WSL Debian environment and found in log messages possible location of project workspace (/home/tmcphill/.local/share/openrefine):
 
