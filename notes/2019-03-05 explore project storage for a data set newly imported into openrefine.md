@@ -8,62 +8,66 @@
 ### Started OpenRefine and located default workspace directory
 
 - Listed home directory before running OpenRefine:
-
-		tmcphill@circe-win10:~$ ls -alrt
-		total 12
-		drwxr-xr-x 1 root     root     4096 Mar  3 16:17 ..
-		-rw-r--r-- 1 tmcphill tmcphill  220 Mar  3 16:17 .bash_logout
-		-rw-r--r-- 1 tmcphill tmcphill  675 Mar  3 16:17 .profile
-		-rw-rw-rw- 1 tmcphill tmcphill  180 Mar  3 16:18 .wget-hsts
-		drwxrwxrwx 1 tmcphill tmcphill 4096 Mar  3 16:21 .venv-ansible-playbooks
-		drwx------ 1 tmcphill tmcphill 4096 Mar  3 16:21 .cache
-		lrwxrwxrwx 1 tmcphill tmcphill   26 Mar  3 16:23 .ssh -> /mnt/c/Users/tmcphill/.ssh
-		lrwxrwxrwx 1 tmcphill tmcphill   30 Mar  3 16:23 GitRepos -> /mnt/c/Users/tmcphill/GitRepos
-		-rw-rw-rw- 1 tmcphill tmcphill 2004 Mar  3 16:35 bootstrap.sh
-		lrwxrwxrwx 1 tmcphill tmcphill   68 Mar  3 16:36 bashrc_d -> /mnt/c/Users/tmcphill/GitRepos/ansible-playbooks/wsl-debian/bashrc_d
-		lrwxrwxrwx 1 tmcphill tmcphill   31 Mar  3 16:36 .bashrc -> /home/tmcphill/bashrc_d/.bashrc
-		drwx------ 1 tmcphill tmcphill 4096 Mar  4 10:32 .ansible
-		-rw-rw-rw- 1 tmcphill tmcphill  125 Mar  4 11:47 .gitconfig
-		-rw------- 1 tmcphill tmcphill 1879 Mar  4 14:04 .bash_history
-		drwxrwxrwx 1 tmcphill tmcphill 4096 Mar  4 15:44 openrefine-3.1
-		drwxr-xr-x 1 tmcphill tmcphill 4096 Mar  5 16:10 .
+	 ```console
+	tmcphill@circe-win10:~$ ls -alrt
+	total 12
+	drwxr-xr-x 1 root     root     4096 Mar  3 16:17 ..
+	-rw-r--r-- 1 tmcphill tmcphill  220 Mar  3 16:17 .bash_logout
+	-rw-r--r-- 1 tmcphill tmcphill  675 Mar  3 16:17 .profile
+	-rw-rw-rw- 1 tmcphill tmcphill  180 Mar  3 16:18 .wget-hsts
+	drwxrwxrwx 1 tmcphill tmcphill 4096 Mar  3 16:21 .venv-ansible-playbooks
+	drwx------ 1 tmcphill tmcphill 4096 Mar  3 16:21 .cache
+	lrwxrwxrwx 1 tmcphill tmcphill   26 Mar  3 16:23 .ssh -> /mnt/c/Users/tmcphill/.ssh
+	lrwxrwxrwx 1 tmcphill tmcphill   30 Mar  3 16:23 GitRepos -> /mnt/c/Users/tmcphill/GitRepos
+	-rw-rw-rw- 1 tmcphill tmcphill 2004 Mar  3 16:35 bootstrap.sh
+	lrwxrwxrwx 1 tmcphill tmcphill   68 Mar  3 16:36 bashrc_d -> /mnt/c/Users/tmcphill/GitRepos/ansible-playbooks/wsl-debian/bashrc_d
+	lrwxrwxrwx 1 tmcphill tmcphill   31 Mar  3 16:36 .bashrc -> /home/tmcphill/bashrc_d/.bashrc
+	drwx------ 1 tmcphill tmcphill 4096 Mar  4 10:32 .ansible
+	-rw-rw-rw- 1 tmcphill tmcphill  125 Mar  4 11:47 .gitconfig
+	-rw------- 1 tmcphill tmcphill 1879 Mar  4 14:04 .bash_history
+	drwxrwxrwx 1 tmcphill tmcphill 4096 Mar  4 15:44 openrefine-3.1
+	drwxr-xr-x 1 tmcphill tmcphill 4096 Mar  5 16:10 .
+	```
 
 - Started OpenRefine in WSL Debian environment and found in log messages possible location of project workspace (/home/tmcphill/.local/share/openrefine):
 
-		tmcphill@circe-win10:~$ ./openrefine-3.1/refine
-		You have 16308M of free memory.
-		Your current configuration is set to use 1400M of memory.
-		OpenRefine can run better when given more memory. Read our FAQ on how to allocate more memory here:
-		https://github.com/OpenRefine/OpenRefine/wiki/FAQ:-Allocate-More-Memory
-		/usr/bin/java -cp server/classes:server/target/lib/*   -Xms1400M -Xmx1400M -Drefine.memory=1400M -Drefine.max_form_content_size=1048576 -Drefine.verbosity=info -Dpython.path=main/webapp/WEB-INF/lib/jython -Dpython.cachedir=/home/tmcphill/.local/share/google/refine/cachedir -Drefine.webapp=main/webapp -Drefine.port=3333 -Drefine.host=127.0.0.1 com.google.refine.Refine
-		Starting OpenRefine at 'http://127.0.0.1:3333/'
+	 ```console
+	tmcphill@circe-win10:~$ ./openrefine-3.1/refine
+	You have 16308M of free memory.
+	Your current configuration is set to use 1400M of memory.
+	OpenRefine can run better when given more memory. Read our FAQ on how to allocate more memory here:
+	https://github.com/OpenRefine/OpenRefine/wiki/FAQ:-Allocate-More-Memory
+	/usr/bin/java -cp server/classes:server/target/lib/*   -Xms1400M -Xmx1400M -Drefine.memory=1400M -Drefine.max_form_content_size=1048576 -Drefine.verbosity=info -Dpython.path=main/webapp/WEB-INF/lib/jython -Dpython.cachedir=/home/tmcphill/.local/share/google/refine/cachedir -Drefine.webapp=main/webapp -Drefine.port=3333 -Drefine.host=127.0.0.1 com.google.refine.Refine
+	Starting OpenRefine at 'http://127.0.0.1:3333/'
 
-		00:11:47.779 [            refine_server] Starting Server bound to '127.0.0.1:3333' (0ms)
-		00:11:47.782 [            refine_server] refine.memory size: 1400M JVM Max heap: 1407188992 (3ms)
-		00:11:47.794 [            refine_server] Initializing context: '/' from '/home/tmcphill/openrefine-3.1/webapp' (12ms)
-		00:11:48.207 [            refine_server] Creating new workspace directory /home/tmcphill/.local/share/openrefine (413ms)
-		SLF4J: Class path contains multiple SLF4J bindings.
-		SLF4J: Found binding in [jar:file:/home/tmcphill/openrefine-3.1/server/target/lib/slf4j-log4j12-1.7.18.jar!/org/slf4j/impl/StaticLoggerBinder.class]
-		SLF4J: Found binding in [jar:file:/home/tmcphill/openrefine-3.1/webapp/WEB-INF/lib/slf4j-log4j12-1.7.18.jar!/org/slf4j/impl/StaticLoggerBinder.class]
-		SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
-		SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
-		00:11:48.437 [                   refine] Starting OpenRefine 3.1 [b90e413]... (230ms)
-		00:11:48.438 [                   refine] initializing FileProjectManager with dir (1ms)
-		00:11:48.440 [                   refine] /home/tmcphill/.local/share/openrefine (2ms)
-		00:11:48.449 [       FileProjectManager] Failed to load workspace from any attempted alternatives. (9ms)
-		00:11:49.513 [       database-extension] Initializing OpenRefine Database... (1064ms)
-		00:11:49.517 [       database-extension] Database Extension Mount point /extension/database/ [*] (4ms)
-		00:11:49.518 [       database-extension] Registering Database Extension Commands...... (1ms)
-		00:11:49.533 [       database-extension] Database Extension Command Registeration done!! (15ms)
-		00:11:49.533 [       database-extension] Database Operations Registered successfully... (0ms)
-		00:11:49.534 [       database-extension] Database Functions Registered successfully... (1ms)
-		00:11:49.544 [       DatabaseModuleImpl] *** Database Extension Module Initialization Completed!!*** (10ms)
-		00:11:52.094 [                   refine] Sorry, some error prevented us from launching the browser for you.
+	00:11:47.779 [            refine_server] Starting Server bound to '127.0.0.1:3333' (0ms)
+	00:11:47.782 [            refine_server] refine.memory size: 1400M JVM Max heap: 1407188992 (3ms)
+	00:11:47.794 [            refine_server] Initializing context: '/' from '/home/tmcphill/openrefine-3.1/webapp' (12ms)
+	00:11:48.207 [            refine_server] Creating new workspace directory /home/tmcphill/.local/share/openrefine (413ms)
+	SLF4J: Class path contains multiple SLF4J bindings.
+	SLF4J: Found binding in [jar:file:/home/tmcphill/openrefine-3.1/server/target/lib/slf4j-log4j12-1.7.18.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+	SLF4J: Found binding in [jar:file:/home/tmcphill/openrefine-3.1/webapp/WEB-INF/lib/slf4j-log4j12-1.7.18.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+	SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+	SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+	00:11:48.437 [                   refine] Starting OpenRefine 3.1 [b90e413]... (230ms)
+	00:11:48.438 [                   refine] initializing FileProjectManager with dir (1ms)
+	00:11:48.440 [                   refine] /home/tmcphill/.local/share/openrefine (2ms)
+	00:11:48.449 [       FileProjectManager] Failed to load workspace from any attempted alternatives. (9ms)
+	00:11:49.513 [       database-extension] Initializing OpenRefine Database... (1064ms)
+	00:11:49.517 [       database-extension] Database Extension Mount point /extension/database/ [*] (4ms)
+	00:11:49.518 [       database-extension] Registering Database Extension Commands...... (1ms)
+	00:11:49.533 [       database-extension] Database Extension Command Registeration done!! (15ms)
+	00:11:49.533 [       database-extension] Database Operations Registered successfully... (0ms)
+	00:11:49.534 [       database-extension] Database Functions Registered successfully... (1ms)
+	00:11:49.544 [       DatabaseModuleImpl] *** Database Extension Module Initialization Completed!!*** (10ms)
+	00:11:52.094 [                   refine] Sorry, some error prevented us from launching the browser for you.
 
 		 Point your browser to http://127.0.0.1:3333/ to start using Refine. (2550ms)
-
+	``
+	
 - Confirmed that a new directory tree rooted at .local is now present in my home directory and contains a workspace.json file:
 
+	 ```console 
 		tmcphill@circe-win10:~$ ls -alrt
 		total 12
 		drwxr-xr-x 1 root     root     4096 Mar  3 16:17 ..
