@@ -2,11 +2,10 @@
 
 ### Found requirements for installing OpenRefine 3.1 release
 
--   OpenRefine home page: [http://openrefine.org/](http://openrefine.org/)
--   Download page: [http://openrefine.org/download.html](http://openrefine.org/download.html)
--   Linux installation instructions: [https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions](https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions)
--   Only installation prerequisite is 64-bit JRE: [https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions#requirements](https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions#requirements)
-
+-   OpenRefine home page: http://openrefine.org
+-   Download page: http://openrefine.org/download.html
+-   Linux installation instructions: https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions
+-   Only installation prerequisite is 64-bit JRE: https://github.com/OpenRefine/OpenRefine/wiki/Installation-Instructions#requirements
 ### Installed JDK 8 in WSL Debian environment
 
 -   Confirmed Java not installed in WSL-Debian:
