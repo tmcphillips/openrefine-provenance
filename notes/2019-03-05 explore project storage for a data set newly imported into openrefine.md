@@ -319,28 +319,28 @@
 
 - It is not obvious what the pool.txt file represents:
 
-  ```
-  tmcphill@circe-win10:~$ cat pool.txt
-  3.1
-  reconCount=0
-  ```
+  ```console
+	 tmcphill@circe-win10:~$ cat pool.txt
+	 3.1
+	 reconCount=0
+   ```
 
 - Closed browser window and stopped refine at the command prompt without making changes to the data set.
 
 - Noted that the data.zip file is unchanged and still has a timestamp corresponding to the project-creation time above. The timestamp on metdata.json is earlier, likely the time of selecting the datafile for import but before creating the project.
 
-```console
-	tmcphill@circe-win10:~$ ls -al .local/share/openrefine/2548854995375.project
-	total 9860
-	drwxrwxrwx 1 tmcphill tmcphill     4096 Mar  5 18:01 .
-	drwxrwxrwx 1 tmcphill tmcphill     4096 Mar  5 18:31 ..
-	-rw-rw-rw- 1 tmcphill tmcphill 10018592 Mar  5 18:01 data.zip
-	-rw-rw-rw- 1 tmcphill tmcphill      888 Mar  5 17:56 metadata.json
-	```
-	
+  ```console
+	 tmcphill@circe-win10:~$ ls -al .local/share/openrefine/2548854995375.project
+	 total 9860
+	 drwxrwxrwx 1 tmcphill tmcphill     4096 Mar  5 18:01 .
+	 drwxrwxrwx 1 tmcphill tmcphill     4096 Mar  5 18:31 ..
+	 -rw-rw-rw- 1 tmcphill tmcphill 10018592 Mar  5 18:01 data.zip
+	 -rw-rw-rw- 1 tmcphill tmcphill      888 Mar  5 17:56 metadata.json
+  ```
+  	
 - Copied the project files, zipped and unzipped into another directory (~/or1) for later comparison:
 
-	```console
+  ```console
 	tmcphill@circe-win10:~$ ls -al or1/
 	total 79888
 	drwxrwxrwx 1 tmcphill tmcphill     4096 Mar  5 18:42 .
@@ -349,5 +349,5 @@
 	-rw-rw-rw- 1 tmcphill tmcphill 10018592 Mar  5 18:42 data.zip
 	-rw-rw-rw- 1 tmcphill tmcphill      888 Mar  5 18:42 metadata.json
 	-rw-rw-rw- 1 tmcphill tmcphill       17 Mar  6  2019 pool.txt
-	```
+   ```
 
