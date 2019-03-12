@@ -21,20 +21,22 @@
 
 -   Wrote new playbook for installing openjdk-8-jdk:
 
-		(.venv-ansible-playbooks) tmcphill@circe-win10:wsl-debian$ cat jdk8.yml
-		---
-		
-		- name: install OpenJDK 8 JDK
-		  hosts: 127.0.0.1
-		  connection: local
-		  become: yes
-		  tasks:
-
-		  - name: install openjdk-8-jdk
-		    apt:
-		        name: openjdk-8-jdk
-		        update_cache: yes
-		        state: latest
+    ```console
+    (.venv-ansible-playbooks) tmcphill@circe-win10:wsl-debian$ cat jdk8.yml
+    ---
+    
+    - name: install OpenJDK 8 JDK
+      hosts: 127.0.0.1
+      connection: local
+      become: yes
+      tasks:
+    
+      - name: install openjdk-8-jdk
+        apt:
+            name: openjdk-8-jdk
+            update_cache: yes
+            state: latest
+    ```
 
 -   Installed JDK 8 using ansible:
   
@@ -208,6 +210,8 @@
 -   Loaded interface in Firebox by navigating to 127.0.0.1:3333
 
 	![](https://lh3.googleusercontent.com/bQWFd-zBDZsggFFflCeV0u9xGYm6swnblVA3ZM5RXc9EN1wUMXMm9J-91gC5eCkBV9za4poY4WLAFqOKyZc47XwB5LhEYAsy1K4O5WTN5qFVGTmfuzX8I0tOyfXhSaKl60hFxIT3)
+
+
 
 
 
