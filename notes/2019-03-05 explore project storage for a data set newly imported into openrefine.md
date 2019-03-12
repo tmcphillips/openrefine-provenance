@@ -274,7 +274,7 @@
 
 - Noted that while the data.txt file as a whole is not JSON, each individual row of data is formatted as JSON, with top-level properties flagged, starred, and cells:  The first row:
 
-	```console
+```json
 	{
 	  "flagged": false,
 	  "starred": false,
@@ -315,11 +315,11 @@
 	    }
 	  ]
 	}
-	 ```
+```
 
 - It is not obvious what the pool.txt file represents:
 
-	```console
+	```text
 	tmcphill@circe-win10:~$ cat pool.txt
 	3.1
 	reconCount=0
