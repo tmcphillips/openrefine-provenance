@@ -8,7 +8,7 @@
 ### Started OpenRefine and located default workspace directory
 
 - Listed home directory before running OpenRefine:
-	```console
+	```console 
 	tmcphill@circe-win10:~$ ls -alrt
 	total 12
 	drwxr-xr-x 1 root     root     4096 Mar  3 16:17 ..
