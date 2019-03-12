@@ -1,4 +1,4 @@
-## 2019-mar-04 Install OpenRefine in reproducible computing environment
+## 2019-03-04 Install OpenRefine in reproducible computing environment
 
 ### Found requirements for installing OpenRefine 3.1 release
 
