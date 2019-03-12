@@ -212,10 +212,10 @@
 
 - Found that the data.zip file comprises two files, data.txt and pool.txt:
 
-	tmcphill@circe-win10:~$ unzip .local/share/openrefine/2548854995375.project/data.zip
-	Archive:  .local/share/openrefine/2548854995375.project/data.zip
-	  inflating: data.txt
-	  inflating: pool.txt
+		tmcphill@circe-win10:~$ unzip .local/share/openrefine/2548854995375.project/data.zip
+		Archive:  .local/share/openrefine/2548854995375.project/data.zip
+		  inflating: data.txt
+		  inflating: pool.txt
 
 - The data.txt file appears to contain the metadata (e..g column count, column names and types) followed by each successive row of the data cell values themselves (one line per row of data). Note that the IDs of the two rows (in bold) match the first two rows  displayed when importing the data set.
 
