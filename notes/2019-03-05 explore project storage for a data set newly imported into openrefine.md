@@ -101,6 +101,8 @@
 
 	```console
 	tmcphill@circe-win10:~$ jq . .local/share/openrefine/workspace.json
+	```
+	```json
 	{
 	  "projectIDs": [],
 	  "preferences": {
@@ -167,6 +169,8 @@
 
 	 ```console
 	tmcphill@circe-win10:~$ jq . .local/share/openrefine/2548854995375.project/metadata.json
+	```
+	```json
 	{
 	  "name": "phm collection tsv",
 	  "tags": [],
