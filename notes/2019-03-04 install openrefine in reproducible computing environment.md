@@ -11,11 +11,13 @@
 
 -   Confirmed Java not installed in WSL-Debian:
 
-		   (.venv-ansible-playbooks) tmcphill@circe-win10:wsl-debian$ java -version    
-		   -bash: java: command not found
-		   
-		   (.venv-ansible-playbooks) tmcphill@circe-win10:wsl-debian$ javac -version
-		   -bash: javac: command not found
+    ```console
+    (.venv-ansible-playbooks) tmcphill@circe-win10:wsl-debian$ java -version    
+    -bash: java: command not found
+    
+    (.venv-ansible-playbooks) tmcphill@circe-win10:wsl-debian$ javac -version
+    -bash: javac: command not found
+    ```
 
 -   Wrote new playbook for installing openjdk-8-jdk:
 
