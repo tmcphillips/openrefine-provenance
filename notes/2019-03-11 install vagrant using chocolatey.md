@@ -199,6 +199,61 @@
     vagrant@precise64:~$
     ```
 
+- Confirmed that C:\vagrant on the host is mounted at /vagrant in the guest VM:
 
+    ```console
+    vagrant@precise64:~$ df
+    Filesystem                                                                        1K-blocks      Used Available Use% Mounted on
+    /dev/sda1                                                                         130432580    974044 122809912   1% /
+    udev                                                                                 233692         4    233688   1% /dev
+    tmpfs                                                                                 97260       228     97032   1% /run
+    none                                                                                   5120         0      5120   0% /run/lock
+    none                                                                                 243140         0    243140   0% /run/shm
+    //10.0.75.1/vgt-1d649553274a6c1c4ec01eb7e5ec1b14-6ad5fdbcbf2eaa93bd62f92333a2e6e5 498715644 236191016 262524628  48% /vagrant
+    
+    vagrant@precise64:~$ ls -al /vagrant/
+    total 8
+    drwxr-xr-x  2 vagrant vagrant    0 Mar 11 23:08 .
+    drwxr-xr-x 24 root    root    4096 Mar 11 23:14 ..
+    drwxr-xr-x  0 vagrant vagrant    0 Mar 11 23:08 .vagrant
+    -rwxr-xr-x  0 vagrant vagrant 3096 Mar 11 23:07 Vagrantfile
+    vagrant@precise64:~$
+    ```
+- Confirmed that the volume mounted at /vagrant is writable by the VM:
 
+    ```console
+    vagrant@precise64:~$ touch /vagrant/foo
+    
+    vagrant@precise64:~$ ls -al /vagrant/
+    total 8
+    drwxr-xr-x  2 vagrant vagrant    0 Mar 12 11:35 .
+    drwxr-xr-x 24 root    root    4096 Mar 11 23:14 ..
+    -rwxr-xr-x  0 vagrant vagrant    0 Mar 12 11:35 foo
+    drwxr-xr-x  0 vagrant vagrant    0 Mar 11 23:08 .vagrant
+    -rwxr-xr-x  0 vagrant vagrant 3096 Mar 11 23:07 Vagrantfile
+    ```
+- And changes to /vagrant contents are visible on the host:
+
+    ```console
+    PS C:\vagrant> dir
+    
+        Directory: C:\vagrant
+    
+    Mode                LastWriteTime         Length Name
+    ----                -------------         ------ ----
+    d-----        3/11/2019  11:08 PM                .vagrant
+    -a----        3/12/2019  11:35 AM              0 foo
+    -a----        3/11/2019  11:07 PM           3096 Vagrantfile
+    ```
+- Halted the VM:
+
+    ```console
+    PS C:\vagrant> vagrant halt
+    ==> default: Attempting graceful shutdown of VM...
+    
+    PS C:\vagrant> vagrant status
+    Current machine states:
+    
+    default                   off (hyperv)
+    ```
 
