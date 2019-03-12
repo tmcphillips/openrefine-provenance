@@ -274,62 +274,62 @@
 
 - Noted that while the data.txt file as a whole is not JSON, each individual row of data is formatted as JSON, with top-level properties flagged, starred, and cells:  The first row:
 
-```json
-{
-  "flagged": false,
-  "starred": false,
-  "cells": [
-    {
-      "v": 267220
-    },
-    {
-      "v": "Rocket motor on loan from Roswell Museum and Art Center, USA"
-    },
-    {
-      "v": "L2106-3/1"
-    },
-    {
-      "v": "Rocket motor, liquid fuelled combustion chamber, steel / aluminium wrapped tubes with insulation, included in flight of Dec 26 1928, ... "
-    },
-    null,
-    null,
-    null,
-    null,
-    null,
-    {
-      "v": "http://www.powerhousemuseum.com/collection/database/?irn=267220"
-    },
-    {
-      "v": "990 mm"
-    },
-    {
-      "v": "380 mm"
-    },
-    {
-      "v": "350 mm"
-    },
-    null,
-    null,
-    {
-      "v": "This text content licensed under<a href=\"http://creativecommons.org/licenses/by-sa/2.5/au/\" rel=\"license\" ...    
-    }
-  ]
-}
-```
+	 ```json
+	{
+	  "flagged": false,
+	  "starred": false,
+	  "cells": [
+	    {
+	      "v": 267220
+	    },
+	    {
+	      "v": "Rocket motor on loan from Roswell Museum and Art Center, USA"
+	    },
+	    {
+	      "v": "L2106-3/1"
+	    },
+	    {
+	      "v": "Rocket motor, liquid fuelled combustion chamber, steel / aluminium wrapped tubes with insulation, included in flight of Dec 26 1928, ... "
+	    },
+	    null,
+	    null,
+	    null,
+	    null,
+	    null,
+	    {
+	      "v": "http://www.powerhousemuseum.com/collection/database/?irn=267220"
+	    },
+	    {
+	      "v": "990 mm"
+	    },
+	    {
+	      "v": "380 mm"
+	    },
+	    {
+	      "v": "350 mm"
+	    },
+	    null,
+	    null,
+	    {
+	      "v": "This text content licensed under<a href=\"http://creativecommons.org/licenses/by-sa/2.5/au/\" rel=\"license\" ...    
+	    }
+	  ]
+	}
+	```
 
 - It is not obvious what the pool.txt file represents:
 
-	```text
-	tmcphill@circe-win10:~$ cat pool.txt
-	3.1
-	reconCount=0
-	```
+  ```
+  tmcphill@circe-win10:~$ cat pool.txt
+  3.1
+  reconCount=0
+  ```
 
 - Closed browser window and stopped refine at the command prompt without making changes to the data set.
 
 - Noted that the data.zip file is unchanged and still has a timestamp corresponding to the project-creation time above. The timestamp on metdata.json is earlier, likely the time of selecting the datafile for import but before creating the project.
 
-	```console
+```console
 	tmcphill@circe-win10:~$ ls -al .local/share/openrefine/2548854995375.project
 	total 9860
 	drwxrwxrwx 1 tmcphill tmcphill     4096 Mar  5 18:01 .
