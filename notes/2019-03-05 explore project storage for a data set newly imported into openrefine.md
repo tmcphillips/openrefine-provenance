@@ -8,26 +8,26 @@
 ### Started OpenRefine and located default workspace directory
 
 - Listed home directory before running OpenRefine:
-	```console 
-	tmcphill@circe-win10:~$ ls -alrt
-	total 12
-	drwxr-xr-x 1 root     root     4096 Mar  3 16:17 ..
-	-rw-r--r-- 1 tmcphill tmcphill  220 Mar  3 16:17 .bash_logout
-	-rw-r--r-- 1 tmcphill tmcphill  675 Mar  3 16:17 .profile
-	-rw-rw-rw- 1 tmcphill tmcphill  180 Mar  3 16:18 .wget-hsts
-	drwxrwxrwx 1 tmcphill tmcphill 4096 Mar  3 16:21 .venv-ansible-playbooks
-	drwx------ 1 tmcphill tmcphill 4096 Mar  3 16:21 .cache
-	lrwxrwxrwx 1 tmcphill tmcphill   26 Mar  3 16:23 .ssh -> /mnt/c/Users/tmcphill/.ssh
-	lrwxrwxrwx 1 tmcphill tmcphill   30 Mar  3 16:23 GitRepos -> /mnt/c/Users/tmcphill/GitRepos
-	-rw-rw-rw- 1 tmcphill tmcphill 2004 Mar  3 16:35 bootstrap.sh
-	lrwxrwxrwx 1 tmcphill tmcphill   68 Mar  3 16:36 bashrc_d -> /mnt/c/Users/tmcphill/GitRepos/ansible-playbooks/wsl-debian/bashrc_d
-	lrwxrwxrwx 1 tmcphill tmcphill   31 Mar  3 16:36 .bashrc -> /home/tmcphill/bashrc_d/.bashrc
-	drwx------ 1 tmcphill tmcphill 4096 Mar  4 10:32 .ansible
-	-rw-rw-rw- 1 tmcphill tmcphill  125 Mar  4 11:47 .gitconfig
-	-rw------- 1 tmcphill tmcphill 1879 Mar  4 14:04 .bash_history
-	drwxrwxrwx 1 tmcphill tmcphill 4096 Mar  4 15:44 openrefine-3.1
-	drwxr-xr-x 1 tmcphill tmcphill 4096 Mar  5 16:10 .
-	 ```
+    ```console 
+    tmcphill@circe-win10:~$ ls -alrt
+    total 12
+    drwxr-xr-x 1 root     root     4096 Mar  3 16:17 ..
+    -rw-r--r-- 1 tmcphill tmcphill  220 Mar  3 16:17 .bash_logout
+    -rw-r--r-- 1 tmcphill tmcphill  675 Mar  3 16:17 .profile
+    -rw-rw-rw- 1 tmcphill tmcphill  180 Mar  3 16:18 .wget-hsts
+    drwxrwxrwx 1 tmcphill tmcphill 4096 Mar  3 16:21 .venv-ansible-playbooks
+    drwx------ 1 tmcphill tmcphill 4096 Mar  3 16:21 .cache
+    lrwxrwxrwx 1 tmcphill tmcphill   26 Mar  3 16:23 .ssh -> /mnt/c/Users/tmcphill/.ssh
+    lrwxrwxrwx 1 tmcphill tmcphill   30 Mar  3 16:23 GitRepos -> /mnt/c/Users/tmcphill/GitRepos
+    -rw-rw-rw- 1 tmcphill tmcphill 2004 Mar  3 16:35 bootstrap.sh
+    lrwxrwxrwx 1 tmcphill tmcphill   68 Mar  3 16:36 bashrc_d -> /mnt/c/Users/tmcphill/GitRepos/ansible-playbooks/wsl-debian/bashrc_d
+    lrwxrwxrwx 1 tmcphill tmcphill   31 Mar  3 16:36 .bashrc -> /home/tmcphill/bashrc_d/.bashrc
+    drwx------ 1 tmcphill tmcphill 4096 Mar  4 10:32 .ansible
+    -rw-rw-rw- 1 tmcphill tmcphill  125 Mar  4 11:47 .gitconfig
+    -rw------- 1 tmcphill tmcphill 1879 Mar  4 14:04 .bash_history
+    drwxrwxrwx 1 tmcphill tmcphill 4096 Mar  4 15:44 openrefine-3.1
+    drwxr-xr-x 1 tmcphill tmcphill 4096 Mar  5 16:10 .
+    ```
   
 - Started OpenRefine in WSL Debian environment and found in log messages possible location of project workspace (/home/tmcphill/.local/share/openrefine):
 
