@@ -63,11 +63,11 @@
 	00:11:52.094 [                   refine] Sorry, some error prevented us from launching the browser for you.
 
 		 Point your browser to http://127.0.0.1:3333/ to start using Refine. (2550ms)
-  ```
+	 ```
   	
 - Confirmed that a new directory tree rooted at .local is now present in my home directory and contains a workspace.json file:
 
-	 ```console
+	```console
 	tmcphill@circe-win10:~$ ls -alrt
 	total 12
 	drwxr-xr-x 1 root     root     4096 Mar  3 16:17 ..
@@ -95,11 +95,11 @@
 	        └── workspace.json
 
 	2 directories, 1 file
-  ```
+	```
 
 - Printed contents of initial workspace.json file, formatting using jq (https://stedolan.github.io/jq/):
 
-	 ```console
+	```console
 	tmcphill@circe-win10:~$ jq . .local/share/openrefine/workspace.json
 	{
 	  "projectIDs": [],
@@ -118,13 +118,13 @@
 	    }
 	  }
 	}    
-  ```
+	```
 
 ### Started first OpenRefine project and noted new project directory and files in workspace
 
 - Obtained zip file with sample data sets (code files) for the book Using Open Refine:
 
-	 ```console
+	```console
 	tmcphill@circe-win10:~$ tree /mnt/c/Users/tmcphill/OneDrive/Datasets/Using OpenRefine/
 	├── 9781783289080_code.zip
 	├── chapter1
@@ -138,7 +138,7 @@
 	    └── openrefine-project-chapter4.tar.gz
 
 	5 directories, 5 files
-  ```
+	```
 
 - Loaded chapter1 dataset phm-collection.tsv into OpenRefine.  Parsing parameters were taken from Chapter 1 of the book Using Open Refine :
 
@@ -146,7 +146,7 @@
 
 - After creating project for this data set examined workspace directory noting new project directory and files:
 
-	 ```console
+	```console
 	tmcphill@circe-win10:~$ tree .local/
 	.local/
 	└── share
@@ -161,7 +161,7 @@
 	4 directories, 4 files
 
 	3 directories, 2 files
-  ```
+	```
 
 - Found the import options I chose when creating the project recorded in the metdata.json file:
 
@@ -221,20 +221,19 @@
 	    }
 	  }
 	}
-	 ```
-	
+	```
 - Found that the data.zip file comprises two files, data.txt and pool.txt:
 
-	 ```console
+	```console
 	tmcphill@circe-win10:~$ unzip .local/share/openrefine/2548854995375.project/data.zip
 	Archive:  .local/share/openrefine/2548854995375.project/data.zip
 	  inflating: data.txt
 	  inflating: pool.txt
-	 ```
+	```
 
 - The data.txt file appears to contain the metadata (e..g column count, column names and types) followed by each successive row of the data cell values themselves (one line per row of data). Note that the IDs of the two rows (in bold) match the first two rows  displayed when importing the data set.
 
-	 ```console
+	```console
 	tmcphill@circe-win10:~$ head -30 data.txt
 	3.1
 	columnModel=
@@ -274,7 +273,7 @@
 
 - Noted that while the data.txt file as a whole is not JSON, each individual row of data is formatted as JSON, with top-level properties flagged, starred, and cells:  The first row:
 
-	 ```json
+	```json
 	{
 	  "flagged": false,
 	  "starred": false,
@@ -319,28 +318,28 @@
 
 - It is not obvious what the pool.txt file represents:
 
-  ```console
+	```console
 	 tmcphill@circe-win10:~$ cat pool.txt
 	 3.1
 	 reconCount=0
-   ```
+	```
 
 - Closed browser window and stopped refine at the command prompt without making changes to the data set.
 
 - Noted that the data.zip file is unchanged and still has a timestamp corresponding to the project-creation time above. The timestamp on metdata.json is earlier, likely the time of selecting the datafile for import but before creating the project.
 
-  ```console
+	```console
 	 tmcphill@circe-win10:~$ ls -al .local/share/openrefine/2548854995375.project
 	 total 9860
 	 drwxrwxrwx 1 tmcphill tmcphill     4096 Mar  5 18:01 .
 	 drwxrwxrwx 1 tmcphill tmcphill     4096 Mar  5 18:31 ..
 	 -rw-rw-rw- 1 tmcphill tmcphill 10018592 Mar  5 18:01 data.zip
 	 -rw-rw-rw- 1 tmcphill tmcphill      888 Mar  5 17:56 metadata.json
-  ```
+	```
   	
 - Copied the project files, zipped and unzipped into another directory (~/or1) for later comparison:
 
-  ```console
+	```console
 	tmcphill@circe-win10:~$ ls -al or1/
 	total 79888
 	drwxrwxrwx 1 tmcphill tmcphill     4096 Mar  5 18:42 .
@@ -349,5 +348,5 @@
 	-rw-rw-rw- 1 tmcphill tmcphill 10018592 Mar  5 18:42 data.zip
 	-rw-rw-rw- 1 tmcphill tmcphill      888 Mar  5 18:42 metadata.json
 	-rw-rw-rw- 1 tmcphill tmcphill       17 Mar  6  2019 pool.txt
-   ```
+	```
 
