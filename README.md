@@ -1,7 +1,7 @@
-# openrefine-provenance
+# An Investigation of OpenRefine Provenance
 
 ## Overview
-This repo represents the history and current state of a project to model the data-cleaning history management features of [OpenRefine](http://openrefine.org).  The project has three principle aims:
+This repo represents the history and current state of a project to model the data-cleaning history management features of [OpenRefine](http://openrefine.org).  The project has three principal aims:
 
 1. Investigate and clearly document the actual data-cleaning history capabilities of OpenRefine.
 2. Demonstrate queries of the historical information captured by OpenRefine, focusing primarily on queries that reveal critical elements of the *provenance* of a cleaned data set. 
