@@ -1,5 +1,5 @@
 
-## 2019-Mar-06  Observe changes in OpenRefine workspace after changes to schema
+## 2019-03-06  Observe changes in OpenRefine workspace after changes to schema
 
 ### Viewed metadata for data set
 - Restarted OpenRefine and viewed project listing in Open Project dialog:
