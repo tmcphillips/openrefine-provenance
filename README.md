@@ -11,7 +11,7 @@ This repo is meant not just to make it possible for others to *reproduce* the re
 
 The [notes](https://github.com/tmcphillips/openrefine-provenance/tree/master/notes) folder contains the daily records kept throughout the project.
 
-Project planning is done using [issues](https://github.com/tmcphillips/openrefine-provenance/issues) . Please feel free to comment, make suggestions, or contribute ideas.
+Project planning is done using [issues](https://github.com/tmcphillips/openrefine-provenance/issues). Please feel free to comment, make suggestions, or contribute ideas.
 
 Miscellaneous updates and thoughts about the project are posted on twitter by [@tmcphillips](https://twitter.com/tmcphillips).
 
