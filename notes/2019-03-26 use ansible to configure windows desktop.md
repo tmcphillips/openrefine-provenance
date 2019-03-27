@@ -3,9 +3,9 @@
 ### Background
 
 - I want to be able to quickly reproduce the computing environment I am using for this project on multiple desktop, laptop, and tablet systems running Windows.
-- Ansible is convenient for configuring the Linux environment (within WSL or in a Vagrant-managed VM) running on these systems, but I also would like to reproduce key elements of the rest of the host computing environment, including Windows configuration and applications.
+- Ansible is convenient for configuring the Linux environment (within WSL or in a Vagrant-managed VM) running on these systems, but I also would like to reproduce key elements of the rest of the host computing environment, including Windows configuration and applications, using the same configuration management system.
 - Examples include the process of installing Vagrant in the first place; ensuring Hyper-V is enabled before installing Vagrant; installing Chrome and StackEdit for note-taking; installing and configuring Docker; and installing Visual Studio Code and plugins.
-- Ansible can be used to configure Windows systems using native PowerShell  remoting via the [WinRM](https://docs.microsoft.com/en-us/windows/desktop/WinRM/portal) (Windows Remote Management) protocol rather than SSH, and launched by Ansible running in a Linux environment: [Ansible Windows Support](https://docs.ansible.com/ansible/2.4/intro_windows.htm).
+- Ansible can be used to configure Windows systems using native PowerShell  remoting via the [WinRM](https://docs.microsoft.com/en-us/windows/desktop/WinRM/portal) (Windows Remote Management) protocol rather than SSH, and launched by Ansible running in a Linux environment: [Ansible Windows Support](https://docs.ansible.com/ansible/2.4/intro_windows.html).
 - I will try to configure the Windows system hosting the WSL Debian environment using Ansible in that WSL environment.
 
 ### Enabled Ansible access to circe-win10 over WinRM
