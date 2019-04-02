@@ -6,7 +6,9 @@
 % defining the \BibTeX command - from Oren Patashnik's original BibTeX documentation.
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08emT\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
  
-\usepackage[english]{babel} 
+\usepackage[english]{babel}
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=3 mm}
 
 % start of the body of the document body.
 \begin{document}
@@ -31,15 +33,7 @@
 \maketitle
 
 \input{introduction}
-
-\section{Aims}
-
-Describe OR's history capabilities using concepts and terminology familiar to members of the provenance research community.
-Employ the operation history captured by OR to satisfy queries about the provenance of the cleaned data sets.
-Identify provenance queries that can be supported by OR's native data model and operation history. 
-Experiment with accessing and using information in the history records beyond what OR itself allows one to view or export as recipes.
-Represent overall data cleaning workflows carried out in OR in YesWorkflow, and extend the YW data model to enable us to take advantage of YW visualization and query support in the contect of data cleaning workflows.
-Identify apparent limitations on kinds of provenance queries that can be supported given OR's native data model and operation history. 
+\input{aims}
 
 \section{Tools}
 
