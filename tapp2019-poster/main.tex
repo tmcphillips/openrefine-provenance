@@ -2,6 +2,10 @@
 
 %%%% Proceedings format for most of ACM conferences (with the exceptions listed below) and all ICPS volumes.
 \documentclass[sigconf,screen,nonacm]{acmart}
+%\documentclass[sigconf]{acmart}
+
+%\acmConference[TaPP]{Theory and Practice of Provenance}{June 3, 2019}{Philadelphia, PA}
+%\setcopyright{rightsretained}
 
 % defining the \BibTeX command - from Oren Patashnik's original BibTeX documentation.
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08emT\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
@@ -15,26 +19,27 @@
 
 % title
 % \title[Reproducible Data Cleaning]{Poster Abstract: Reproducible Data Cleaning Workflows Provenance Query and Visualization for OpenRefine}
-\title[Reproducible Data Cleaning]{POSTER: Modeling
-  Provenance and Understanding Reproducibility for OpenRefine Data
+\title[Reproducible Data Cleaning]{Modeling Provenance and Understanding Reproducibility for OpenRefine Data
   Cleaning Workflows}
 
-\author{Timothy McPhillips \qquad Lan Li \qquad Nikolaus Parulian \qquad Bertram Lud\"ascher}
+\author{Timothy McPhillips \qquad Lan Li\qquad Nikolaus Parulian
+  \qquad Bertram Lud\"ascher}
 % BL: The braces don't seem to work ... 
 %\email{\{tmcphill,lanl2,nnp2,ludaesch\}@illinois.edu}
  
 % BL: so let's do some manual hacking: 
 \affiliation{%
-  \institution{School of Information Sciences,  University of Illinois at Urbana-Champaign \\ 
+  \institution{School of Information Sciences,  University of Illinois at Urbana-Champaign\\ 
     \texttt{\{tmcphill,lanl2,nnp2,ludaesch\}@illinois.edu} }
 }
+
 
 % This command processes the author and affiliation and title information and builds the first part of the formatted document.
 \maketitle
 
 \input{introduction}
-\input{aims}
-\input{materials}
+\input{goals}
+\input{tools}
 \input{results}
 
 %\section{Example Provenance Questions}
@@ -59,7 +64,8 @@
 
 %
 % The next two lines define the bibliography style to be used, and the bibliography file.
-\bibliographystyle{alpha-initials-big}
+%\bibliographystyle{alpha-initials-big}
+\bibliographystyle{abbrv}
 \bibliography{main}
 
 \end{document}
