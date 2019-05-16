@@ -176,4 +176,4 @@ row_position(row_positition_id, row_id, state_id, previous_row_id).
 	3. What are all the names that were assigned to the column originally named 'Book Title'?
 	4. What are the final names of all columns that were renamed?
 
-
+- Note that answering these questions with Version 1 of the model depend on assuming that there is only one array associated with a particular data set.  This assumption will be relaxed in future models.
