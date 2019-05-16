@@ -168,12 +168,12 @@ As the data model was developed a number of problems and strategies to address t
     % column_schema(column_schema_id, column_id, state_id, column_type, column_name, previous_column_id).
     column_schema(4, 1, 18, 'string', 'Title', nil).
     ```
-- With this representation of it should be possible to write Datalog queries that answer the following questions:
+- With this representation it should be possible to write Datalog queries that answer the following questions:
 
 	1. What is the original title of the column named 'Title' in the final data set?
 	2. How many times was the column originally named 'Book Title' renamed?
 	3. What are all the names that were assigned to the column originally named 'Book Title'?
 	4. What are the final names of all columns that were renamed?
 
-- Note that answering these questions with Version 1 of the model depend on assuming that there is only one array associated with a particular data set.  This assumption will be relaxed in future models.
+- Note that answering these questions with Version 1 of the model requires assuming that there is only one array associated with a particular data set.  This assumption will be relaxed in future models.
 
