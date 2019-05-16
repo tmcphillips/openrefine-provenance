@@ -9,15 +9,14 @@
 ### Strategies for data model
 As the data model was developed a number of problems and strategies to address them emerged:
 
-- **Problem:** Provenance queries need access to previous values of cells buy is too space-expensive to store each state of a data set in its entirety.  **Solution:** Store only new values when they are assigned to cells, and provide views of the full data set at each point in its history.
+-   **Problem:**  Provenance queries must be able to access past states of the data set.  **Solution:** Design a model that is add-only.  If all information added to the database is immutable, and never deleted, then in principle it should be possible to access previous states of the data set.
 
+- **Problem:** Provenance queries need access to previous values of cells, but it is too space-expensive to store each state of a data set in its entirety.  **Solution:** Store only new values when they are assigned to cells, and provide views of the full data set at each point in its history.
 
--   **Problem:**  Provenance queries must be able to access past states of the data set.  **Solution:** Design a model that is add-only.  If all information added to the database is immutable, and never deleted then in principle it may be possible to access previous states of the data set.
-
-- **Problem:**  A data cleaning workflow may work on different parts of a data set concurrently for both conceptual and performance reasons.  The history of operations should be independent for each part worked on separately.  **Solution:**  Associate the cells, columns, and rows of a single data set with one or array; have data cleaning operations work on these arrays; and separately model and record the slicing and fusion of arrays during the workflow.
+- **Problem:**  A data cleaning workflow may work on different parts of a data set concurrently for both conceptual and performance reasons.  The history of operations should be independent for each part worked on separately.  **Solution:**  Associate the cells, columns, and rows of a single data set with one or more arrays; have data cleaning operations work on these arrays; and additionally model and record the slicing and fusion of arrays during data cleaning.
 
 ### Datalog model - Version 1
-- The following is an initial data model represented as datalog facts:
+- The following is an initial data model represented as a schema for datalog facts:
 
     ```prolog
     % a source refers to the data file from which a dataset is imported
@@ -27,16 +26,17 @@ As the data model was developed a number of problems and strategies to address t
     % and a data array containing the imported data values
     dataset(dataset_id, source_id, import_id, array_id).
     
-    % the import includes all data parsing choices made when the dataset was created
+    % the import fact includes all data parsing choices made when the dataset was created
     import(import_id, ...).
     
-    % an array is a set of columns, rows, and the values in each cell
+    % an array is a set of columns, rows, and the values in each cell; 
+    % and a dataset may be represented by multiple arrays
     array(array_id, dataset_id).
     
-    % a column is associated with an array but its schema and position is elsewhere
+    % a column is associated with an array, but its schema and position is elsewhere
     column(column_id, array_id).
     
-    % a row is associated with an array but iss schema and position is elsewhere
+    % a row is associated with an array, but itss schema and position is elsewhere
     row(row_id, array_id).
     
     % a cell is a pairing of a column and row of an array
@@ -45,7 +45,7 @@ As the data model was developed a number of problems and strategies to address t
     % an array goes through a sequence of states represented as a singly-linked list
     state(state_id, array_id, previous_state_id).
     
-    % content gives the value of a cell at a specific state
+    % a content fact gives the value of a cell at a specific state
     content(content_id, cell_id, state_id, value_id).
     
     % a value is stored as text so that the type of columns can change
