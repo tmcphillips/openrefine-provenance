@@ -18,45 +18,45 @@ As the data model was developed a number of problems and strategies to address t
 
 
 ### Datalog model - Version 1
+```prolog
+% a source refers to the data file from which a dataset is imported
+source(source_id, source_uri, source_format).
 
-    ```prolog
-    % a source refers to the data file from which a dataset is imported
-    source(source_id, source_uri, source_format).
-    
-    % a dataset is associated with a data source, import details,
-    % and a data array containing the imported data values
-    dataset(dataset_id, source_id, import_id, array_id).
-    
-    % the import includes all data parsing choices made when the dataset was created
-    import(import_id, ...).
-    
-    % an array is a set of columns, rows, and the values in each cell
-    array(array_id, dataset_id).
-    
-    % a column is associated with an array but its schema and position is elsewhere
-    column(column_id, array_id).
-    
-    % a row is associated with an array but iss schema and position is elsewhere
-    row(row_id, array_id).
-    
-    % a cell is a pairing of a column and row of an array
-    cell(cell_id, column_id, row_id).
-    
-    % an array goes through a sequence of states represented as a singly-linked list
-    state(state_id, array_id, previous_state_id).
-    
-    % content gives the value of a cell at a specific state
-    content(content_id, cell_id, state_id, value_id).
-    
-    % a value is stored as text so that the type of columns can change
-    % without updating all of the values of its cells
-    value(value_id, value_text).
-    
-    % the type, name, and relative position of a column can vary from state to state
-    column_schema(column_schema_id, column_id, state_id, column_type,
-                  column_name, previous_column_id).
-    
-    % the relative position of a row can vary from state to state
-    row_position(row_positition_id, row_id, state_id, previous_row_id).
-    ```
+% a dataset is associated with a data source, import details,
+% and a data array containing the imported data values
+dataset(dataset_id, source_id, import_id, array_id).
+
+% the import includes all data parsing choices made when the dataset was created
+import(import_id, ...).
+
+% an array is a set of columns, rows, and the values in each cell
+array(array_id, dataset_id).
+
+% a column is associated with an array but its schema and position is elsewhere
+column(column_id, array_id).
+
+% a row is associated with an array but iss schema and position is elsewhere
+row(row_id, array_id).
+
+% a cell is a pairing of a column and row of an array
+cell(cell_id, column_id, row_id).
+
+% an array goes through a sequence of states represented as a singly-linked list
+state(state_id, array_id, previous_state_id).
+
+% content gives the value of a cell at a specific state
+content(content_id, cell_id, state_id, value_id).
+
+% a value is stored as text so that the type of columns can change
+% without updating all of the values of its cells
+value(value_id, value_text).
+
+% the type, name, and relative position of a column can vary from state to state
+column_schema(column_schema_id, column_id, state_id, column_type,
+              column_name, previous_column_id).
+
+% the relative position of a row can vary from state to state
+row_position(row_positition_id, row_id, state_id, previous_row_id).
+```
+
 
