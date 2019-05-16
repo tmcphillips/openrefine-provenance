@@ -75,7 +75,7 @@ row_position(row_positition_id, row_id, state_id, previous_row_id).
 - After importing this data the dataset should like this is OpenRefine:
 
 |Book Title|Author|Date|
-|--|--|--|--|
+|--|--|--|
 |Against Method|Paul Feyerabend|1975|
 |Changing Order|H.M. Collins|1985|
 |Exceeding Our Grasp|P. Kyle Stanford|2006|
