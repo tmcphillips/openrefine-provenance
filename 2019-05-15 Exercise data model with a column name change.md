@@ -74,11 +74,11 @@ row_position(row_positition_id, row_id, state_id, previous_row_id).
 
 - After importing this data the dataset should like this is OpenRefine:
 
-	|Book Title|Author|Date|
-	|--|--|--|--|
-	|Against Method|Paul Feyerabend|1975|
-	|Changing Order|H.M. Collins|1985|
-	|Exceeding Our Grasp|P. Kyle Stanford|2006|
+|Book Title|Author|Date|
+|--|--|--|--|
+|Against Method|Paul Feyerabend|1975|
+|Changing Order|H.M. Collins|1985|
+|Exceeding Our Grasp|P. Kyle Stanford|2006|
 
 - And the Datalog representation of the dataset should start as:
 
@@ -141,8 +141,7 @@ row_position(row_positition_id, row_id, state_id, previous_row_id).
     value(28, '1985').
     value(29, '2006')
     
-    % column_schema(column_schema_id, column_id, state_id, column_type,
-    %               column_name, previous_column_id).
+    % column_schema(column_schema_id, column_id, state_id, column_type, column_name, previous_column_id).
     column_schema(4, 1, 17, 'string', 'Book Title', nil).
     column_schema(5, 2, 17, 'string', 'Author', 1).
     column_schema(6, 3, 17, 'string', 'Data', 2).
