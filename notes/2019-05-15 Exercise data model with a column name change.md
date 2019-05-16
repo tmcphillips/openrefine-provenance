@@ -16,6 +16,8 @@ As the data model was developed a number of problems and strategies to address t
 -   **Problem:**  Provenance queries must be able to access past states of the data set.
 **Solution:** Design a model that is add-only.  If all information added to the database is immutable, and never deleted then in principle it may be possible to access previous states of the data set.
 
+- **Problem:**  A data cleaning workflow may work on different parts of a data set concurrently for both conceptual and performance reasons.  The history of operations should be independent for each part worked on separately.
+**Solution:**  Associate the cells, columns, and rows of a single data set with one or array; have data cleaning operations work on these arrays; and separately model and record the slicing and fusion of arrays during the workflow.
 
 ### Datalog model - Version 1
 ```prolog
