@@ -74,11 +74,11 @@ row_position(row_positition_id, row_id, state_id, previous_row_id).
 
 - After importing this data the dataset should look like this is OpenRefine:
 
-|Book Title|Author|Date|
-|--|--|--|
-|Against Method|Paul Feyerabend|1975|
-|Changing Order|H.M. Collins|1985|
-|Exceeding Our Grasp|P. Kyle Stanford|2006|
+	|Book Title|Author|Date|
+	|--|--|--|
+	|Against Method|Paul Feyerabend|1975|
+	|Changing Order|H.M. Collins|1985|
+	|Exceeding Our Grasp|P. Kyle Stanford|2006|
 
 - And the Datalog representation of the dataset should start as:
 
