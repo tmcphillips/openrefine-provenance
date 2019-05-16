@@ -1,7 +1,7 @@
 ## 2019-05-15 Exercise data model with a column name change
 
 ### Background
-- Over the weekend developed a data model for representing data cleaning workflows (retrospectively).  See [whiteboard-2019-15](https://github.com/tmcphillips/openrefine-provenance/blob/b4db0ff3061455b71b34a112590b336d028569fa/whiteboards/whiteboard-2019-05-15.png).
+- Over the weekend developed a data model for representing data cleaning workflows (retrospectively).  See [whiteboard-2019-05-11](https://github.com/tmcphillips/openrefine-provenance/blob/master/whiteboards/whiteboard-2019-05-11.png), [whiteboard-2019-05-12](https://github.com/tmcphillips/openrefine-provenance/blob/master/whiteboards/whiteboard-2019-05-12.png), and  [whiteboard-2019-05-15](https://github.com/tmcphillips/openrefine-provenance/blob/master/whiteboards/whiteboard-2019-05-15.svg).
 - Need to exercise the model with simple data cleaning workflows. Can they be represented?
 - For these simple workflows need to check if the most obvious provenance queries are supported by the model.
 - A data cleaning workflow that consists of just a data import followed by a single column rename is about as simple as it gets.
