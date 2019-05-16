@@ -61,4 +61,96 @@ column_schema(column_schema_id, column_id, state_id, column_type,
 row_position(row_positition_id, row_id, state_id, previous_row_id).
 ```
 
+### Example 1 - Column rename on a small data set
+
+- Data source is a a CSV file named 'biblio.csv' with these contents:
+
+    ```csv
+    Book Title,Author,Date
+    Against Method,Paul Feyerabend,1975
+    Changing Order,H.M. Collins,1985
+    Exceeding Our Grasp,P. Kyle Stanford,2006
+    ```
+
+- After importing this data the dataset should like this is OpenRefine:
+
+	|Book Title|Author|Date|
+	|--|--|--|--|
+	|Against Method|Paul Feyerabend|1975|
+	|Changing Order|H.M. Collins|1985|
+	|Exceeding Our Grasp|P. Kyle Stanford|2006|
+
+- And the Datalog representation of the dataset should start as:
+
+    ```prolog
+    % source(source_id, source_uri, source_format).
+    source(7, 'biblio.csv', 'text/csv').
+    
+    % dataset(dataset_id, source_id, import_id, array_id).
+    dataset(3, 7, 5, 9).
+    
+    % import(import_id, ...).
+    import(5).
+    
+    % array(array_id, dataset_id).
+    array(9, 3).
+    
+    % column(column_id, array_id).
+    column(1, 9).
+    column(2, 9).
+    column(3, 9).
+    
+    % row(row_id, array_id).
+    row(6, 9).
+    row(7, 9).
+    row(8, 9).
+    
+    % cell(cell_id, column_id, row_id).
+    cell(1, 1, 6).
+    cell(2, 1, 7).
+    cell(3, 1, 8).
+    cell(4, 2, 6).
+    cell(5, 2, 7).
+    cell(6, 2, 8).
+    cell(7, 3, 6).
+    cell(8, 3, 7).
+    cell(9, 3, 8).
+    
+    % state(state_id, array_id, previous_state_id).
+    state(17, 9, nil).
+    
+    % content(content_id, cell_id, state_id, value_id).
+    content(11, 1, 17, 21).
+    content(12, 2, 17, 22).
+    content(13, 3, 17, 23).
+    content(14, 4, 17, 24).
+    content(15, 5, 17, 25).
+    content(16, 6, 17, 26).
+    content(17, 7, 17, 27).
+    content(18, 8, 17, 28).
+    content(19, 9, 17, 29).
+    
+    % value(value_id, value_text).
+    value(21, 'Against Method').
+    value(22, 'Changing Order').
+    value(23, 'Exceeding our Grasp').
+    value(24, 'Paul Feyerabend').
+    value(25, 'H.M. Collins').
+    value(26, 'P. Kyle Stanford').
+    value(27, '1975').
+    value(28, '1985').
+    value(29, '2006')
+    
+    % column_schema(column_schema_id, column_id, state_id, column_type,
+    %               column_name, previous_column_id).
+    column_schema(4, 1, 17, 'string', 'Book Title', nil).
+    column_schema(5, 2, 17, 'string', 'Author', 1).
+    column_schema(6, 3, 17, 'string', 'Data', 2).
+    
+    % row_position(row_positition_id, row_id, state_id, previous_row_id).
+    row_position(31, 6, 17, nil).
+    row_position(32, 7, 17, 6).
+    row_position(33, 8, 17, 7).
+    ```
+
 
