@@ -20,7 +20,7 @@ As the data model was developed a number of problems and strategies to address t
 ### Datalog model - Version 1
 ```prolog
 % a source refers to the data file from which a dataset is imported
-source(source_id, source_uri, source_format)
+source(source_id, source_uri, source_format).
 
 % a dataset is associated with a data source, import details,
 % and a data array containing the imported data values
