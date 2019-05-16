@@ -139,7 +139,7 @@ row_position(row_positition_id, row_id, state_id, previous_row_id).
     value(26, 'P. Kyle Stanford').
     value(27, '1975').
     value(28, '1985').
-    value(29, '2006')
+    value(29, '2006').
     
     % column_schema(column_schema_id, column_id, state_id, column_type, column_name, previous_column_id).
     column_schema(4, 1, 17, 'string', 'Book Title', nil).
