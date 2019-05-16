@@ -152,4 +152,28 @@ row_position(row_positition_id, row_id, state_id, previous_row_id).
     row_position(33, 8, 17, 7).
     ```
 
+- Now if the name of the first column is changed from 'Book Title' to 'Title' to give:
+
+	|Title|Author|Date|
+	|--|--|--|
+	|Against Method|Paul Feyerabend|1975|
+	|Changing Order|H.M. Collins|1985|
+	|Exceeding Our Grasp|P. Kyle Stanford|2006|
+
+- Updating the datalog representation requires adding only two facts, one representing the new state, and a second representing the updated column schema in that state:
+
+    ```prolog
+    % state(state_id, array_id, previous_state_id).
+    state(18, 9, 17).
+    
+    % column_schema(column_schema_id, column_id, state_id, column_type, column_name, previous_column_id).
+    column_schema(4, 1, 18, 'string', 'Title', nil).
+    ```
+- With this representation of it should be possible to write Datalog queries that answer the following questions:
+
+	1. What is the original title of the column named 'Title' in the final data set?
+	2. How many times was the column originally named 'Book Title' renamed?
+	3. What are all the names that were assigned to the column originally named 'Book Title'?
+	4. What are the final names of all columns that were renamed?
+
 
