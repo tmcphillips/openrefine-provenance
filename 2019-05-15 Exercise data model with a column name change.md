@@ -72,7 +72,7 @@ row_position(row_positition_id, row_id, state_id, previous_row_id).
     Exceeding Our Grasp,P. Kyle Stanford,2006
     ```
 
-- After importing this data the dataset should like this is OpenRefine:
+- After importing this data the dataset should look like this is OpenRefine:
 
 |Book Title|Author|Date|
 |--|--|--|
