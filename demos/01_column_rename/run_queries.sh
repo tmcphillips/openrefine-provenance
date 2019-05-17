@@ -41,18 +41,18 @@ printall(q2(_)).
 %-------------------------------------------------------------------------------
 banner( 'Q3',
         'What new names are assigned to columns?',
-        'q3(ColumnName)').
+        'q3(OldColumnName, NewColumnName)').
 [user].
-:- table q3/1.
-q3(NewColumnName) :-
+:- table q3/2.
+q3(OldColumnName, NewColumnName) :-
     dataset(DatasetId, _, ArrayId),
     array(ArrayId, DatasetId),
     state(StateId, ArrayId, PreviousStateId),
-    column_schema(_, _, StateId, _, NewColumnName, _),
-    column_schema(_, _, PreviousStateId, _, OldColumnName, _),
+    column_schema(_, ColumnId, StateId, _, NewColumnName, _),
+    column_schema(_, ColumnId, PreviousStateId, _, OldColumnName, _),
     OldColumnName \== NewColumnName.
 end_of_file.
-printall(q3(_)).
+printall(q3(_,_)).
 %-------------------------------------------------------------------------------
 
 END_XSB_STDIN
