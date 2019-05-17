@@ -24,3 +24,11 @@ Q3 : What new names are assigned to columns?
 q3(OldColumnName, NewColumnName)
 ...................................................................................................
 q3('Book Title','Title').
+
+
+---------------------------------------------------------------------------------------------------
+Q4 : How many steps are there in the data cleaning workflow including data import?
+
+q4(StateCount)
+...................................................................................................
+q4(2).
