@@ -56,9 +56,15 @@ value(29, '2006').
 % column_schema(column_schema_id, column_id, state_id, column_type, column_name, previous_column_id).
 column_schema(4, 1, 17, 'string', 'Book Title', nil).
 column_schema(5, 2, 17, 'string', 'Author', 1).
-column_schema(6, 3, 17, 'string', 'Data', 2).
+column_schema(6, 3, 17, 'string', 'Date', 2).
 
 % row_position(row_positition_id, row_id, state_id, previous_row_id).
 row_position(31, 6, 17, nil).
 row_position(32, 7, 17, 6).
 row_position(33, 8, 17, 7).
+
+% state(state_id, array_id, previous_state_id).
+state(18, 9, 17).
+
+% column_schema(column_schema_id, column_id, state_id, column_type, column_name, previous_column_id).
+column_schema(4, 1, 18, 'string', 'Title', nil).

@@ -23,4 +23,20 @@ end_of_file.
 printall(q1(_)).
 %-------------------------------------------------------------------------------
 
+%-------------------------------------------------------------------------------
+banner( 'Q2',
+        'What are the original names of each column?',
+        'q2(ColumnName)').
+[user].
+:- table q2/1.
+q2(ColumnName) :-
+    dataset(DatasetId, _, ArrayId),
+    array(ArrayId, DatasetId),
+    state(FirstStateId, ArrayId, nil),
+    column_schema(_, _, FirstStateId, _, ColumnName, _).
+end_of_file.
+printall(q2(_)).
+%-------------------------------------------------------------------------------
+
+
 END_XSB_STDIN
