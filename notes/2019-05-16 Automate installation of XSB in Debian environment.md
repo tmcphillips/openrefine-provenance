@@ -699,7 +699,7 @@
           dest:  ~/.bashrc.d/xsb.sh
           content: |
               export XSB_DIR=~/XSB
-              export PATH="$PATH:$XSB_DIR/bin
+              export PATH=$PATH:$XSB_DIR/bin
           mode: 0644
     ```
 - Added xsb role to the openrefine-prov playbook and temporarily commented out the the other roles:
@@ -754,6 +754,7 @@
     ```console
     tmcphill@circe-win10:~$ which xsb
     /home/tmcphill/XSB/bin/xsb
+    
     tmcphill@circe-win10:~$ xsb --version
     XSB Version 3.8.0 (Three-Buck Chuck) of October 28, 2017
     [x86_64-unknown-linux-gnu 64 bits; mode: optimal; engine: slg-wam; scheduling: local]
