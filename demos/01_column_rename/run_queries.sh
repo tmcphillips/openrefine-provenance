@@ -13,7 +13,7 @@ xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 
 %-------------------------------------------------------------------------------
 banner( 'Q1',
-        'What is the name of the file from data was imported?',
+        'What is the name of the file from which data was imported?',
         'q1(SourceUri)').
 [user].
 :- table q1/1.
@@ -38,5 +38,21 @@ end_of_file.
 printall(q2(_)).
 %-------------------------------------------------------------------------------
 
+%-------------------------------------------------------------------------------
+banner( 'Q3',
+        'What new names are assigned to columns?',
+        'q3(ColumnName)').
+[user].
+:- table q3/1.
+q3(NewColumnName) :-
+    dataset(DatasetId, _, ArrayId),
+    array(ArrayId, DatasetId),
+    state(StateId, ArrayId, PreviousStateId),
+    column_schema(_, _, StateId, _, NewColumnName, _),
+    column_schema(_, _, PreviousStateId, _, OldColumnName, _),
+    OldColumnName \== NewColumnName.
+end_of_file.
+printall(q3(_)).
+%-------------------------------------------------------------------------------
 
 END_XSB_STDIN
