@@ -55,4 +55,18 @@ end_of_file.
 printall(q3(_,_)).
 %-------------------------------------------------------------------------------
 
+%-------------------------------------------------------------------------------
+banner( 'Q4',
+        'How many steps are there in the data cleaning workflow including data import?',
+        'q4(StateCount)').
+[user].
+:- table q4/1.
+q4(StateCount) :-
+    dataset(DatasetId, _, ArrayId),
+    array(ArrayId, DatasetId),
+    count(state(_, ArrayId, _), StateCount).
+end_of_file.
+printall(q4(_)).
+%-------------------------------------------------------------------------------
+
 END_XSB_STDIN
