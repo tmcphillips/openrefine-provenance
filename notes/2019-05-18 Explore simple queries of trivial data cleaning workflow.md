@@ -6,7 +6,7 @@
 - Would like to simplify these queries by defining reusable rules.
 
 ### Structure of Bash script that invokes XSB to perform inlined queries
-- I found previously that it is convenient to embed queries in here-document defined in a Bash script that runs XSB prolog on those queries.
+- I found previously that it is convenient to embed queries in a here-document in a Bash script that runs XSB prolog on those queries.
 - The first of the trivial data-cleaning provenance queries in [demos/01_column_rename/run_queries.sh](https://github.com/tmcphillips/openrefine-provenance/blob/8d877ed7341a270285fec0faa995bd97fa10bbd5/demos/01_column_rename/run_queries.sh) is shown here embedded within the bash script that invokes it:
 
     ```prolog
@@ -37,8 +37,8 @@
    
     END_XSB_STDIN
     ```
-- The text between the pair of ```END_XSB_STDIN``` delimiters is passed (standard) input to XSB.
-- Within the text sent to XSB, the portion bracketed by ```[user].``` and ```end_of_file.``` are interpreted by XSB as Prolog facts and rules, and is equivalent to such information loaded from an external file.
+- The text between the pair of ```END_XSB_STDIN``` delimiters is passed as (standard) input to XSB.
+- Within the text sent to XSB, the portion bracketed by ```[user].``` and ```end_of_file.``` is interpreted by XSB as Prolog facts and rules, and is equivalent to such information loaded from an external file.
 - The remaining text sent to XSB is equivalent to interactive input given by a user to XSB.
 - Thus the script combines interactive and non-interactive input to XSB in a single script.
 - The facts describing the data cleaning run is read from `cleaning_history.P` (see next section).
@@ -56,6 +56,7 @@
 
 ### Facts describing the data cleaning workflow
 - The facts manually composed and listed in the notes for 2019-05-15 were saved in the cleaning_history.P file, with the exception of the ```import``` fact due a conflict with a reserved XSB keyword:
+
     ```prolog
     %%%% STATE AFTER INITIAL IMPORT STEP %%%%%
     
