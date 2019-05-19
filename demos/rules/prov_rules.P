@@ -3,3 +3,12 @@ import_state(SourceUri, DatasetId, ImportArrayId, ImportStateId) :-
     source(SourceId, SourceUri, _),
     dataset(DatasetId, SourceId, ImportArrayId),
     state(ImportStateId, ImportArrayId, nil).
+
+:- table column_name/3.
+column_name(ColumnId, StateId, ColumnName) :-
+    column_schema(_, ColumnId, StateId, _, ColumnName, _).
+
+:- table state_transition/4.
+state_transition(DatasetId, ArrayId, StateId, NextStateId) :-
+    array(ArrayId, DatasetId),
+    state(NextStateId, ArrayId, StateId).

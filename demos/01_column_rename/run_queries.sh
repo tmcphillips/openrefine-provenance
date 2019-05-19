@@ -40,16 +40,15 @@ printall(q2(_)).
 %-------------------------------------------------------------------------------
 banner( 'Q3',
         'What new names are assigned to these columns?',
-        'q3(OldColumnName, NewColumnName)').
+        'q3(ColumnName, NewColumnName)').
 [user].
 :- table q3/2.
-q3(OldColumnName, NewColumnName) :-
-    dataset(DatasetId, _, ArrayId),
-    array(ArrayId, DatasetId),
-    state(StateId, ArrayId, PreviousStateId),
-    column_schema(_, ColumnId, StateId, _, NewColumnName, _),
-    column_schema(_, ColumnId, PreviousStateId, _, OldColumnName, _),
-    OldColumnName \== NewColumnName.
+q3(ColumnName, NewColumnName) :-
+    import_state('biblio.csv', DatasetId, _, _),
+    state_transition(DatasetId, _, StateId, NextStateId),
+    column_name(ColumnId, StateId, ColumnName),
+    column_name(ColumnId, NextStateId, NewColumnName),
+    NewColumnName \== ColumnName.
 end_of_file.
 printall(q3(_,_)).
 %-------------------------------------------------------------------------------
