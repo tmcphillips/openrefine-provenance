@@ -60,7 +60,7 @@ banner( 'Q4',
 [user].
 :- table q4/1.
 q4(StateCount) :-
-    dataset(DatasetId, _, ArrayId),
+    import_state('biblio.csv', DatasetId, _, _),
     array(ArrayId, DatasetId),
     count(state(_, ArrayId, _), StateCount).
 end_of_file.

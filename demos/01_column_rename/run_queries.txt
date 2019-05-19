@@ -1,7 +1,7 @@
 
 
 ---------------------------------------------------------------------------------------------------
-Q1 : What is the name of the file from which data was imported?
+Q1 : What are the names of file from which data was imported?
 
 q1(SourceUri)
 ...................................................................................................
@@ -9,7 +9,7 @@ q1('biblio.csv').
 
 
 ---------------------------------------------------------------------------------------------------
-Q2 : What are the original names of each column?
+Q2 : What are the original names of each column in this data set?
 
 q2(ColumnName)
 ...................................................................................................
@@ -19,9 +19,9 @@ q2('Book Title').
 
 
 ---------------------------------------------------------------------------------------------------
-Q3 : What new names are assigned to columns?
+Q3 : What new names are assigned to these columns?
 
-q3(OldColumnName, NewColumnName)
+q3(ColumnName, NewColumnName)
 ...................................................................................................
 q3('Book Title','Title').
 
