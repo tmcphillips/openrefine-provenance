@@ -39,3 +39,42 @@
         column_schema(_, _, ImportStateId, _, ColumnName, _).
     ```
 
+### Added column_name and state_transition rules to clarify q3
+- The query `q3` displays changes in column names during data cleaning:
+
+    ```prolog
+    q3(OldColumnName, NewColumnName) :-
+        dataset(DatasetId, _, ArrayId),
+        array(ArrayId, DatasetId),
+        state(StateId, ArrayId, PreviousStateId),
+        column_schema(_, ColumnId, StateId, _, NewColumnName, _),
+        column_schema(_, ColumnId, PreviousStateId, _, OldColumnName, _),
+        OldColumnName \== NewColumnName.
+    ```
+- The above query is confusing mostly because the inference of state transition is implicit.  The new rule `state_transition` makes the sequence of states explicit, and provides a more intuitive, forward-looking view of the state relationships (`stateId` and `nextStateId` replace the `PreviousStateId` in the underlying `state/3` fact):
+-
+    ```prolog
+    state_transition(DatasetId, ArrayId, StateId, NextStateId) :-
+        array(ArrayId, DatasetId),
+        state(NextStateId, ArrayId, StateId).
+    ```
+- A new `column_name` view of the `column_schema` fact further clarifies the intent of queries using it:
+
+    ```prolog
+    column_name(ColumnId, StateId, ColumnName) :-
+        column_schema(_, ColumnId, StateId, _, ColumnName, _).
+    ```
+
+- Using the new rules the updated `q3` is now:
+ 
+    ```prolog
+    q3(ColumnName, NewColumnName) :-
+        import_state('biblio.csv', DatasetId, _, _),
+        state_transition(DatasetId, _, StateId, NextStateId),
+        column_name(ColumnId, StateId, ColumnName),
+        column_name(ColumnId, NextStateId, NewColumnName),
+        NewColumnName \== ColumnName.
+    ```
+
+
+
