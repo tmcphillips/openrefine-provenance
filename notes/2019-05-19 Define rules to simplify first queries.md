@@ -51,14 +51,14 @@
         column_schema(_, ColumnId, PreviousStateId, _, OldColumnName, _),
         OldColumnName \== NewColumnName.
     ```
-- The above query is confusing mostly because the inference of state transition is implicit.  The new rule `state_transition` makes the sequence of states explicit, and provides a more intuitive, forward-looking view of the state relationships (`stateId` and `nextStateId` replace the `PreviousStateId` in the underlying `state/3` fact):
+- The above query is confusing mostly because the inference of state transition is implicit.  The new rule `state_transition/4` makes the sequence of states explicit, and provides a more intuitive, forward-looking view of the state relationships (`NextStateId` in `state_transition/4` replaces the `PreviousStateId` in the underlying `state/3` fact):
 -
     ```prolog
     state_transition(DatasetId, ArrayId, StateId, NextStateId) :-
         array(ArrayId, DatasetId),
         state(NextStateId, ArrayId, StateId).
     ```
-- A new `column_name` view of the `column_schema` fact further clarifies the intent of queries using it:
+- A new `column_name` view of the `column_schema` fact further clarifies the intent of queries that use it:
 
     ```prolog
     column_name(ColumnId, StateId, ColumnName) :-
@@ -75,6 +75,67 @@
         column_name(ColumnId, NextStateId, NewColumnName),
         NewColumnName \== ColumnName.
     ```
+### Generalized `q4` to handle multiple arrays per workflow
+- The main limitation of the original implementation of q4 is its assumption that the workflow is represented only by the single array into which data is originally imported:
 
+    ```prolog
+    q4(StateCount) :-
+        dataset(DatasetId, _, ArrayId),
+        array(ArrayId, DatasetId),
+        count(state(_, ArrayId, _), StateCount).
+    ```
 
+- Using the new `import_state/4` rule the updated `q4` counts states for all arrays associated with the workflow:
+
+    ```prolog
+    q4(StateCount) :-
+        import_state('biblio.csv', DatasetId, _, _),
+        array(ArrayId, DatasetId),
+        count(state(_, ArrayId, _), StateCount).
+    ```
+
+ ### Confirmed that the updated queries give the same results as the original ones:
+- Updated the run_queries.txt file with the new query results:
+
+    ```console
+        $ ./run_queries.sh > run_queries.txt
+    ```
+- Confirmed that all differences in this file observed by git are in the descriptions of the queries:
+
+    ```diff
+    $ git diff run_queries.txt
+    diff --git a/demos/01_column_rename/run_queries.txt b/demos/01_column_rename/run_queries.txt
+    index 441542d..480d8bc 100644
+    --- a/demos/01_column_rename/run_queries.txt
+    +++ b/demos/01_column_rename/run_queries.txt
+    @@ -1,7 +1,7 @@
+    
+    
+     ---------------------------------------------------------------------------------------------------
+    -Q1 : What is the name of the file from which data was imported?
+    +Q1 : What are the names of file from which data was imported?
+    
+     q1(SourceUri)
+     ...................................................................................................
+    @@ -9,7 +9,7 @@ q1('biblio.csv').
+    
+    
+     ---------------------------------------------------------------------------------------------------
+    -Q2 : What are the original names of each column?
+    +Q2 : What are the original names of each column in this data set?
+    
+     q2(ColumnName)
+     ...................................................................................................
+    @@ -19,9 +19,9 @@ q2('Book Title').
+    
+    
+     ---------------------------------------------------------------------------------------------------
+    -Q3 : What new names are assigned to columns?
+    +Q3 : What new names are assigned to these columns?
+    
+    -q3(OldColumnName, NewColumnName)
+    +q3(ColumnName, NewColumnName)
+     ...................................................................................................
+     q3('Book Title','Title').
+     ```
 
