@@ -139,3 +139,80 @@
      q3('Book Title','Title').
      ```
 
+### Found that `q3` can give incorrect results for multiple column renames
+- The query `q3` as written now gives correct results if column 1 is renamed twice in a row, and these are the only data cleaning steps:
+
+    ```prolog
+    % cleaning_history.P
+    ...
+    %%%% STATE AFTER FIRST RENAME OF FIRST COLUMN %%%%%
+    
+    % state(state_id, array_id, previous_state_id).
+    state(18, 9, 17).
+    
+    % column_schema(column_schema_id, column_id, state_id, column_type, column_name, previous_column_id).
+    column_schema(4, 1, 18, 'string', 'Title', nil).
+    
+    %%%% STATE AFTER SECOND RENAME STEP OF FIRST COLUMN %%%%%
+    
+    % state(state_id, array_id, previous_state_id).
+    state(19, 9, 18).
+    
+    % column_schema(column_schema_id, column_id, state_id, column_type, column_name, previous_column_id).
+    column_schema(5, 1, 19, 'string', 'Main Title', nil).
+    ```
+
+    ```console
+    $ ./run_queries.sh
+    . . .
+    ---------------------------------------------------------------------------------------------------
+    Q3 : What new names are assigned to these columns?
+    
+    q3(ColumnName, NewColumnName)
+    ...................................................................................................
+    q3('Book Title','Title').
+    q3('Title','Main Title').
+    . . .
+    ```
+- However, if a rename of column 3 is interleaved between the two renames of column 1, only the first rename is reported:
+
+    ```prolog
+    %%%% STATE AFTER FIRST RENAME OF FIRST COLUMN %%%%%
+    
+    % state(state_id, array_id, previous_state_id).
+    state(18, 9, 17).
+    
+    % column_schema(column_schema_id, column_id, state_id, column_type, column_name, previous_column_id).
+    column_schema(4, 1, 18, 'string', 'Title', nil).
+    
+    %%%% STATE AFTER FIRST RENAME OF THIRD COLUMN %%%%%
+    
+    % state(state_id, array_id, previous_state_id).
+    state(19, 9, 18).
+    
+    % column_schema(column_schema_id, column_id, state_id, column_type, column_name, previous_column_id).
+    column_schema(5, 3, 19, 'string', 'Publication', nil).
+    
+    %%%% STATE AFTER SECOND RENAME STEP OF FIRST COLUMN %%%%%
+    
+    % state(state_id, array_id, previous_state_id).
+    state(20, 9, 19).
+    
+    % column_schema(column_schema_id, column_id, state_id, column_type, column_name, previous_column_id).
+    column_schema(6, 1, 20, 'string', 'Main Title', nil).
+    ```
+    ```console
+    $ ./run_queries.sh
+    . . .
+    ---------------------------------------------------------------------------------------------------
+    Q3 : What new names are assigned to these columns?
+    
+    q3(ColumnName, NewColumnName)
+    ...................................................................................................
+    q3('Book Title','Title').
+    . . .
+    ```
+- The problem is that `q3` assumes that the name of every column is provided at each state, whereas the history for space efficiency reasons only includes a column schema at a particular state if it has changed.
+-  The query needs to compare the name of columns given at each state with the last name provided to that column, possibly many states earlier in the history.
+
+
