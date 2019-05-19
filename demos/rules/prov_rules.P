@@ -1,0 +1,5 @@
+:- table initial_state/3.
+import_state(SourceUri, DatasetId, ImportArrayId, ImportStateId) :-
+    source(SourceId, SourceUri, _),
+    dataset(DatasetId, SourceId, ImportArrayId),
+    state(ImportStateId, ImportArrayId, nil).

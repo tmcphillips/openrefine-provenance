@@ -1,3 +1,5 @@
+%%%% STATE AFTER INITIAL IMPORT STEP %%%%%
+
 % source(source_id, source_uri, source_format).
 source(7, 'biblio.csv', 'text/csv').
 
@@ -62,6 +64,8 @@ column_schema(6, 3, 17, 'string', 'Date', 2).
 row_position(31, 6, 17, nil).
 row_position(32, 7, 17, 6).
 row_position(33, 8, 17, 7).
+
+%%%% STATE AFTER COLUMN RENAME STEP %%%%%
 
 % state(state_id, array_id, previous_state_id).
 state(18, 9, 17).

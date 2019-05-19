@@ -7,13 +7,14 @@ source ../settings.sh
 xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 
 ['$RULES_DIR/general_rules'].
+['$RULES_DIR/prov_rules'].
 ['cleaning_history'].
 
 %set_prolog_flag(unknown, fail).
 
 %-------------------------------------------------------------------------------
 banner( 'Q1',
-        'What is the name of the file from which data was imported?',
+        'What are the names of file from which data was imported?',
         'q1(SourceUri)').
 [user].
 :- table q1/1.
@@ -25,22 +26,20 @@ printall(q1(_)).
 
 %-------------------------------------------------------------------------------
 banner( 'Q2',
-        'What are the original names of each column?',
+        'What are the original names of each column in this data set?',
         'q2(ColumnName)').
 [user].
 :- table q2/1.
 q2(ColumnName) :-
-    dataset(DatasetId, _, ArrayId),
-    array(ArrayId, DatasetId),
-    state(FirstStateId, ArrayId, nil),
-    column_schema(_, _, FirstStateId, _, ColumnName, _).
+    import_state('biblio.csv', _, _, ImportStateId),
+    column_schema(_, _, ImportStateId, _, ColumnName, _).
 end_of_file.
 printall(q2(_)).
 %-------------------------------------------------------------------------------
 
 %-------------------------------------------------------------------------------
 banner( 'Q3',
-        'What new names are assigned to columns?',
+        'What new names are assigned to these columns?',
         'q3(OldColumnName, NewColumnName)').
 [user].
 :- table q3/2.
