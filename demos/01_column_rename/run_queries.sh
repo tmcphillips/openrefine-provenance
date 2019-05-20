@@ -45,9 +45,7 @@ banner( 'Q3',
 :- table q3/2.
 q3(ColumnName, NewColumnName) :-
     import_state('biblio.csv', DatasetId, _, _),
-    column_schema(_, _, _, _, NewColumnName, _, PreviousColumnSchemaId),
-    column_schema(PreviousColumnSchemaId, _, _, _, ColumnName, _, _),
-    NewColumnName \== ColumnName.
+    column_rename(DatasetId, _, _, ColumnName, NewColumnName).
 end_of_file.
 printall(q3(_,_)).
 %-------------------------------------------------------------------------------

@@ -8,9 +8,10 @@ import_state(SourceUri, DatasetId, ImportArrayId, ImportStateId) :-
 column_name(ColumnId, StateId, ColumnName) :-
     column_schema(_, ColumnId, StateId, _, ColumnName, _, _).
 
-%:- table state_transition/4.
-%state_transition(DatasetId, ArrayId, StateId, NextStateId) :-
-%    array(ArrayId, DatasetId),
-%    state(NextStateId, ArrayId, StateId).
-
-
+:- table column_rename/5.
+column_rename(DatasetId, ArrayId, StateId, ColumnName, NewColumnName) :-
+    array(ArrayId, DatasetId),
+    state(StateId, ArrayId, _),
+    column_schema(_, _, _, _, NewColumnName, _, PreviousColumnSchemaId),
+    column_schema(PreviousColumnSchemaId, _, StateId, _, ColumnName, _, _),
+    NewColumnName \== ColumnName.
