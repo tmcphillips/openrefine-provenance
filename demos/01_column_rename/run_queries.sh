@@ -14,7 +14,7 @@ xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 
 %-------------------------------------------------------------------------------
 banner( 'Q1',
-        'What are the names of file from which data was imported?',
+        'What are the names of files from which data was imported?',
         'q1(SourceUri)').
 [user].
 :- table q1/1.
@@ -32,7 +32,7 @@ banner( 'Q2',
 :- table q2/1.
 q2(ColumnName) :-
     import_state('biblio.csv', _, _, ImportStateId),
-    column_schema(_, _, ImportStateId, _, ColumnName, _).
+    column_name(_, ImportStateId, ColumnName).
 end_of_file.
 printall(q2(_)).
 %-------------------------------------------------------------------------------
@@ -45,9 +45,8 @@ banner( 'Q3',
 :- table q3/2.
 q3(ColumnName, NewColumnName) :-
     import_state('biblio.csv', DatasetId, _, _),
-    state_transition(DatasetId, _, StateId, NextStateId),
-    column_name(ColumnId, StateId, ColumnName),
-    column_name(ColumnId, NextStateId, NewColumnName),
+    column_schema(_, _, _, _, NewColumnName, _, PreviousColumnSchemaId),
+    column_schema(PreviousColumnSchemaId, _, _, _, ColumnName, _, _),
     NewColumnName \== ColumnName.
 end_of_file.
 printall(q3(_,_)).

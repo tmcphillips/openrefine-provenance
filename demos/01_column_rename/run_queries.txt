@@ -1,7 +1,7 @@
 
 
 ---------------------------------------------------------------------------------------------------
-Q1 : What are the names of file from which data was imported?
+Q1 : What are the names of files from which data was imported?
 
 q1(SourceUri)
 ...................................................................................................
@@ -31,4 +31,4 @@ Q4 : How many steps are there in the data cleaning workflow including data impor
 
 q4(StateCount)
 ...................................................................................................
-q4(2).
+q4(4).

@@ -1,3 +1,5 @@
+% cleaning_history.P
+
 %%%% STATE AFTER INITIAL IMPORT STEP %%%%%
 
 % source(source_id, source_uri, source_format).
@@ -55,20 +57,25 @@ value(27, '1975').
 value(28, '1985').
 value(29, '2006').
 
-% column_schema(column_schema_id, column_id, state_id, column_type, column_name, previous_column_id).
-column_schema(4, 1, 17, 'string', 'Book Title', nil).
-column_schema(5, 2, 17, 'string', 'Author', 1).
-column_schema(6, 3, 17, 'string', 'Date', 2).
+% column_schema(ColumnSchemaId, ColumnId, StateId, ColumnType, ColumnName, PreviousColumnId, PreviousColumnSchemaId).
+column_schema(4, 1, 17, 'string', 'Book Title', nil, nil).
+column_schema(5, 2, 17, 'string', 'Author', 1, nil).
+column_schema(6, 3, 17, 'string', 'Date', 2, nil).
 
 % row_position(row_positition_id, row_id, state_id, previous_row_id).
 row_position(31, 6, 17, nil).
 row_position(32, 7, 17, 6).
 row_position(33, 8, 17, 7).
 
-%%%% STATE AFTER COLUMN RENAME STEP %%%%%
+%%%% STATE AFTER THREE COLUMN RENAME OPERATIONS %%%%%
 
 % state(state_id, array_id, previous_state_id).
 state(18, 9, 17).
+state(19, 9, 18).
+state(20, 9, 19).
 
-% column_schema(column_schema_id, column_id, state_id, column_type, column_name, previous_column_id).
-column_schema(4, 1, 18, 'string', 'Title', nil).
+% column_schema(ColumnSchemaId, ColumnId, StateId, ColumnType, ColumnName, PreviousColumnId, PreviousColumnSchemaId).
+column_schema(7, 1, 18, 'string', 'Title', nil, 4).
+column_schema(8, 3, 19, 'string', 'Publication', 2, 6).
+column_schema(9, 1, 20, 'string', 'Main Title', nil, 7).
+
