@@ -177,6 +177,8 @@
 - However, if a rename of column 3 is interleaved between the two renames of column 1, only the first rename is reported:
 
     ```prolog
+    % cleaning_history.P
+    ...
     %%%% STATE AFTER FIRST RENAME OF FIRST COLUMN %%%%%
     
     % state(state_id, array_id, previous_state_id).
@@ -202,17 +204,109 @@
     column_schema(6, 1, 20, 'string', 'Main Title', nil).
     ```
     ```console
+    Q3 : What new names are assigned to these columns?
+    
+    q3(ColumnName, NewColumnName)
+    ...................................................................................................
+    q3('Book Title','Title').
+    ```
+- The problem is that `q3` assumes that the name of every column is provided at each state, whereas the actual history--for space efficiency reasons--only includes a column schema at a particular state if it has changed.
+-  The query needs to compare the name of columns given at each state with the last name provided to that column, possibly many states earlier in the history.
+
+### Added  to `column_schema` field referencing previous schema for the column
+- The problem with `column_schema` can be easily fixed by adding a reference to the previous column schema.
+- The updated column_schema facts for the workflow with three column rename operations becomes:
+    ```prolog
+    %%%% STATE AFTER INITIAL IMPORT STEP %%%%%
+    
+    % column_schema(ColumnSchemaId, ColumnId, StateId, ColumnType, 
+    %               ColumnName, PreviousColumnId, PreviousColumnSchemaId).
+    column_schema(4, 1, 17, 'string', 'Book Title', nil, nil).
+    column_schema(5, 2, 17, 'string', 'Author', 1, nil).
+    column_schema(6, 3, 17, 'string', 'Date', 2, nil).
+    
+    %%%% STATE AFTER THREE COLUMN RENAME OPERATIONS %%%%%
+    
+    column_schema(7, 1, 18, 'string', 'Title', nil, 4).
+    column_schema(8, 3, 19, 'string', 'Publication', 2, 6).
+    column_schema(9, 1, 20, 'string', 'Main Title', nil, 7).
+    ```
+- And `q3` becomes:
+    ```prolog
+    q3(ColumnName, NewColumnName) :-
+        import_state('biblio.csv', DatasetId, _, _),
+        column_schema(_, _, _, _, NewColumnName, _, PreviousColumnSchemaId),
+        column_schema(PreviousColumnSchemaId, _, _, _, ColumnName, _, _),
+        NewColumnName \== ColumnName.
+    end_of_file.
+    ```
+- Running the query now gives the correct output:
+
+    ```
+    Q3 : What new names are assigned to these columns?
+    
+    q3(ColumnName, NewColumnName)
+    ...................................................................................................
+    q3('Title','Main Title').
+    q3('Date','Publication').
+    q3('Book Title','Title').
+    ```
+### Simplified `q3` with new `column_rename` rule
+- Moved logic of `q3` to a new rule `column_rename/5`, adding the option to filter by dataset or array in a dataset:
+    ```prolog
+    :- table column_rename/5.
+    column_rename(DatasetId, ArrayId, StateId, ColumnName, NewColumnName) :-
+        array(ArrayId, DatasetId),
+        state(StateId, ArrayId, _),
+        column_schema(_, _, _, _, NewColumnName, _, PreviousColumnSchemaId),
+        column_schema(PreviousColumnSchemaId, _, StateId, _, ColumnName, _, _),
+        NewColumnName \== ColumnName.
+    ```
+- The updated `q3` is now:
+
+    ```prolog
+    q3(ColumnName, NewColumnName) :-
+        import_state('biblio.csv', DatasetId, _, _),
+        column_rename(DatasetId, _, _, ColumnName, NewColumnName).
+    ```
+- And all of the queries give correct results:
+
+    ```console
     $ ./run_queries.sh
-    . . .
+    
+    ---------------------------------------------------------------------------------------------------
+    Q1 : What are the names of files from which data was imported?
+    
+    q1(SourceUri)
+    ...................................................................................................
+    q1('biblio.csv').
+    
+    
+    ---------------------------------------------------------------------------------------------------
+    Q2 : What are the original names of each column in this data set?
+    
+    q2(ColumnName)
+    ...................................................................................................
+    q2('Book Title').
+    q2('Author').
+    q2('Date').
+    
+    
     ---------------------------------------------------------------------------------------------------
     Q3 : What new names are assigned to these columns?
     
     q3(ColumnName, NewColumnName)
     ...................................................................................................
     q3('Book Title','Title').
-    . . .
+    q3('Date','Publication').
+    q3('Title','Main Title').
+    
+    
+    ---------------------------------------------------------------------------------------------------
+    Q4 : How many steps are there in the data cleaning workflow including data import?
+    
+    q4(StateCount)
+    ...................................................................................................
+    q4(4).
     ```
-- The problem is that `q3` assumes that the name of every column is provided at each state, whereas the history for space efficiency reasons only includes a column schema at a particular state if it has changed.
--  The query needs to compare the name of columns given at each state with the last name provided to that column, possibly many states earlier in the history.
-
 
