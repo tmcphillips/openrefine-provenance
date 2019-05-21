@@ -34,3 +34,13 @@ Q4 : How many steps are there in the data cleaning workflow including data impor
 q4(StateCount)
 ...................................................................................................
 q4(4).
+
+
+---------------------------------------------------------------------------------------------------
+Q5 : What are the final names of each column in this data set?
+
+q5(ColumnName)
+...................................................................................................
+q5('Main Title').
+q5('Publication').
+q5('Author').
