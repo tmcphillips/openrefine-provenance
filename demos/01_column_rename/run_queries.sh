@@ -8,6 +8,7 @@ xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 
 ['$RULES_DIR/general_rules'].
 ['$RULES_DIR/prov_rules'].
+['$RULES_DIR/array_views'].
 ['cleaning_history'].
 
 %set_prolog_flag(unknown, fail).
@@ -64,4 +65,41 @@ end_of_file.
 printall(q4(_)).
 %-------------------------------------------------------------------------------
 
+%-------------------------------------------------------------------------------
+banner( 'Q5',
+        'What are the final names of each column in this data set?',
+        'q5(ColumnName)').
+[user].
+:- table q5/1.
+q5(ColumnName) :-
+
+    import_state('biblio.csv', _, ImportArrayId, _),
+    final_array_state(ImportArrayId, FinalArrayStateId),
+    column_name_at_state(_, FinalArrayStateId, ColumnName).
+
+end_of_file.
+printall(q5(_)).
+%-------------------------------------------------------------------------------
+
 END_XSB_STDIN
+
+# %-------------------------------------------------------------------------------
+# banner( 'Q2B',
+#         'What are the original names of each column in this data set?',
+#         'q2b()').
+# [user].
+# q2b() :-
+
+#     import_state('biblio.csv', DatasetId, _, ImportStateId),
+#     print_column_names(ImportStateId),
+#     print_source_uri(DatasetId),
+#     column_name_at_state(1, 17, ColumnName),
+#     writeln(ColumnName).
+
+
+# end_of_file.
+# q2b().
+# %-------------------------------------------------------------------------------
+
+
+
