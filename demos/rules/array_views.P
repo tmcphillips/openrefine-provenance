@@ -14,8 +14,8 @@ print_column_names(StateId) :-
 % and the later column schema was created at StateId or earlier.
 %
 next_column_schema_at_or_before_state(ColumnSchemaId, StateId) :-
-    column_schema(_, _, StateIdOfNextColumnSchema, _, _, _, ColumnSchemaId),
-    StateIdOfNextColumnSchema =< StateId.
+    column_schema(_, _, NextColumnSchemaStateId, _, _, _, ColumnSchemaId),
+    NextColumnSchemaStateId =< StateId.
 
 
 % RULE : column_name_at_state/3
