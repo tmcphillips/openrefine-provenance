@@ -100,23 +100,3 @@ printall(q5(_)).
 
 END_XSB_STDIN
 
-# %-------------------------------------------------------------------------------
-# banner( 'Q2B',
-#         'What are the original names of each column in this data set?',
-#         'q2b()').
-# [user].
-# q2b() :-
-
-#     import_state('biblio.csv', DatasetId, _, ImportStateId),
-#     print_column_names(ImportStateId),
-#     print_source_uri(DatasetId),
-#     column_name_at_state(1, 17, ColumnName),
-#     writeln(ColumnName).
-
-
-# end_of_file.
-# q2b().
-# %-------------------------------------------------------------------------------
-
-
-

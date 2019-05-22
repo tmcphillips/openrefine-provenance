@@ -1,0 +1,28 @@
+
+print_source_uri(DatasetId) :-
+    import_state(SourceUri, DatasetId, _, _),
+    writeln(SourceUri).
+
+print_column_names(StateId) :-
+    column_schema(_, _, StateId, _, ColumnName, _, _),
+    writeln(ColumnName),
+    fail;
+    true.
+
+print_remaining_column_names(StateId, PreviousColumnId) :-
+    column_name_at_state(ColumnId, StateId, ColumnName),
+    column_schema_at_state(StateId, _, ColumnId, _, _, ColumnName, PreviousColumnId, _),
+    write(' | '),
+    write(ColumnName),
+    print_remaining_column_names(StateId, ColumnId)
+    ;
+    true.
+
+
+% start by assuming that columns are never reordered
+print_array_header(StateId) :-
+    column_schema_at_state(StateId, _, FirstColumnId, _, _, FirstColumnName, nil, _),
+    write('| '),
+    write(FirstColumnName),
+    print_remaining_column_names(StateId, FirstColumnId),
+    writeln(' |').

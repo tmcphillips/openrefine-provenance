@@ -1,12 +1,3 @@
-print_source_uri(DatasetId) :-
-    import_state(SourceUri, DatasetId, _, _),
-    writeln(SourceUri).
-
-print_column_names(StateId) :-
-    column_schema(_, _, StateId, _, ColumnName, _, _),
-    writeln(ColumnName),
-    fail;
-    true.
 
 % RULE : next_column_schema_at_or_before_state/2
 %
@@ -30,3 +21,15 @@ column_name_at_state(ColumnId, StateId, ColumnName) :-
 final_array_state(ArrayId, FinalStateId) :-
     state(FinalStateId, ArrayId, _),
     not state(_, ArrayId, FinalStateId).
+
+
+% RULE : column_schema_at_state/8
+%
+% Returns all attributes of column_schema for ColumnId at the latest state at or before StateId.
+%
+column_schema_at_state(StateId, ColumnSchemaId, ColumnId, AssignmentStateId, ColumnType, ColumnName,
+                       PreviousColumnId, PreviousColumnSchemaId) :-
+    column_schema(ColumnSchemaId, ColumnId, AssignmentStateId, ColumnType, ColumnName,
+                  PreviousColumnId, PreviousColumnSchemaId),
+    StateId >= AssignmentStateId,
+    not next_column_schema_at_or_before_state(ColumnSchemaId, StateId).
