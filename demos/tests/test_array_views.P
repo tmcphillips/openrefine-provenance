@@ -2,10 +2,6 @@
 state(state_1, array_1, nil).
 
 test() :-
+    final_array_state(array_1, state_1).
 
-    final_array_state(array_1, state_1),
-    writeln('SUCCESS')
-    ;
-    writeln('FAIL'),
-    fail.
 
