@@ -1,11 +1,57 @@
 
-state(state_1, array_1, nil).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% facts
 
-test() :-
-    final_array_state(array_1, state_1).
+state(1, array_1, nil).
 
-test2() :-
-    fail.
+state(2, array_2, nil).
+state(3, array_2, 2).
 
-test_foo() :-
-    true.
+state(4, array_3, nil).
+state(5, array_3, 4).
+state(6, array_3, 5).
+state(7, array_3, 6).
+state(8, array_3, 7).
+state(9, array_3, 8).
+
+column_schema(col_schema_1, column_1, 4, 'string', column_name_1, nil, nil).
+column_schema(col_schema_2, column_1, 6, 'string', column_name_2, nil, col_schema_1).
+column_schema(col_schema_3, column_1, 8, 'string', column_name_3, nil, col_schema_2).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% test final_array_state/2
+
+test_final_array_state__one_state() :-
+    final_array_state(array_1, 1).
+
+test_final_array_state__two_states() :-
+    final_array_state(array_2, 3).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% test next_column_schema_at_or_before_state/2
+
+test_next_column_schema_at_or_before_state__state_precedes_schemas() :-
+    not next_column_schema_at_or_before_state(col_schema_1, 3).
+
+test_next_column_schema_at_or_before_state__schema_at_state() :-
+    not next_column_schema_at_or_before_state(col_schema_1, 4).
+
+test_next_column_schema_at_or_before_state__next_schema_at_state() :-
+    next_column_schema_at_or_before_state(col_schema_1, 6).
+
+test_next_column_schema_at_or_before_state__next_column_schema_precedes_state() :-
+    next_column_schema_at_or_before_state(col_schema_1, 7).
+
+test_next_column_schema_at_or_before_state__no_schema_after_state() :-
+    not next_column_schema_at_or_before_state(col_schema_3, 9).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% test column_name_at_state/3
+
+test_column_name_at_state__at_first_column_schema_state() :-
+    column_name_at_state(column_1, 4, column_name_1).
+
+test_column_name_at_state__between_two_column_schema_states() :-
+    column_name_at_state(column_1, 5, column_name_1).

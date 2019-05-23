@@ -19,7 +19,7 @@ test_names+="]"
 xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 
     set_prolog_flag(unknown, fail).
-    ['../rules/array_views'].
+    ['$RULES_DIR/array_views'].
     [${test_file_base}].
 
     [user].
@@ -28,7 +28,7 @@ xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
         :- import member/2 from basics.
 
         do_one_test(TestFileName, TestName) :-
-            fmt_write("%s.%s : ", arg(TestFileName, TestName)),
+            fmt_write("%s|%-80s | ", arg(TestFileName, TestName)),
             call(TestName),
             writeln('ok')
             ;
