@@ -3,10 +3,8 @@
 % facts
 
 state(1, array_1, nil).
-
 state(2, array_2, nil).
 state(3, array_2, 2).
-
 state(4, array_3, nil).
 state(5, array_3, 4).
 state(6, array_3, 5).
@@ -14,44 +12,53 @@ state(7, array_3, 6).
 state(8, array_3, 7).
 state(9, array_3, 8).
 
-column_schema(col_schema_1, column_1, 4, 'string', column_name_1, nil, nil).
-column_schema(col_schema_2, column_1, 6, 'string', column_name_2, nil, col_schema_1).
-column_schema(col_schema_3, column_1, 8, 'string', column_name_3, nil, col_schema_2).
+column_schema(col_schema_1, column_1, 4, 'string', column_1_name_assigned_at_state_4, nil, nil).
+column_schema(col_schema_2, column_1, 6, 'string', column_1_name_assigned_at_state_6, nil, col_schema_1).
+column_schema(col_schema_3, column_1, 8, 'string', column_1_name_assigned_at_state_8, nil, col_schema_2).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % test final_array_state/2
 
-test_final_array_state__one_state() :-
+test__final_array_state__one_state() :-
     final_array_state(array_1, 1).
 
-test_final_array_state__two_states() :-
+test__final_array_state__two_states() :-
     final_array_state(array_2, 3).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % test next_column_schema_at_or_before_state/2
 
-test_next_column_schema_at_or_before_state__state_precedes_schemas() :-
+test__next_column_schema_at_or_before_state__state_precedes_schemas() :-
     not next_column_schema_at_or_before_state(col_schema_1, 3).
 
-test_next_column_schema_at_or_before_state__schema_at_state() :-
+test__next_column_schema_at_or_before_state__schema_at_state() :-
     not next_column_schema_at_or_before_state(col_schema_1, 4).
 
-test_next_column_schema_at_or_before_state__next_schema_at_state() :-
+test__next_column_schema_at_or_before_state__next_schema_at_state() :-
     next_column_schema_at_or_before_state(col_schema_1, 6).
 
-test_next_column_schema_at_or_before_state__next_column_schema_precedes_state() :-
+test__next_column_schema_at_or_before_state__next_column_schema_precedes_state() :-
     next_column_schema_at_or_before_state(col_schema_1, 7).
 
-test_next_column_schema_at_or_before_state__no_schema_after_state() :-
+test__next_column_schema_at_or_before_state__no_schema_after_state() :-
     not next_column_schema_at_or_before_state(col_schema_3, 9).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % test column_name_at_state/3
 
-test_column_name_at_state__at_first_column_schema_state() :-
-    column_name_at_state(column_1, 4, column_name_1).
+test__column_name_at_state__at_state_before_first_column_schema() :-
+    not column_name_at_state(column_1, 3, _).
 
-test_column_name_at_state__between_two_column_schema_states() :-
-    column_name_at_state(column_1, 5, column_name_1).
+test__column_name_at_state__at_first_column_schema_state() :-
+    column_name_at_state(column_1, 4, column_1_name_assigned_at_state_4).
+
+test__column_name_at_state__between_two_column_schema_states() :-
+    column_name_at_state(column_1, 5, column_1_name_assigned_at_state_4).
+
+test__column_name_at_state__at_second_column_schema_state() :-
+    column_name_at_state(column_1, 6, column_1_name_assigned_at_state_6).
+
+test__column_name_at_state__at_state_after_last_column_schema() :-
+    column_name_at_state(column_1, 9, column_1_name_assigned_at_state_8).
