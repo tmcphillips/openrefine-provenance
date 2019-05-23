@@ -28,5 +28,21 @@ end_of_file.
 r1().
 %-------------------------------------------------------------------------------
 
+%-------------------------------------------------------------------------------
+banner( 'Report 2',
+        'Print the values in the first row at the initially imported state',
+        'r2()').
+[user].
+r2() :-
+
+    import_state('biblio.csv', _, _, ImportStateId),
+    row_position(_, RowId, ImportStateId, _),
+    print_row(RowId, ImportStateId).
+
+end_of_file.
+r2().
+%-------------------------------------------------------------------------------
+
+
 END_XSB_STDIN
 

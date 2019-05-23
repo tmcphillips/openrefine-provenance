@@ -13,15 +13,15 @@ set_prolog_flag(unknown, fail).
 [${test_file_name}].
 
 [user].
-do_test() :-
-    fmt_write("%s : ", arg(${test_file_name})),
-    ${test_name}(),
+do_one_test(TestFileName, TestName) :-
+    fmt_write("%s.%s : ", arg(TestFileName, TestName)),
+    call(TestName),
     writeln('SUCCESS')
     ;
     writeln('FAIL'),
     fail.
 end_of_file.
 
-do_test().
+do_one_test(${test_file_name}, ${test_name}).
 
 END_XSB_STDIN

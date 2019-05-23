@@ -35,16 +35,16 @@ cell(9, 3, 8).
 % state(state_id, array_id, previous_state_id).
 state(17, 9, nil).
 
-% content(content_id, cell_id, state_id, value_id).
-content(11, 1, 17, 21).
-content(12, 2, 17, 22).
-content(13, 3, 17, 23).
-content(14, 4, 17, 24).
-content(15, 5, 17, 25).
-content(16, 6, 17, 26).
-content(17, 7, 17, 27).
-content(18, 8, 17, 28).
-content(19, 9, 17, 29).
+% content(content_id, cell_id, state_id, value_id, previousContentId).
+content(11, 1, 17, 21, nil).
+content(12, 2, 17, 22, nil).
+content(13, 3, 17, 23, nil).
+content(14, 4, 17, 24, nil).
+content(15, 5, 17, 25, nil).
+content(16, 6, 17, 26, nil).
+content(17, 7, 17, 27, nil).
+content(18, 8, 17, 28, nil).
+content(19, 9, 17, 29, nil).
 
 % value(value_id, value_text).
 value(21, 'Against Method').

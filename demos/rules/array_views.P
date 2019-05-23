@@ -18,6 +18,7 @@ column_name_at_state(ColumnId, StateId, ColumnName) :-
     StateId >= CoumnSchemaStateId,
     not next_column_schema_at_or_before_state(ColumnSchemaId, StateId).
 
+
 final_array_state(ArrayId, FinalStateId) :-
     state(FinalStateId, ArrayId, _),
     not state(_, ArrayId, FinalStateId).

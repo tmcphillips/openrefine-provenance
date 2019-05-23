@@ -10,19 +10,29 @@ print_column_names(StateId) :-
     true.
 
 print_remaining_column_names(StateId, PreviousColumnId) :-
+    column_schema_at_state(StateId, _, ColumnId, _, _, _, PreviousColumnId, _),
     column_name_at_state(ColumnId, StateId, ColumnName),
-    column_schema_at_state(StateId, _, ColumnId, _, _, ColumnName, PreviousColumnId, _),
-    write(' | '),
-    write(ColumnName),
+    fmt_write(' | %s', arg(ColumnName)),
     print_remaining_column_names(StateId, ColumnId)
     ;
     true.
 
-
-% start by assuming that columns are never reordered
 print_array_header(StateId) :-
     column_schema_at_state(StateId, _, FirstColumnId, _, _, FirstColumnName, nil, _),
-    write('| '),
-    write(FirstColumnName),
+    fmt_write('| %s', arg(FirstColumnName)),
     print_remaining_column_names(StateId, FirstColumnId),
     writeln(' |').
+
+print_remainder_of_row(RowId, StateId, StartingColumnId) :-
+    cell(CellId, StartingColumnId, RowId),
+    content(_, CellId, _, ValueId, nil),
+    value(ValueId, ValueText),
+    fmt_write('| %s ', ValueText).
+
+first_column(StateId, FirstColumnId) :-
+    column_schema_at_state(StateId, _, FirstColumnId, _, _, _, nil, _).
+
+print_row(RowId, StateId) :-
+    first_column(StateId, FirstColumnId),
+    print_remainder_of_row(RowId, StateId, FirstColumnId),
+    writeln('|').
