@@ -6,3 +6,11 @@ Report 1 : Print the names of the columns in order at the initially imported sta
 r1()
 ...................................................................................................
 | Book Title | Author | Date |
+
+
+---------------------------------------------------------------------------------------------------
+Report 2 : Print the values in the first row at the initially imported state
+
+r2()
+...................................................................................................
+| Against Method |

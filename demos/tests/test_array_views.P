@@ -46,6 +46,25 @@ test__next_column_schema_at_or_before_state__no_schema_after_state() :-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% test column_schema_at_state/8
+
+test__column_schema_at_state__at_state_before_first_column_schema() :-
+    not column_schema_at_state(_, column_1, 3).
+
+test__column_schema_at_state__at_first_column_schema_state() :-
+    column_schema_at_state(col_schema_1, column_1, 4).
+
+test__column_schema_at_state___between_first_two_column_schema_states() :-
+    column_schema_at_state(col_schema_1, column_1, 5).
+
+test__column_schema_at_state___at_second_column_schema_state() :-
+    column_schema_at_state(col_schema_2, column_1, 6).
+
+test__column_schema_at_state___at_state_after_last_column_schema() :-
+    column_schema_at_state(col_schema_3, column_1, 9).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % test column_name_at_state/3
 
 test__column_name_at_state__at_state_before_first_column_schema() :-
@@ -54,7 +73,7 @@ test__column_name_at_state__at_state_before_first_column_schema() :-
 test__column_name_at_state__at_first_column_schema_state() :-
     column_name_at_state(column_1, 4, column_1_name_assigned_at_state_4).
 
-test__column_name_at_state__between_two_column_schema_states() :-
+test__column_name_at_state__between_first_two_column_schema_states() :-
     column_name_at_state(column_1, 5, column_1_name_assigned_at_state_4).
 
 test__column_name_at_state__at_second_column_schema_state() :-
@@ -62,3 +81,20 @@ test__column_name_at_state__at_second_column_schema_state() :-
 
 test__column_name_at_state__at_state_after_last_column_schema() :-
     column_name_at_state(column_1, 9, column_1_name_assigned_at_state_8).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+test_string_fmt() :-
+    fmt_write_string(Result, "%d", arg(10)),
+    Result == '10'.
