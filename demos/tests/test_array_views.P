@@ -7,5 +7,5 @@ test() :-
 test2() :-
     fail.
 
-test3() :-
+test_foo() :-
     true.
