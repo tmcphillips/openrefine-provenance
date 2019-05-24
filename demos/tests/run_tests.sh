@@ -2,45 +2,56 @@
 
 source ../settings.sh
 
-test_file_base=$1
+testfilepattern=${1:-'test*.P'}
+testfiles=($testfilepattern)
 
-test_name_pattern='^[[:space:]]*test[_a-zA-Z0-9]*()'
-readarray test_names_array < <(grep $test_name_pattern ${test_file_base}.P | cut -d "(" -f1 )
+for testfile in "${testfiles[@]}" ; do
 
-test_names="[ "
-delimiter=""
-for tn in "${test_names_array[@]}" ; do
-    test_names+=$delimiter
-    test_names+=$tn
-    delimiter=", "
-done
-test_names+="]"
+    echo
+    echo "Running tests in $testfile..."
+    echo
 
-xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
+    test_file_base=${testfile%.P}
 
-    set_prolog_flag(unknown, fail).
-    ['$RULES_DIR/array_views'].
-    [${test_file_base}].
+    test_name_pattern='^[[:space:]]*test[_a-zA-Z0-9]*()'
+    readarray test_names_array < <(grep $test_name_pattern ${test_file_base}.P | cut -d "(" -f1 )
 
-    [user].
+    test_names="[ "
+    delimiter=""
+    for tn in "${test_names_array[@]}" ; do
+        test_names+=$delimiter
+        test_names+=$tn
+        delimiter=", "
+    done
+    test_names+="]"
 
-        :- import forall/2 from basics.
-        :- import member/2 from basics.
+    xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 
-        do_one_test(TestFileName, TestName) :-
-            fmt_write("%s|%-80s | ", arg(TestFileName, TestName)),
-            call(TestName),
-            writeln('ok')
-            ;
-            writeln('FAILURE').
+        set_prolog_flag(unknown, fail).
+        ['$RULES_DIR/array_views'].
+        [${test_file_base}].
 
-        do_tests(TestFileName, TestNames) :-
-            forall(member(TestName, TestNames),
-                do_one_test(TestFileName, TestName)
-            ).
+        [user].
 
-    end_of_file.
+            :- import forall/2 from basics.
+            :- import member/2 from basics.
 
-    do_tests(${test_file_base}, ${test_names}).
+            do_one_test(TestFileName, TestName) :-
+                fmt_write("%s|%-80s | ", arg(TestFileName, TestName)),
+                call(TestName),
+                writeln('ok')
+                ;
+                writeln('FAILURE').
+
+            do_tests(TestFileName, TestNames) :-
+                forall(member(TestName, TestNames),
+                    do_one_test(TestFileName, TestName)
+                ).
+
+        end_of_file.
+
+        do_tests(${test_file_base}, ${test_names}).
 
 END_XSB_STDIN
+
+done
