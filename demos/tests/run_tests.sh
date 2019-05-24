@@ -7,7 +7,6 @@ testfiles=($testfilepattern)
 
 for testfile in "${testfiles[@]}" ; do
 
-    echo
     echo "Running tests in $testfile..."
     echo
 
@@ -53,5 +52,7 @@ for testfile in "${testfiles[@]}" ; do
         do_tests(${test_file_base}, ${test_names}).
 
 END_XSB_STDIN
+
+echo
 
 done

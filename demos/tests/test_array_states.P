@@ -1,0 +1,38 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% facts
+
+state(1, array_1, nil).
+
+state(2, array_2, nil).
+state(3, array_2, 2).
+
+state(4, array_3, nil).
+state(5, array_3, 4).
+state(6, array_3, 5).
+state(7, array_3, 6).
+state(8, array_3, 7).
+state(9, array_3, 8).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% test final_array_state/2
+
+test__final_array_state__only_state_is_final_state() :-
+    final_array_state(array_1, 1).
+
+test__final_array_state__first_of_two_states_is_not_final() :-
+    not final_array_state(array_2, 2).
+
+test__final_array_state__second_of_two_states_is_final() :-
+    final_array_state(array_2, 3).
+
+test__final_array_state__second_to_last_of_six_states_is_not_final() :-
+    not final_array_state(array_3, 8).
+
+test__final_array_state__last_of_six_states_is_final() :-
+    final_array_state(array_3, 9).
+
+test_string_fmt() :-
+    fmt_write_string(Result, "%d", arg(10)),
+    Result == '10'.
