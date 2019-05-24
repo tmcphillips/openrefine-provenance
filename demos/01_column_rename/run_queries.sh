@@ -38,7 +38,7 @@ banner( 'Q2',
 q2(ColumnName) :-
 
     import_state('biblio.csv', _, _, ImportStateId),
-    column_name(_, ImportStateId, ColumnName).
+    column_name_at_state(_, ImportStateId, ColumnName).
 
 end_of_file.
 

@@ -4,10 +4,6 @@ import_state(SourceUri, DatasetId, ImportArrayId, ImportStateId) :-
     dataset(DatasetId, SourceId, ImportArrayId),
     state(ImportStateId, ImportArrayId, nil).
 
-:- table column_name/3.
-column_name(ColumnId, StateId, ColumnName) :-
-    column_schema(_, ColumnId, StateId, _, ColumnName, _, _).
-
 :- table column_rename/5.
 column_rename(DatasetId, ArrayId, StateId, ColumnName, NewColumnName) :-
     array(ArrayId, DatasetId),
