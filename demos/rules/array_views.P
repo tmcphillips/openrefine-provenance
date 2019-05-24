@@ -1,36 +1,21 @@
+% RULE : final_array_state/2 - returns last state of array 
+final_array_state(ArrayId, StateId) :-
+    state(StateId, ArrayId, _),
+    not state(_, ArrayId, StateId).
 
-final_array_state(ArrayId, FinalStateId) :-
-    state(FinalStateId, ArrayId, _),
-    not state(_, ArrayId, FinalStateId).
-
-% RULE : next_column_schema_at_or_before_state/2
-%
-% Succeeds if a column schema follows the one identified by ColumnSchemaId,
-% and the later column schema was created at StateId or earlier.
-%
+% RULE : next_column_schema_at_or_before_state/2 - succeeds if a column schema follows the one 
+% identified by ColumnSchemaId and the later column schema was created at StateId or earlier
 next_column_schema_at_or_before_state(ColumnSchemaId, StateId) :-
     column_schema(_, _, NextColumnSchemaStateId, _, _, _, ColumnSchemaId),
     NextColumnSchemaStateId =< StateId.
 
-
-% RULE : column_schema_at_state/3
-%
-% Returns ColumnSchemaId of column_schema for ColumnId as of StateId.
-%
+% RULE : column_schema_at_state/3 - returns latest ColumnSchemaId for ColumnId as of StateId
 column_schema_at_state(ColumnSchemaId, ColumnId, StateId) :-
     column_schema(ColumnSchemaId, ColumnId, AssignmentStateId, _, _, _, _),
     StateId >= AssignmentStateId,
     not next_column_schema_at_or_before_state(ColumnSchemaId, StateId).
 
-
-% RULE : column_name/3
-%
-% Returns ColumnName for ColumnId as of StateId.
-%
+% RULE : column_name/3 - returns ColumnName for ColumnId effective at StateId
 column_name(ColumnId, StateId, ColumnName) :-
     column_schema_at_state(ColumnSchemaId, ColumnId, StateId),
     column_schema(ColumnSchemaId, _, _, _, ColumnName, _, _).
-
-
-
-

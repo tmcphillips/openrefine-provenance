@@ -2,6 +2,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % facts
 
+array(array_3, nil).
+
+column(column_1, array_3).
+
 state(4, array_3, nil).
 state(5, array_3, 4).
 state(6, array_3, 5).
@@ -9,9 +13,9 @@ state(7, array_3, 6).
 state(8, array_3, 7).
 state(9, array_3, 8).
 
-column_schema(col_schema_1, column_1, 4, 'string', column_1_name_assigned_at_state_4, nil, nil).
-column_schema(col_schema_2, column_1, 6, 'string', column_1_name_assigned_at_state_6, nil, col_schema_1).
-column_schema(col_schema_3, column_1, 8, 'string', column_1_name_assigned_at_state_8, nil, col_schema_2).
+column_schema(col_schema_1, column_1, 4, 'string', 'name assigned at state 4', nil, nil).
+column_schema(col_schema_2, column_1, 6, 'string', 'name assigned at state 6', nil, col_schema_1).
+column_schema(col_schema_3, column_1, 8, 'string', 'name assigned at state 8', nil, col_schema_2).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -34,7 +38,7 @@ test__next_column_schema_at_or_before_state__no_schema_after_state() :-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% test column_schema_at_state/8
+% test column_schema_at_state/3
 
 test__column_schema_at_state__at_state_before_first_column_schema() :-
     not column_schema_at_state(_, column_1, 3).
@@ -59,13 +63,13 @@ test__column_name__at_state_before_first_column_schema() :-
     not column_name(column_1, 3, _).
 
 test__column_name__at_first_column_schema_state() :-
-    column_name(column_1, 4, column_1_name_assigned_at_state_4).
+    column_name(column_1, 4, 'name assigned at state 4').
 
 test__column_name__between_first_two_column_schema_states() :-
-    column_name(column_1, 5, column_1_name_assigned_at_state_4).
+    column_name(column_1, 5, 'name assigned at state 4').
 
 test__column_name__at_second_column_schema_state() :-
-    column_name(column_1, 6, column_1_name_assigned_at_state_6).
+    column_name(column_1, 6, 'name assigned at state 6').
 
 test__column_name__at_state_after_last_column_schema() :-
-    column_name(column_1, 9, column_1_name_assigned_at_state_8).
+    column_name(column_1, 9, 'name assigned at state 8').
