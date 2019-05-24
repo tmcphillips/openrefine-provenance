@@ -53,19 +53,19 @@ test__column_schema_at_state___at_state_after_last_column_schema() :-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% test column_name_at_state/3
+% test column_name/3
 
-test__column_name_at_state__at_state_before_first_column_schema() :-
-    not column_name_at_state(column_1, 3, _).
+test__column_name__at_state_before_first_column_schema() :-
+    not column_name(column_1, 3, _).
 
-test__column_name_at_state__at_first_column_schema_state() :-
-    column_name_at_state(column_1, 4, column_1_name_assigned_at_state_4).
+test__column_name__at_first_column_schema_state() :-
+    column_name(column_1, 4, column_1_name_assigned_at_state_4).
 
-test__column_name_at_state__between_first_two_column_schema_states() :-
-    column_name_at_state(column_1, 5, column_1_name_assigned_at_state_4).
+test__column_name__between_first_two_column_schema_states() :-
+    column_name(column_1, 5, column_1_name_assigned_at_state_4).
 
-test__column_name_at_state__at_second_column_schema_state() :-
-    column_name_at_state(column_1, 6, column_1_name_assigned_at_state_6).
+test__column_name__at_second_column_schema_state() :-
+    column_name(column_1, 6, column_1_name_assigned_at_state_6).
 
-test__column_name_at_state__at_state_after_last_column_schema() :-
-    column_name_at_state(column_1, 9, column_1_name_assigned_at_state_8).
+test__column_name__at_state_after_last_column_schema() :-
+    column_name(column_1, 9, column_1_name_assigned_at_state_8).

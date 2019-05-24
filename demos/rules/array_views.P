@@ -15,7 +15,7 @@ next_column_schema_at_or_before_state(ColumnSchemaId, StateId) :-
 
 % RULE : column_schema_at_state/3
 %
-% Returns ColumnSchemaId of column_schema for ColumnId at the latest state at or before StateId.
+% Returns ColumnSchemaId of column_schema for ColumnId as of StateId.
 %
 column_schema_at_state(ColumnSchemaId, ColumnId, StateId) :-
     column_schema(ColumnSchemaId, ColumnId, AssignmentStateId, _, _, _, _),
@@ -23,11 +23,11 @@ column_schema_at_state(ColumnSchemaId, ColumnId, StateId) :-
     not next_column_schema_at_or_before_state(ColumnSchemaId, StateId).
 
 
-% RULE : column_name_at_state/3
+% RULE : column_name/3
 %
-% Returns ColumnName for ColumnId at the latest state at or before StateId.
+% Returns ColumnName for ColumnId as of StateId.
 %
-column_name_at_state(ColumnId, StateId, ColumnName) :-
+column_name(ColumnId, StateId, ColumnName) :-
     column_schema_at_state(ColumnSchemaId, ColumnId, StateId),
     column_schema(ColumnSchemaId, _, _, _, ColumnName, _, _).
 

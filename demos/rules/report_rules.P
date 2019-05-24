@@ -12,14 +12,14 @@ print_column_names(StateId) :-
 print_remaining_column_names(StateId, PreviousColumnId) :-
     column_schema_at_state(ColumnSchemaId, ColumnId, StateId),
     column_schema(ColumnSchemaId, ColumnId, _, _, _, PreviousColumnId, _),
-    column_name_at_state(ColumnId, StateId, ColumnName),
+    column_name(ColumnId, StateId, ColumnName),
     fmt_write(' | %s', arg(ColumnName)),
     print_remaining_column_names(StateId, ColumnId)
     ;
     true.
 
 print_array_header(StateId) :-
-    column_schema_at_state(ColumnSchemaId, ColumnId, StateId),
+    column_schema_at_state(ColumnSchemaId, _, StateId),
     column_schema(ColumnSchemaId, FirstColumnId, _, _, FirstColumnName, nil, _),
     fmt_write('| %s', arg(FirstColumnName)),
     print_remaining_column_names(StateId, FirstColumnId),
