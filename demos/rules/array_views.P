@@ -1,3 +1,4 @@
+
 :- table first_column/2.
 first_column(StateId, FirstColumnId) :-
     column_schema_at_state(ColumnSchemaId, FirstColumnId, StateId),
@@ -8,13 +9,14 @@ first_column(StateId, FirstColumnId) :-
 %    column_schema_at_state(ColumnSchemaId, FirstColumnId, StateId),
 %    column_schema(ColumnSchemaId, FirstColumnId, _, _, _, nil, _).
 
+
 % RULE : final_array_state/2 - returns last state of array
 :- table final_array_state/2.
 final_array_state(ArrayId, StateId) :-
     state(StateId, ArrayId, _),
     not state(_, ArrayId, StateId).
 
-% RULE : next_column_schema_at_or_before_state/2 - succeeds if a column schema follows the one 
+% RULE : next_column_schema_at_or_before_state/2 - succeeds if a column schema follows the one
 % identified by ColumnSchemaId and the later column schema was created at StateId or earlier
 :- table next_column_schema_at_or_before_state/2.
 next_column_schema_at_or_before_state(ColumnSchemaId, StateId) :-

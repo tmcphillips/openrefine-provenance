@@ -48,4 +48,3 @@ array_header_remainder(StateId, ColumnSchemaId, Header, UpdatedHeader) :-
 %array_header(StateId, Header) :-
 %    first_column(StateId, FirstColumnId),
 %    array_header_remainder(StateId, FirstColumnId, '|', Header).
-
