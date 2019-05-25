@@ -28,6 +28,7 @@ for testfile in "${testfiles[@]}" ; do
 
         set_prolog_flag(unknown, fail).
         ['$RULES_DIR/array_views'].
+        ['$RULES_DIR/report_rules'].
         [${test_file_base}].
 
         [user].

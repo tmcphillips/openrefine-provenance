@@ -2,11 +2,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % facts
 
-state(1, array_1, nil).
+array(array_1, nil).
+array(array_2, nil).
+array(array_3, nil).
 
+state(1, array_1, nil).
 state(2, array_2, nil).
 state(3, array_2, 2).
-
 state(4, array_3, nil).
 state(5, array_3, 4).
 state(6, array_3, 5).
@@ -33,6 +35,3 @@ test__final_array_state__second_to_last_of_six_states_is_not_final() :-
 test__final_array_state__last_of_six_states_is_final() :-
     final_array_state(array_3, 9).
 
-test_string_fmt() :-
-    fmt_write_string(Result, "%d", arg(10)),
-    Result == '10'.

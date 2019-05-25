@@ -31,11 +31,21 @@ print_remainder_of_row(RowId, StateId, StartingColumnId) :-
     value(ValueId, ValueText),
     fmt_write('| %s ', ValueText).
 
-first_column(StateId, FirstColumnId) :-
-    column_schema_at_state(ColumnSchemaId, FirstColumnId, StateId),
-    column_schema(ColumnSchemaId, FirstColumnId, _, _, _, nil, _).
-
 print_row(RowId, StateId) :-
     first_column(StateId, FirstColumnId),
     print_remainder_of_row(RowId, StateId, FirstColumnId),
     writeln('|').
+
+array_header_remainder(StateId, ColumnSchemaId, Header, UpdatedHeader) :-
+    schema_of_previous_column(ColumnSchemaId, SchemaIdForPreviousColumn, StateId),
+    column_schema(SchemaIdForPreviousColumn, _, _, _, ColumnName, _, _),
+    fmt_write_string(HeaderPrefix, "| %s ", arg(ColumnName)),
+    atom_concat(HeaderPrefix, Header, NewHeader),
+    array_header_remainder(StateId, SchemaIdForPreviousColumn, NewHeader, UpdatedHeader)
+    ;
+    UpdatedHeader = Header.
+
+%array_header(StateId, Header) :-
+%    first_column(StateId, FirstColumnId),
+%    array_header_remainder(StateId, FirstColumnId, '|', Header).
+

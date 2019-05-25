@@ -17,7 +17,6 @@ column_schema(col_schema_1, column_1, 4, 'string', 'name assigned at state 4', n
 column_schema(col_schema_2, column_1, 6, 'string', 'name assigned at state 6', nil, col_schema_1).
 column_schema(col_schema_3, column_1, 8, 'string', 'name assigned at state 8', nil, col_schema_2).
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % test next_column_schema_at_or_before_state/2
 
@@ -73,3 +72,4 @@ test__column_name__at_second_column_schema_state() :-
 
 test__column_name__at_state_after_last_column_schema() :-
     column_name(column_1, 9, 'name assigned at state 8').
+
