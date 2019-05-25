@@ -49,6 +49,36 @@ test__first_column__after_final_state() :-
     first_column(10, FirstColumnId),
     FirstColumnId == column_5.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% test last_column/3
+
+test__last_column__before_first_state() :-
+    not last_column(5, _, _).
+
+test__last_column__at_first_state() :-
+    last_column(6, LastColumnId, LastColumnSchemaId),
+    LastColumnId == column_5,
+    LastColumnSchemaId == col_schema_11.
+
+test__last_column__at_second_state() :-
+    last_column(7, LastColumnId, LastColumnSchemaId),
+    LastColumnId == column_4,
+    LastColumnSchemaId == col_schema_13.
+
+test__last_column__between_second_and_third_state() :-
+    last_column(8, LastColumnId, LastColumnSchemaId),
+    LastColumnId == column_4,
+    LastColumnSchemaId == col_schema_13.
+
+test__last_column__at_third_state() :-
+    last_column(9, LastColumnId, LastColumnSchemaId),
+    LastColumnId == column_4,
+    LastColumnSchemaId == col_schema_16.
+
+test__last_column__after_final_state() :-
+    last_column(10, LastColumnId, LastColumnSchemaId),
+    LastColumnId == column_4,
+    LastColumnSchemaId == col_schema_16.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % test schema_of_previous_column/3

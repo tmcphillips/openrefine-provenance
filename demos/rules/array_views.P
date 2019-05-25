@@ -5,10 +5,10 @@ first_column(StateId, FirstColumnId) :-
     column_schema(ColumnSchemaId, FirstColumnId, _, _, _, nil, _).
 
 %:- table last_column/3.
-%first_column(StateId, FirstColumnId, FirstColumnSchemaId) :-
-%    column_schema_at_state(ColumnSchemaId, FirstColumnId, StateId),
-%    column_schema(ColumnSchemaId, FirstColumnId, _, _, _, nil, _).
-
+last_column(StateId, LastColumnId, LastColumnSchemaId) :-
+    column_schema_at_state(LastColumnSchemaId, LastColumnId, StateId),
+    column_schema_at_state(NextColumnSchemaId, NextColumnId, StateId),
+    not column_schema(NextColumnSchemaId, _, _, _, _, LastColumnId, _).
 
 % RULE : final_array_state/2 - returns last state of array
 :- table final_array_state/2.
