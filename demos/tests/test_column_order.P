@@ -139,7 +139,6 @@ test__array_header__before_first_state() :-
 
 test__array_header__first_state() :-
     once(array_header(6, Header)),
-    writeln(Header),
     Header == '| left column at state 6 | middle column at state 6 | right column at state 6 |'.
 
 test__array_header__second_state() :-
