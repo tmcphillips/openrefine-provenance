@@ -30,17 +30,33 @@ r1().
 
 %-------------------------------------------------------------------------------
 banner( 'Report 2',
-        'Print the values in the first row at the initially imported state',
+        'Print the names of the columns in order at the final state',
         'r2()').
 [user].
 r2() :-
+
+    import_state('biblio.csv', _, ArrayId, _),
+    final_array_state(ArrayId, FinalStateId),
+    print_array_header(FinalStateId).
+
+end_of_file.
+r2().
+%-------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------
+banner( 'Report 3',
+        'Print the values in the first row at the initially imported state',
+        'r3()').
+[user].
+r3() :-
 
     import_state('biblio.csv', _, _, ImportStateId),
     row_position(_, RowId, ImportStateId, _),
     print_row(RowId, ImportStateId).
 
 end_of_file.
-r2().
+r3().
 %-------------------------------------------------------------------------------
 
 

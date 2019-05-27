@@ -9,8 +9,16 @@ r1()
 
 
 ---------------------------------------------------------------------------------------------------
-Report 2 : Print the values in the first row at the initially imported state
+Report 2 : Print the names of the columns in order at the final state
 
 r2()
+...................................................................................................
+| Main Title | Author | Publication |
+
+
+---------------------------------------------------------------------------------------------------
+Report 3 : Print the values in the first row at the initially imported state
+
+r3()
 ...................................................................................................
 | Against Method |
