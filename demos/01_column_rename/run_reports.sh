@@ -7,8 +7,7 @@ source ../settings.sh
 xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 
 ['$RULES_DIR/general_rules'].
-['$RULES_DIR/prov_rules'].
-['$RULES_DIR/array_views'].
+['$RULES_DIR/query_rules'].
 ['$RULES_DIR/report_rules'].
 ['cleaning_history'].
 

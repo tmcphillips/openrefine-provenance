@@ -1,3 +1,18 @@
+% These rules should be compatible with both Datalog and standard Prolog.
+
+:- table import_state/4.
+import_state(SourceUri, DatasetId, ImportArrayId, ImportStateId) :-
+    source(SourceId, SourceUri, _),
+    dataset(DatasetId, SourceId, ImportArrayId),
+    state(ImportStateId, ImportArrayId, nil).
+
+:- table column_rename/5.
+column_rename(DatasetId, ArrayId, StateId, ColumnName, NewColumnName) :-
+    array(ArrayId, DatasetId),
+    state(StateId, ArrayId, _),
+    column_schema(_, _, _, _, NewColumnName, _, PreviousColumnSchemaId),
+    column_schema(PreviousColumnSchemaId, _, StateId, _, ColumnName, _, _),
+    NewColumnName \== ColumnName.
 
 :- table first_column/2.
 first_column(StateId, FirstColumnId) :-
@@ -7,7 +22,7 @@ first_column(StateId, FirstColumnId) :-
 %:- table last_column/3.
 last_column(StateId, LastColumnId, LastColumnSchemaId) :-
     column_schema_at_state(LastColumnSchemaId, LastColumnId, StateId),
-    column_schema_at_state(NextColumnSchemaId, NextColumnId, StateId),
+    column_schema_at_state(NextColumnSchemaId, _, StateId),
     not column_schema(NextColumnSchemaId, _, _, _, _, LastColumnId, _).
 
 % RULE : final_array_state/2 - returns last state of array
@@ -32,7 +47,7 @@ column_schema_at_state(ColumnSchemaId, ColumnId, StateId) :-
 
 % RULE : column_name/2 - returns ColumnName for ColumnSchemaId
 :- table column_name/2.
-column_name(ColumnScheamId, ColumnName) :-
+column_name(ColumnSchemaId, ColumnName) :-
     column_schema(ColumnSchemaId, _, _, _, ColumnName, _, _).
 
 % RULE : column_name/3 - returns ColumnName for ColumnId effective at StateId

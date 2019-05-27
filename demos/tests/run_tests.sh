@@ -27,7 +27,7 @@ for testfile in "${testfiles[@]}" ; do
     xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 
         set_prolog_flag(unknown, fail).
-        ['$RULES_DIR/array_views'].
+        ['$RULES_DIR/query_rules'].
         ['$RULES_DIR/report_rules'].
         [${test_file_base}].
 

@@ -1,3 +1,4 @@
+% These rules should be used in XSB Prolog programs only.
 
 print_source_uri(DatasetId) :-
     import_state(SourceUri, DatasetId, _, _),
