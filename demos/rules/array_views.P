@@ -30,6 +30,11 @@ column_schema_at_state(ColumnSchemaId, ColumnId, StateId) :-
     StateId >= AssignmentStateId,
     not next_column_schema_at_or_before_state(ColumnSchemaId, StateId).
 
+% RULE : column_name/2 - returns ColumnName for ColumnSchemaId
+:- table column_name/2.
+column_name(ColumnScheamId, ColumnName) :-
+    column_schema(ColumnSchemaId, _, _, _, ColumnName, _, _).
+
 % RULE : column_name/3 - returns ColumnName for ColumnId effective at StateId
 :- table column_name/3.
 column_name(ColumnId, StateId, ColumnName) :-

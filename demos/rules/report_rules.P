@@ -45,6 +45,8 @@ array_header_remainder(StateId, ColumnSchemaId, Header, UpdatedHeader) :-
     ;
     UpdatedHeader = Header.
 
-%array_header(StateId, Header) :-
-%    first_column(StateId, FirstColumnId),
-%    array_header_remainder(StateId, FirstColumnId, '|', Header).
+array_header(StateId, Header) :-
+    last_column(StateId, LastColumnId, LastColumnSchemaId),
+    column_name(LastColumnSchemaId, ColumnName),
+    fmt_write_string(HeaderPrefix, "| %s |", arg(ColumnName)),
+    array_header_remainder(StateId, LastColumnSchemaId, HeaderPrefix, Header).
