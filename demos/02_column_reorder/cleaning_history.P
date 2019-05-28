@@ -1,0 +1,83 @@
+% cleaning_history.P
+
+%%%% STATE AFTER INITIAL IMPORT STEP %%%%%
+
+% source(SourceId, SourceUri, SourceFormat).
+source(source_7, 'biblio.csv', 'text/csv').
+
+% dataset(DatasetId, SourceId, ImportId, ArrayId).
+dataset(dataset_3, source_7, array_9).
+
+% array(ArrayId, DatasetId).
+array(array_9, dataset_3).
+
+% column(ColumnId, ArrayId).
+column(col_1, array_9).
+column(col_2, array_9).
+column(col_3, array_9).
+
+% row(RowId, ArrayId).
+row(row_6, array_9).
+row(row_7, array_9).
+row(row_8, array_9).
+
+% cell(CellId, ColumnId, RowId).
+cell(cell_1, col_1, row_6).
+cell(cell_2, col_1, row_7).
+cell(cell_3, col_1, row_8).
+cell(cell_4, col_2, row_6).
+cell(cell_5, col_2, row_7).
+cell(cell_6, col_2, row_8).
+cell(cell_7, col_3, row_6).
+cell(cell_8, col_3, row_7).
+cell(cell_9, col_3, row_8).
+
+% state(StateId, ArrayId, PreviousStateId).
+state(17, array_9, nil).
+
+% content(ContentId, CellId, StateId, ValueId, PreviousContentId).
+content(content_11, cell_1, 17, val_21, nil).
+content(content_12, cell_2, 17, val_22, nil).
+content(content_13, cell_3, 17, val_23, nil).
+content(content_14, cell_4, 17, val_24, nil).
+content(content_15, cell_5, 17, val_25, nil).
+content(content_16, cell_6, 17, val_26, nil).
+content(content_17, cell_7, 17, val_27, nil).
+content(content_18, cell_8, 17, val_28, nil).
+content(content_19, cell_9, 17, val_29, nil).
+
+% value(ValueId, ValueText).
+value(val_21, 'Against Method').
+value(val_22, 'Changing Order').
+value(val_23, 'Exceeding our Grasp').
+value(val_24, 'Paul Feyerabend').
+value(val_25, 'H.M. Collins').
+value(val_26, 'P. Kyle Stanford').
+value(val_27, '1975').
+value(val_28, '1985').
+value(val_29, '2006').
+
+% column_schema(ColumnSchemaId, ColumnId, StateId, ColumnType, ColumnName, PreviousColumnId, PreviousColumnSchemaId).
+column_schema(col_schema_4, col_1, 17, 'string', 'Book Title', nil, nil).
+column_schema(col_schema_5, col_2, 17, 'string', 'Author',   col_1, nil).
+column_schema(col_schema_6, col_3, 17, 'string', 'Date',     col_2, nil).
+
+% row_position(RowPosititionId, RowId, StateId, PreviousRowId).
+row_position(row_pos_31, row_6, 17, nil).
+row_position(row_pos_32, row_7, 17, row_6).
+row_position(row_pos_33, row_8, 17, row_7).
+
+%%%% STATE AFTER THREE COLUMN RENAME OPERATIONS %%%%%
+
+% state(StateId, ArrayId, PreviousStateId).
+state(18, array_9, 17).
+state(19, array_9, 18).
+state(20, array_9, 19).
+
+% column_schema(ColumnSchemaId, ColumnId, StateId, ColumnType, ColumnName, PreviousColumnId, PreviousColumnSchemaId).
+column_schema(col_schema_7, col_2, 18, 'string', 'Author',       nil, col_schema_5).
+column_schema(col_schema_8, col_1, 18, 'string', 'Book Title', col_2, col_schema_4).
+column_schema(col_schema_9, col_3, 18, 'string', 'Date',       col_1, col_schema_6).
+
+column_schema(col_schema_10, col_3, 20, 'string', 'Date',       col_2, col_schema_9).
+column_schema(col_schema_11, col_1, 20, 'string', 'Book Title', col_3, col_schema_8).
