@@ -62,3 +62,15 @@ schema_of_previous_column(ColumnSchemaId, SchemaIdForPreviousColumn, StateId) :-
     column_schema(ColumnSchemaId, _, _, _, _, PreviousColumnId, _),
     column_schema_at_state(SchemaIdForPreviousColumn, PreviousColumnId, StateId).
 
+% RULE : column_index/3
+column_index(ColumnId, StateId, ColumnIndex) :-
+    first_column(StateId, ColumnId),
+    ColumnIndex = 0.
+
+column_index(ColumnId, StateId, ColumnIndex) :-
+    column_schema(_, ColumnId, _, _, _, PreviousColumnId, _),
+    column_index(PreviousColumnId, StateId, PreviousColumnIndex),
+    ColumnIndex is PreviousColumnIndex + 1.
+
+%llength([],0).
+%llength([_|T], N) :- llength(T, Nt), N is Nt + 1.
