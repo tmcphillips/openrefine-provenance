@@ -4,7 +4,7 @@
 source(source_1, 'biblio.csv', 'text/csv').
 
 % dataset(DatasetId, SourceId).
-dataset(dataset_1, source_1).
+dataset(dataset_1, source_1, array_1).
 
 % array(ArrayId, DatasetId).
 array(array_1, dataset_1).
@@ -54,11 +54,11 @@ row_position(row_pos_2, row_2, 1, row_1).
 row_position(row_pos_3, row_3, 1, row_2).
 
 %%%% Rename column 1 from Book Title to Title %%%%%
-state(state_2, array_1, 1).
-column_schema(col_schema_4, col_1, state_2, 'string', 'Title', nil, col_schema_1).
+state(2, array_1, 1).
+column_schema(col_schema_4, col_1, 2, 'string', 'Title', nil, col_schema_1).
 
 %%%% Place surname first and abbreviate given names to initials in Author column %%%%%
-state(3, array_1, state_2).
+state(3, array_1, 2).
 value(val_10, 'Feyerabend, P.').
 value(val_11, 'Collins, H.M.').
 value(val_12, 'Stanford, P.K.').
