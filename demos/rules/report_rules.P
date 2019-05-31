@@ -1,40 +1,18 @@
 
-print_source_uri(DatasetId) :-
-    import_state(SourceUri, DatasetId, _, _),
-    writeln(SourceUri).
+%print_source_uri(DatasetId) :-
+%    import_state(SourceUri, DatasetId, _, _),
+%    writeln(SourceUri).
 
-print_column_names(StateId) :-
-    column_schema(_, _, StateId, _, ColumnName, _, _),
-    writeln(ColumnName),
-    fail;
-    true.
+%print_remainder_of_row(RowId, StateId, StartingColumnId) :-
+%    cell(CellId, StartingColumnId, RowId),
+%    content(_, CellId, _, ValueId, nil),
+%    value(ValueId, ValueText),
+%    fmt_write('| %s ', ValueText).
 
-print_remaining_column_names(StateId, PreviousColumnId) :-
-    column_schema_at_state(ColumnSchemaId, ColumnId, StateId),
-    column_schema(ColumnSchemaId, ColumnId, _, _, _, PreviousColumnId, _),
-    column_name(ColumnId, StateId, ColumnName),
-    fmt_write(' | %s', arg(ColumnName)),
-    print_remaining_column_names(StateId, ColumnId)
-    ;
-    true.
-
-print_array_header(StateId) :-
-    column_schema_at_state(ColumnSchemaId, _, StateId),
-    column_schema(ColumnSchemaId, FirstColumnId, _, _, FirstColumnName, nil, _),
-    fmt_write('| %s', arg(FirstColumnName)),
-    print_remaining_column_names(StateId, FirstColumnId),
-    writeln(' |').
-
-print_remainder_of_row(RowId, StateId, StartingColumnId) :-
-    cell(CellId, StartingColumnId, RowId),
-    content(_, CellId, _, ValueId, nil),
-    value(ValueId, ValueText),
-    fmt_write('| %s ', ValueText).
-
-print_row(RowId, StateId) :-
-    first_column(StateId, FirstColumnId, _),
-    print_remainder_of_row(RowId, StateId, FirstColumnId),
-    writeln('|').
+%print_row(RowId, StateId) :-
+%    first_column(StateId, FirstColumnId, _),
+%    print_remainder_of_row(RowId, StateId, FirstColumnId),
+%    writeln('|').
 
 array_header_remainder(StateId, SchemaIdForPreviousColumn, HeaderUpToPreviousColumn, CompleteHeader) :-
     schema_of_previous_column(ColumnSchemaId, SchemaIdForPreviousColumn, StateId),
