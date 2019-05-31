@@ -10,7 +10,7 @@ xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 ['$RULES_DIR/query_rules'].
 ['cleaning_history'].
 
-%set_prolog_flag(unknown, fail).
+set_prolog_flag(unknown, fail).
 
 %-------------------------------------------------------------------------------
 banner( 'Q1',
@@ -88,9 +88,9 @@ banner( 'Q5',
 :- table q5/1.
 q5(ColumnName) :-
 
-    import_state('biblio.csv', _, ImportArrayId, _),
-    final_array_state(ImportArrayId, FinalArrayStateId),
-    column_name(_, FinalArrayStateId, ColumnName).
+    import_state('biblio.csv', _, ArrayId, _),
+    final_array_state(ArrayId, StateId),
+    column_name(_, StateId, ColumnName).
 
 end_of_file.
 

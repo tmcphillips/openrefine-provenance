@@ -12,9 +12,7 @@ dataset(dataset_3, source_7, array_9).
 array(array_9, dataset_3).
 
 % column(ColumnId, ArrayId).
-column(col_1, array_9).
-column(col_2, array_9).
-column(col_3, array_9).
+column(col_1, array_9).  column(col_2, array_9).  column(col_3, array_9).
 
 % row(RowId, ArrayId).
 row(row_6, array_9).
@@ -67,15 +65,14 @@ row_position(row_pos_31, row_6, 17, nil).
 row_position(row_pos_32, row_7, 17, row_6).
 row_position(row_pos_33, row_8, 17, row_7).
 
-%%%% STATE AFTER THREE COLUMN RENAME OPERATIONS %%%%%
+%%%% STATE AFTER EACH COLUMN RENAME OPERATION %%%%%
 
-% state(StateId, ArrayId, PreviousStateId).
 state(18, array_9, 17).
-state(19, array_9, 18).
-state(20, array_9, 19).
-
-% column_schema(ColumnSchemaId, ColumnId, StateId, ColumnType, ColumnName, PreviousColumnId, PreviousColumnSchemaId).
 column_schema(col_schema_7, col_1, 18, 'string', 'Title', nil, col_schema_4).
+
+state(19, array_9, 18).
 column_schema(col_schema_8, col_3, 19, 'string', 'Publication', col_2, col_schema_6).
+
+state(20, array_9, 19).
 column_schema(col_schema_9, col_1, 20, 'string', 'Main Title', nil, col_schema_7).
 
