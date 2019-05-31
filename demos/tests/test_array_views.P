@@ -20,7 +20,7 @@ column_schema(col_schema_8, col_2, 4, 'string', 'initial column 2 title', col_1,
 column_schema(col_schema_9, col_3, 4, 'string', 'initial column 3 title', col_2, nil).
 
 test_first_column() :-
-    first_column(4, col_1).
+    first_column(4, col_1, col_schema_7).
 
 test_atom_concat() :-
     S1 = s1,

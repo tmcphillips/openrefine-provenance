@@ -1,4 +1,3 @@
-% These rules should be used in XSB Prolog programs only.
 
 print_source_uri(DatasetId) :-
     import_state(SourceUri, DatasetId, _, _),
@@ -33,21 +32,21 @@ print_remainder_of_row(RowId, StateId, StartingColumnId) :-
     fmt_write('| %s ', ValueText).
 
 print_row(RowId, StateId) :-
-    first_column(StateId, FirstColumnId),
+    first_column(StateId, FirstColumnId, _),
     print_remainder_of_row(RowId, StateId, FirstColumnId),
     writeln('|').
 
-array_header_remainder(StateId, ColumnSchemaId, Header, UpdatedHeader) :-
+array_header_remainder(StateId, SchemaIdForPreviousColumn, HeaderUpToPreviousColumn, CompleteHeader) :-
     schema_of_previous_column(ColumnSchemaId, SchemaIdForPreviousColumn, StateId),
-    column_schema(SchemaIdForPreviousColumn, _, _, _, ColumnName, _, _),
-    fmt_write_string(HeaderPrefix, "| %s ", arg(ColumnName)),
-    atom_concat(HeaderPrefix, Header, NewHeader),
-    array_header_remainder(StateId, SchemaIdForPreviousColumn, NewHeader, UpdatedHeader)
+    column_schema(ColumnSchemaId, _, _, _, ColumnName, _, _),
+    fmt_write_string(HeaderUpToCurrentColumn, "%s %s |", arg(HeaderUpToPreviousColumn, ColumnName)),
+    array_header_remainder(StateId, ColumnSchemaId, HeaderUpToCurrentColumn, CompleteHeader)
     ;
-    UpdatedHeader = Header.
+    CompleteHeader = HeaderUpToPreviousColumn.
 
 array_header(StateId, Header) :-
-    last_column(StateId, LastColumnId, LastColumnSchemaId),
-    column_name(LastColumnSchemaId, ColumnName),
+    first_column(StateId, _, ColumnSchemaId),
+    column_schema(ColumnSchemaId, _, _, _, ColumnName, _, _),
     fmt_write_string(HeaderPrefix, "| %s |", arg(ColumnName)),
-    array_header_remainder(StateId, LastColumnSchemaId, HeaderPrefix, Header).
+    array_header_remainder(StateId, ColumnSchemaId, HeaderPrefix, Header).
+

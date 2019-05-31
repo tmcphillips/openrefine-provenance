@@ -14,16 +14,16 @@ column_rename(DatasetId, ArrayId, StateId, ColumnName, NewColumnName) :-
     column_schema(PreviousColumnSchemaId, _, StateId, _, ColumnName, _, _),
     NewColumnName \== ColumnName.
 
-:- table first_column/2.
-first_column(StateId, FirstColumnId) :-
-    column_schema_at_state(ColumnSchemaId, FirstColumnId, StateId),
-    column_schema(ColumnSchemaId, FirstColumnId, _, _, _, nil, _).
+:- table first_column/3.
+first_column(StateId, ColumnId, ColumnSchemaId) :-
+    column_schema_at_state(ColumnSchemaId, ColumnId, StateId),
+    column_schema(ColumnSchemaId, ColumnId, _, _, _, nil, _).
 
 %:- table last_column/3.
-last_column(StateId, LastColumnId, LastColumnSchemaId) :-
-    column_schema_at_state(LastColumnSchemaId, LastColumnId, StateId),
-    column_schema_at_state(NextColumnSchemaId, _, StateId),
-    not column_schema(NextColumnSchemaId, _, _, _, _, LastColumnId, _).
+last_column(StateId, ColumnId, ColumnSchemaId) :-
+    column_schema_at_state(ColumnSchemaId, ColumnId, StateId),
+    column_schema(NextColumnSchemaId, _, _, _, _, ColumnId, _),
+    not column_schema_at_state(NextColumnSchemaId, _, StateId).
 
 % RULE : final_array_state/2 - returns last state of array
 :- table final_array_state/2.
@@ -64,7 +64,7 @@ schema_of_previous_column(ColumnSchemaId, SchemaIdForPreviousColumn, StateId) :-
 
 % RULE : column_index/3
 column_index(ColumnId, StateId, ColumnIndex) :-
-    first_column(StateId, ColumnId),
+    first_column(StateId, ColumnId, _),
     ColumnIndex = 0.
 
 column_index(ColumnId, StateId, ColumnIndex) :-
