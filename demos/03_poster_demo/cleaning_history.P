@@ -48,10 +48,10 @@ column_schema(col_schema_1, col_1, 1, 'string', 'Book Title', nil, nil).
 column_schema(col_schema_2, col_2, 1, 'string', 'Author',   col_1, nil).
 column_schema(col_schema_3, col_3, 1, 'string', 'Date',     col_2, nil).
 
-% row_position(RowPosId, RowId, StateId, PrevRowId).
-row_position(row_pos_1, row_1, 1, nil).
-row_position(row_pos_2, row_2, 1, row_1).
-row_position(row_pos_3, row_3, 1, row_2).
+% row_position(RowPosId, RowId, StateId, PrevRowId, PrevRowPosId).
+row_position(row_pos_1, row_1, 1, nil,   nil).
+row_position(row_pos_2, row_2, 1, row_1, nil).
+row_position(row_pos_3, row_3, 1, row_2, nil).
 
 %%%% Rename column 1 from Book Title to Title %%%%%
 state(2, array_1, 1).
@@ -68,9 +68,9 @@ content(content_12, cell_6, 3, val_12, content_6).
 
 %%%% Sort rows by Author %%%%%
 state(4, array_1, 3).
-row_position(row_pos_4, row_2, 4, nil).
-row_position(row_pos_5, row_1, 4, row_2).
-row_position(row_pos_6, row_3, 4, row_1).
+row_position(row_pos_4, row_2, 4, nil,   row_pos_2).
+row_position(row_pos_5, row_1, 4, row_2, row_pos_1).
+row_position(row_pos_6, row_3, 4, row_1, row_pos_3).
 
 %%%% Swap order of second and third columns %%%%%
 state(5, array_1, 4).
