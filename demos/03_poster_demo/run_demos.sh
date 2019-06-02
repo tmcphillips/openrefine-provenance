@@ -87,18 +87,18 @@ cell_change_at_state(Cell, State, ValueText1, ValueText2) :-
     value(Value1, ValueText1),
     value(Value2, ValueText2).
 
-cell_indices(Cell, State, ColIndex) :-
+cell_indices(Cell, State, ColIndex, RowIndex) :-
     %fmt_write('cell_indices -> Cell=%S\n', arg(Cell)),
     cell(Cell, ColId, RowId),
-    column_index(ColId, State, ColIndex).
-    %row_index(RowId, State, RowIndex).
+    column_index(ColId, State, ColIndex),
+    row_index(RowId, State, RowIndex).
 
 d3() :-
     state_with_multiple_cell_updates(State),
     fmt_write('Multiple cells were assigned new values at step %S:\n\n', arg(State)),
     cell_change_at_state(Cell, State, ValueText1, ValueText2),
-    cell_indices(Cell, State, ColIndex),
-    fmt_write('Cell at column %S of Row R was updated from "%S" to "%S"\n', arg(ColIndex, ValueText1, ValueText2)),
+    cell_indices(Cell, State, ColIndex, RowIndex),
+    fmt_write('Cell in column %S of row %S was updated from "%S" to "%S"\n', arg(ColIndex, RowIndex, ValueText1, ValueText2)),
     fail
     ;
     true.

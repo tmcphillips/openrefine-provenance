@@ -12,10 +12,9 @@ The column named "Author" in the final data set contains cells with updated valu
 ---------------------------------------------------------------------------------------------------
 Demo 3 : What cells were assigned new values during the same step?
 
-++Warning[XSB]: [Compiler] user : Singleton variable RowId in a clause of cell_indices/3
 Multiple cells were assigned new values at step 3:
 
-Cell at column 2 of Row R was updated from "Paul Feyerabend" to "Feyerabend, P."
-Cell at column 2 of Row R was updated from "H.M. Collins" to "Collins, H.M."
-Cell at column 2 of Row R was updated from "P. Kyle Stanford" to "Stanford, P.K."
+Cell in column 2 of row 1 was updated from "Paul Feyerabend" to "Feyerabend, P."
+Cell in column 2 of row 2 was updated from "H.M. Collins" to "Collins, H.M."
+Cell in column 2 of row 3 was updated from "P. Kyle Stanford" to "Stanford, P.K."
 
