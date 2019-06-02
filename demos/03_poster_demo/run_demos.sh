@@ -16,10 +16,25 @@ xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 %-------------------------------------------------------------------------------
 demo_banner( 'Demo 1', 'What columns in the original dataset were renamed?').
 [user].
-d1() :-
 
-    column_rename(_, _, StateId, ColumnName, NewColumnName),
-    fmt_write('In step %S column "%S\" was renamed to "%S".\n', fmt(StateId, ColumnName, NewColumnName)).
+column_rename(FirstStateId, FirstColumnName, SecondStateId, SecondColumnName) :-
+    state(FirstStateId, ArrayId, _),
+    state(SecondStateId, ArrayId, _),
+    column_schema_at_state(FirstColumnSchemaId, ColumnId, FirstStateId),
+    column_schema(FirstColumnSchemaId, _, _, _, FirstColumnName, _, _),
+    column_schema_at_state(SecondColumnSchemaId, ColumnId, SecondStateId),
+    column_schema(SecondColumnSchemaId, _, _, _, SecondColumnName, _, _),
+    SecondStateId > FirstStateId,
+    SecondColumnName \== FirstColumnName.
+
+d1() :-
+    import_state(_, _, ArrayId, ImportStateId),
+    final_array_state(ArrayId, FinalStateId),
+    column_rename(ImportStateId, ColumnName, FinalStateId, NewColumnName),
+    fmt_write('Column originally named "%S\" was ultimately named "%S".\n', fmt(ColumnName, NewColumnName)),
+    fail
+    ;
+    true.
 
 end_of_file.
 d1().
