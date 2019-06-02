@@ -17,21 +17,21 @@ xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 demo_banner( 'Demo 1', 'What columns in the original dataset were renamed?').
 [user].
 
-column_rename(FirstStateId, FirstColumnName, SecondStateId, SecondColumnName) :-
-    state(FirstStateId, ArrayId, _),
-    state(SecondStateId, ArrayId, _),
-    column_schema_at_state(FirstColumnSchemaId, ColumnId, FirstStateId),
-    column_schema(FirstColumnSchemaId, _, _, _, FirstColumnName, _, _),
-    column_schema_at_state(SecondColumnSchemaId, ColumnId, SecondStateId),
-    column_schema(SecondColumnSchemaId, _, _, _, SecondColumnName, _, _),
-    SecondStateId > FirstStateId,
-    SecondColumnName \== FirstColumnName.
+column_name_at_state(Column, State, Name) :-
+    column_schema_at_state(Schema, Column, State),
+    column_schema(Schema, _, _, _, Name, _, _).
+
+column_rename(State1, Name1, State2, Name2) :-
+    column_name_at_state(ColumnId, State1, Name1),
+    column_name_at_state(ColumnId, State2, Name2),
+    State2 > State1,
+    Name2 \== Name1.
 
 d1() :-
-    import_state(_, _, ArrayId, ImportStateId),
-    final_array_state(ArrayId, FinalStateId),
-    column_rename(ImportStateId, ColumnName, FinalStateId, NewColumnName),
-    fmt_write('Column originally named "%S\" was ultimately named "%S".\n', fmt(ColumnName, NewColumnName)),
+    import_state(_, _, Array, ImportState),
+    final_array_state(Array, FinalState),
+    column_rename(ImportState, OriginalName, FinalState, FinalName),
+    fmt_write('Column originally named "%S\" was ultimately named "%S".\n', fmt(OriginalName, FinalName)),
     fail
     ;
     true.
