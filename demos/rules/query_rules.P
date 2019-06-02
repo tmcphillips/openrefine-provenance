@@ -26,6 +26,11 @@ first_column(StateId, ColumnId, ColumnSchemaId) :-
     column_schema_at_state(ColumnSchemaId, ColumnId, StateId),
     column_schema(ColumnSchemaId, ColumnId, _, _, _, nil, _).
 
+:- table first_row/3.
+first_row(StateId, RowId, RowPositionId) :-
+    row_position_at_state(RowPositionId, RowId, StateId),
+    row_position(RowPositionId, _, _, nil, _).
+
 % RULE : final_array_state/2 - returns last state of array
 :- table final_array_state/2.
 final_array_state(ArrayId, StateId) :-
@@ -45,6 +50,19 @@ column_schema_at_state(ColumnSchemaId, ColumnId, StateId) :-
     column_schema(ColumnSchemaId, ColumnId, AssignmentStateId, _, _, _, _),
     StateId >= AssignmentStateId,
     not next_column_schema_at_or_before_state(ColumnSchemaId, StateId).
+
+% RULE : next_column_schema_at_or_before_state/2
+:- table next_row_position_at_or_before_state/2.
+next_row_position_at_or_before_state(RowPositionId, StateId) :-
+    row_position(_, _, NextRowPositionStateId, _, RowPositionId),
+    NextRowPositionStateId =< StateId.
+
+% RULE : row_position_at_state/3.
+:- table row_position_at_state/3.
+row_position_at_state(RowPosId, RowId, StateId) :-
+    row_position(RowPosId, RowId, AssignmentStateId, _, _),
+    StateId >= AssignmentStateId,
+    not next_row_position_at_or_before_state(RowPosId, StateId).
 
 % RULE : column_name/2 - returns ColumnName for ColumnSchemaId
 :- table column_name/2.
@@ -66,12 +84,23 @@ schema_of_previous_column(ColumnSchemaId, SchemaIdForPreviousColumn, StateId) :-
 % RULE : column_index/3
 column_index(ColumnId, StateId, ColumnIndex) :-
     first_column(StateId, ColumnId, _),
-    ColumnIndex = 0.
+    ColumnIndex = 1.
 
 column_index(ColumnId, StateId, ColumnIndex) :-
-    column_schema(_, ColumnId, _, _, _, PreviousColumnId, _),
+    column_schema_at_state(ColumnSchemaId, ColumnId, StateId),
+    column_schema(ColumnSchemaId, _, _, _, _, PreviousColumnId, _),
     column_index(PreviousColumnId, StateId, PreviousColumnIndex),
     ColumnIndex is PreviousColumnIndex + 1.
+
+% RULE : row_index/3
+row_index(RowId, StateId, RowIndex) :-
+    first_row(StateId, RowId, _),
+    RowIndex = 1.
+row_index(RowId, StateId, RowIndex) :-
+    row_position_at_state(RowPosId, RowId, StateId),
+    row_position(RowPosId, _, _, PrevRowId, _),
+    row_index(PrevRowId, StateId, PreviousRowIndex),
+    RowIndex is PreviousRowIndex + 1.
 
 next_column(ColumnId, StateId, NextColumnId) :-
     column_schema_at_state(ColumnSchemaId, ColumnId, StateId),
