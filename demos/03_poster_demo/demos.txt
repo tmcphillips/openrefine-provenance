@@ -12,6 +12,9 @@ The column named "Author" in the final data set contains cells with updated valu
 ---------------------------------------------------------------------------------------------------
 Demo 3 : What cells were assigned new values during the same step?
 
-Cell cell_4 was updated from "Paul Feyerabend" to "Feyerabend, P." at step 3.
-Cell cell_5 was updated from "H.M. Collins" to "Collins, H.M." at step 3.
-Cell cell_6 was updated from "P. Kyle Stanford" to "Stanford, P.K." at step 3.
+Multiple cells were updated with new values at step 3:
+
+Cell cell_4 was updated from "Paul Feyerabend" to "Feyerabend, P."
+Cell cell_5 was updated from "H.M. Collins" to "Collins, H.M."
+Cell cell_6 was updated from "P. Kyle Stanford" to "Stanford, P.K."
+

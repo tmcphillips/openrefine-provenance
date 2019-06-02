@@ -68,15 +68,28 @@ d2().
 demo_banner( 'Demo 3', 'What cells were assigned new values during the same step?').
 [user].
 
-cell_changed_at_state(Cell, State, ValueText1, ValueText2) :-
+
+cell_with_update_at_state(Cell, State) :-
+    content(_, Cell, State, _, PrevContentId),
+    PrevContentId \== nil.
+
+:- table state_with_multiple_cell_updates/1.
+state_with_multiple_cell_updates(State) :-
+    cell_with_update_at_state(Cell1, State),
+    cell_with_update_at_state(Cell2, State),
+    Cell1 \== Cell2.
+
+cell_change_at_state(Cell, State, ValueText1, ValueText2) :-
     content(_, Cell, State, Value2, PrevContentId),
     content(PrevContentId, _, _, Value1, _),
     value(Value1, ValueText1),
     value(Value2, ValueText2).
 
 d3() :-
-    cell_changed_at_state(Cell, State, ValueText1, ValueText2),
-    fmt_write('Cell %S was updated from "%S" to "%S" at step %S.\n', arg(Cell, ValueText1, ValueText2, State)),
+    state_with_multiple_cell_updates(State),
+    fmt_write('Multiple cells were updated with new values at step %S:\n\n', arg(State)),
+    cell_change_at_state(Cell, State, ValueText1, ValueText2),
+    fmt_write('Cell %S was updated from "%S" to "%S"\n', arg(Cell, ValueText1, ValueText2)),
     fail
     ;
     true.
@@ -85,6 +98,7 @@ end_of_file.
 d3().
 %-------------------------------------------------------------------------------
 
+nl.
 
 END_XSB_STDIN
 
