@@ -1,2 +1,3 @@
-./run_queries.sh &> run_queries.txt
-./run_reports.sh &> run_reports.txt
+./run_queries.sh &> queries.txt
+./run_reports.sh &> reports.txt
+./run_demos.sh &> demos.txt

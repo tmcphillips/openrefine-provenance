@@ -1,0 +1,5 @@
+
+---------------------------------------------------------------------------------------------------
+Demo 1 : What columns in the original dataset were renamed?
+
+In step 1 column "Book Title" was renamed to "Title".

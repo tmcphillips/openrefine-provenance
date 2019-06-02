@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# ./run_reports.sh &> run_reports.txt
+# ./run_reports.sh &> reports.txt
 
 source ../settings.sh
 

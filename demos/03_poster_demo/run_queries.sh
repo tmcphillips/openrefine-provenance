@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# ./run_queries.sh &> run_queries.txt
+# ./run_queries.sh &> queries.txt
 
 source ../settings.sh
 

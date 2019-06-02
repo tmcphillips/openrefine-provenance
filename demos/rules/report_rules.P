@@ -14,25 +14,6 @@
 %    print_remainder_of_row(RowId, StateId, FirstColumnId),
 %    writeln('|').
 
-%array_header_remainder(StateId, SchemaIdForPreviousColumn, HeaderUpToPreviousColumn, CompleteHeader) :-
-%    fmt_write('array_header_remainder ->  SchemaIdForPreviousColumn = %S  HeaderUpToPreviousColumn = %S \n',
-%        arg(SchemaIdForPreviousColumn, HeaderUpToPreviousColumn)),
-%    schema_of_previous_column(ColumnSchemaId, SchemaIdForPreviousColumn, StateId),
-%    column_schema(ColumnSchemaId, _, _, _, ColumnName, _, _),
-%    fmt_write('array_header_remainder ->  ColumnSchemaId = %S  ColumnName = %S \n',
-%        arg(ColumnSchemaId, ColumnName)),
-%    fmt_write_string(HeaderUpToCurrentColumn, "%s %s |", arg(HeaderUpToPreviousColumn, ColumnName)),
-%    array_header_remainder(StateId, ColumnSchemaId, HeaderUpToCurrentColumn, CompleteHeader)
-%    ;
-%    CompleteHeader = HeaderUpToPreviousColumn.
-
-%array_header(StateId, Header) :-
-%    fmt_write('array_header.StateId = %d\n', arg(StateId)),
-%    first_column(StateId, _, ColumnSchemaId),
-%    column_schema(ColumnSchemaId, _, _, _, ColumnName, _, _),
-%    fmt_write_string(HeaderPrefix, "| %s |", arg(ColumnName)),
-%    array_header_remainder(StateId, ColumnSchemaId, HeaderPrefix, Header).
-
 array_header_remainder(StateId, ColumnId, HeaderStartingFromNextColumn, CompleteHeader) :-
 %    fmt_write('array_header_remainder ->  ColumnId=%S  HeaderStartingFromNextColumn=%S \n',
 %        arg(ColumnId, HeaderStartingFromNextColumn)),
@@ -47,9 +28,8 @@ array_header_remainder(StateId, ColumnId, HeaderStartingFromNextColumn, Complete
 
 array_header(StateId, Header) :-
 %    fmt_write('array_header -> StateId=%S\n', arg(StateId)),
-    last_column(StateId, ColumnId, ColumnSchemaId),
-%    fmt_write('array_header -> ColumnId=%S\n', arg(ColumnId)),
+    last_column(StateId, _, ColumnSchemaId),
     column_schema(ColumnSchemaId, _, _, _, ColumnName, PrevColumnId, _),
-%    fmt_write('array_header -> ColumnId=%S ColumnSchemaId=%S ColumnName=%S\n',arg(ColumnId, ColumnSchemaId, ColumnName)),
+%    fmt_write('array_header -> ColumnSchemaId=%S ColumnName=%S\n',arg(ColumnSchemaId, ColumnName)),
     fmt_write_string(HeaderForLastColumn, "| %s |", arg(ColumnName)),
     array_header_remainder(StateId, PrevColumnId, HeaderForLastColumn, Header).

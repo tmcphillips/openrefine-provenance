@@ -16,6 +16,13 @@ banner(Name, Description, Signature) :-
     write(Signature), eol,
     write('...................................................................................................'), eol.
 
+demo_banner(Name, Description) :-
+    eol,
+    write('---------------------------------------------------------------------------------------------------'), eol,
+    write(Name),
+    write(' : '),
+    write(Description), eol, eol.
+
 rule_banner(Description) :-
     eol,
     eol,
