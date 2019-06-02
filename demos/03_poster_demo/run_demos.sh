@@ -64,6 +64,26 @@ end_of_file.
 d2().
 %-------------------------------------------------------------------------------
 
+%-------------------------------------------------------------------------------
+demo_banner( 'Demo 3', 'What cells were assigned new values during the same step?').
+[user].
+
+cell_changed_at_state(Cell, State, ValueText1, ValueText2) :-
+    content(_, Cell, State, Value2, PrevContentId),
+    content(PrevContentId, _, _, Value1, _),
+    value(Value1, ValueText1),
+    value(Value2, ValueText2).
+
+d3() :-
+    cell_changed_at_state(Cell, State, ValueText1, ValueText2),
+    fmt_write('Cell %S was updated from "%S" to "%S" at step %S.\n', arg(Cell, ValueText1, ValueText2, State)),
+    fail
+    ;
+    true.
+
+end_of_file.
+d3().
+%-------------------------------------------------------------------------------
 
 
 END_XSB_STDIN

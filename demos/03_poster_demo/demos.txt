@@ -8,3 +8,10 @@ The column originally named "Book Title" was ultimately named "Title".
 Demo 2 : What columns in the final dataset contain cells with updated values?
 
 The column named "Author" in the final data set contains cells with updated values.
+
+---------------------------------------------------------------------------------------------------
+Demo 3 : What cells were assigned new values during the same step?
+
+Cell cell_4 was updated from "Paul Feyerabend" to "Feyerabend, P." at step 3.
+Cell cell_5 was updated from "H.M. Collins" to "Collins, H.M." at step 3.
+Cell cell_6 was updated from "P. Kyle Stanford" to "Stanford, P.K." at step 3.
