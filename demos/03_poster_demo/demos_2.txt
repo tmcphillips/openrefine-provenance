@@ -8,6 +8,7 @@ The column originally named "Book Title" was ultimately named "Main Title".
 ---------------------------------------------------------------------------------------------------
 Demo 2 : What columns in the final dataset contain cells with updated values?
 
+The column named "Published" in the final data set contains cells with updated values.
 The column named "Author" in the final data set contains cells with updated values.
 
 ---------------------------------------------------------------------------------------------------

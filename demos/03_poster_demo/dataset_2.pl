@@ -84,3 +84,8 @@ column_schema(col_schema_7, col_1, 6, 'string', 'Main Title', nil, col_schema_4)
 %%%% Rename column 3 from Date to Published %%%%%
 state(7, array_1, 6).
 column_schema(col_schema_8, col_3, 7, 'string', 'Published', nil, col_schema_5).
+
+%%%% Change publication date of Exceeding Our Grasp to 2005 %%%%%
+state(8, array_1, 7).
+value(val_13, '2005').
+content(content_13, cell_9, 8, val_13, content_9).
