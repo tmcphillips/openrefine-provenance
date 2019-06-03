@@ -2,7 +2,7 @@
 ---------------------------------------------------------------------------------------------------
 Demo 1 : What columns in the original dataset were renamed?
 
-The column originally named "Book Title" was ultimately named "Title".
+The column originally named "Book Title" was ultimately named "Main Title".
 
 ---------------------------------------------------------------------------------------------------
 Demo 2 : What columns in the final dataset contain cells with updated values?

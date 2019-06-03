@@ -76,3 +76,7 @@ row_position(row_pos_6, row_3, 4, row_1, row_pos_3).
 state(5, array_1, 4).
 column_schema(col_schema_5, col_3, 5, 'string', 'Date',   col_1, col_schema_3).
 column_schema(col_schema_6, col_2, 5, 'string', 'Author', col_3, col_schema_2).
+
+%%%% Rename column 1 from Book Title to Title %%%%%
+state(6, array_1, 5).
+column_schema(col_schema_7, col_1, 6, 'string', 'Main Title', nil, col_schema_4).
