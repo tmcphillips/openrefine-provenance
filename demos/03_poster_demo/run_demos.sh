@@ -140,10 +140,10 @@ d4(Dataset) :-
     count(column_with_changed_type_or_name(Array, _), NumColumnsWithChangedSchemas),
     count(column_with_updated_cell(Array, _), NumColumnsWithUpdatedCells),
     count(column_with_updated_schema_or_cell(Array, _), NumColumnsWithUpdatedSchemaOrCells),
-    fmt_write('There are %S columns total.\n', arg(NumColumns)),
+    PercentageColumnsChanged is NumColumnsWithUpdatedSchemaOrCells / NumColumns * 100,
     fmt_write('A total of %S columns had their schemas updated.\n', arg(NumColumnsWithChangedSchemas)),
     fmt_write('A total of %S columns contain cells with updated values.\n', arg(NumColumnsWithUpdatedCells)),
-    fmt_write('A total of %S columns contain cells with updated schemas or values.\n', arg(NumColumnsWithUpdatedSchemaOrCells)),
+    fmt_write('A total of %S columns (%.2f percent) contain cells with updated schemas or values.\n', arg(NumColumnsWithUpdatedSchemaOrCells, PercentageColumnsChanged)),
     fail
     ;
     true.

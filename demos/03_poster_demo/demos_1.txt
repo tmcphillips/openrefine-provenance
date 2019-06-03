@@ -21,8 +21,7 @@ Cell in column 2 of row 3 was updated from "P. Kyle Stanford" to "Stanford, P.K.
 ---------------------------------------------------------------------------------------------------
 Demo 4 : What fraction of columns had their schemas changed or contain values with updated cells?
 
-There are 3 columns total.
 A total of 1 columns had their schemas updated.
 A total of 1 columns contain cells with updated values.
-A total of 2 columns contain cells with updated schemas or values.
+A total of 2 columns (66.67 percent) contain cells with updated schemas or values.
 
