@@ -77,6 +77,10 @@ state(5, array_1, 4).
 column_schema(col_schema_5, col_3, 5, 'string', 'Date',   col_1, col_schema_3).
 column_schema(col_schema_6, col_2, 5, 'string', 'Author', col_3, col_schema_2).
 
-%%%% Rename column 1 from Book Title to Title %%%%%
+%%%% Rename column 1 from Title to Main Title %%%%%
 state(6, array_1, 5).
 column_schema(col_schema_7, col_1, 6, 'string', 'Main Title', nil, col_schema_4).
+
+%%%% Rename column 3 from Date to Published %%%%%
+state(7, array_1, 6).
+column_schema(col_schema_8, col_3, 7, 'string', 'Published', nil, col_schema_5).

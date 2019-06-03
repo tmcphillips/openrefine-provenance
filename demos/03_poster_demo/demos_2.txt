@@ -2,6 +2,7 @@
 ---------------------------------------------------------------------------------------------------
 Demo 1 : What columns in the original dataset were renamed?
 
+The column originally named "Date" was ultimately named "Published".
 The column originally named "Book Title" was ultimately named "Main Title".
 
 ---------------------------------------------------------------------------------------------------
