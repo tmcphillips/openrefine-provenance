@@ -15,3 +15,9 @@ Project planning is done using [issues](https://github.com/tmcphillips/openrefin
 
 Miscellaneous updates and thoughts about the project are posted on twitter by [@tmcphillips](https://twitter.com/tmcphillips).
 
+## Poster presentation at TaPP 2019
+We presented an early report of our progress at [TaPP 2019](https://www.usenix.org/conference/tapp2019/workshop-program) (*11th International Workshop on Theory and Practice of Provenance*), on June 3, 2019.
+
+The [poster](https://github.com/tmcphillips/openrefine-provenance/blob/master/tapp2019/poster/tapp2019-poster.pdf), and accompanying [one-page paper](https://github.com/tmcphillips/openrefine-provenance/blob/master/tapp2019/paper/poster-paper-final-15may2019.pdf) (with LaTeX sources) are included in the [tapp2019](https://github.com/tmcphillips/openrefine-provenance/tree/master/tapp2019) directory.
+
+A working demonstration corresponding the examples on the poster are in [demos/03_poster_demo](https://github.com/tmcphillips/openrefine-provenance/tree/master/demos/03_poster_demo).
