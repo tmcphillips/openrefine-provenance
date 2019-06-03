@@ -68,11 +68,8 @@ d2(${DATASET_ID}).
 %-------------------------------------------------------------------------------
 
 %-------------------------------------------------------------------------------
-
 demo_banner( 'Demo 3', 'What cells were assigned new values during the same step?').
-
 [user].
-
 
 cell_with_update_at_state(Cell, State) :-
     content(_, Cell, State, _, PrevContentId),
@@ -111,6 +108,50 @@ d3(Dataset) :-
 end_of_file.
 d3(${DATASET_ID}).
 %-------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------
+demo_banner( 'Demo 4', 'What fraction of columns had their schemas changed or contain values with updated cells?').
+[user].
+
+:- table column_with_changed_type_or_name/2.
+column_with_changed_type_or_name(Array, Column) :-
+    column(Column, Array),
+    column_schema(_, Column, _, Type, Name, _, PrevColSchema),
+    column_schema(PrevColSchema, _, _, PrevType, PrevName, _, _),
+    (Type \== PrevType ; Name \== PrevName).
+
+:- table column_with_updated_cell/2.
+column_with_updated_cell(Array, Column) :-
+    column(Column, Array),
+    content(_, Cell, _, _, PrevContent),
+    PrevContent \== nil,
+    cell(Cell, Column, _).
+
+:- table column_with_updated_schema_or_cell/2.
+column_with_updated_schema_or_cell(Array, Column) :-
+    column_with_changed_type_or_name(Array, Column)
+    ;
+    column_with_updated_cell(Array, Column).
+
+d4(Dataset) :-
+    import_state(_, Dataset, Array, _),
+    count(column(_, Array), NumColumns),
+    count(column_with_changed_type_or_name(Array, _), NumColumnsWithChangedSchemas),
+    count(column_with_updated_cell(Array, _), NumColumnsWithUpdatedCells),
+    count(column_with_updated_schema_or_cell(Array, _), NumColumnsWithUpdatedSchemaOrCells),
+    fmt_write('There are %S columns total.\n', arg(NumColumns)),
+    fmt_write('A total of %S columns had their schemas updated.\n', arg(NumColumnsWithChangedSchemas)),
+    fmt_write('A total of %S columns contain cells with updated values.\n', arg(NumColumnsWithUpdatedCells)),
+    fmt_write('A total of %S columns contain cells with updated schemas or values.\n', arg(NumColumnsWithUpdatedSchemaOrCells)),
+    fail
+    ;
+    true.
+
+end_of_file.
+d4(${DATASET_ID}).
+%-------------------------------------------------------------------------------
+
 
 nl.
 

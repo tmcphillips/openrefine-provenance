@@ -20,3 +20,11 @@ Cell in column 2 of row 1 was updated from "Paul Feyerabend" to "Feyerabend, P."
 Cell in column 2 of row 2 was updated from "H.M. Collins" to "Collins, H.M."
 Cell in column 2 of row 3 was updated from "P. Kyle Stanford" to "Stanford, P.K."
 
+---------------------------------------------------------------------------------------------------
+Demo 4 : What fraction of columns had their schemas changed or contain values with updated cells?
+
+There are 3 columns total.
+A total of 2 columns had their schemas updated.
+A total of 2 columns contain cells with updated values.
+A total of 3 columns contain cells with updated schemas or values.
+
