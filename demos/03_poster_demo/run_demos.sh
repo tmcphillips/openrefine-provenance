@@ -11,7 +11,7 @@ xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 ['$RULES_DIR/general_rules'].
 ['$RULES_DIR/query_rules'].
 ['$RULES_DIR/report_rules'].
-['dataset_1'].
+['${DATASET_ID}'].
 
 %set_prolog_flag(unknown, fail).
 
