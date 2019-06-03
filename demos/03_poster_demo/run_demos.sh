@@ -28,7 +28,7 @@ column_rename(State1, Name1, State2, Name2) :-
     Name2 \== Name1.
 
 d1() :-
-    import_state(_, _, Array, ImportState),
+    import_state(_, dataset_1, Array, ImportState),
     final_array_state(Array, FinalState),
     column_rename(ImportState, OriginalName, FinalState, FinalName),
     fmt_write('The column originally named "%S\" was ultimately named "%S".\n', fmt(OriginalName, FinalName)),
@@ -52,8 +52,9 @@ column_with_updated_cell_value(Column) :-
     cell(Cell, Column, _).
 
 d2() :-
+    import_state(_, dataset_1, Array, _),
+    final_array_state(Array, FinalState),
     column_with_updated_cell_value(Column),
-    final_array_state(_, FinalState),
     column_name(Column, FinalState, ColumnName),
     fmt_write('The column named "%S\" in the final data set contains cells with updated values.\n', fmt(ColumnName)),
     fail
@@ -94,6 +95,8 @@ cell_indices(Cell, State, ColIndex, RowIndex) :-
     row_index(RowId, State, RowIndex).
 
 d3() :-
+    import_state(_, dataset_1, Array, _),
+    state(State, Array, _),
     state_with_multiple_cell_updates(State),
     fmt_write('Multiple cells were assigned new values at step %S:\n\n', arg(State)),
     cell_change_at_state(Cell, State, ValueText1, ValueText2),
