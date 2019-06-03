@@ -8,7 +8,7 @@ xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 
 ['$RULES_DIR/general_rules'].
 ['$RULES_DIR/query_rules'].
-['cleaning_history'].
+['dataset_1'].
 
 set_prolog_flag(unknown, fail).
 
@@ -36,7 +36,7 @@ banner( 'Q2',
 :- table q2/1.
 q2(ColumnName) :-
 
-    import_state('biblio.csv', _, _, ImportStateId),
+    import_state('biblio.csv', dataset_1, _, ImportStateId),
     column_name(_, ImportStateId, ColumnName).
 
 end_of_file.
@@ -52,9 +52,7 @@ banner( 'Q3',
 
 :- table q3/2.
 q3(ColumnName, NewColumnName) :-
-
-    import_state('biblio.csv', DatasetId, _, _),
-    column_rename(DatasetId, _, _, ColumnName, NewColumnName).
+    column_rename(dataset_1, _, _, ColumnName, NewColumnName).
 
 end_of_file.
 
@@ -70,8 +68,7 @@ banner( 'Q4',
 :- table q4/1.
 q4(StateCount) :-
 
-    import_state('biblio.csv', DatasetId, _, _),
-    array(ArrayId, DatasetId),
+    array(ArrayId, dataset_1),
     count(state(_, ArrayId, _), StateCount).
 
 end_of_file.
@@ -88,7 +85,7 @@ banner( 'Q5',
 :- table q5/1.
 q5(ColumnName) :-
 
-    import_state('biblio.csv', _, ArrayId, _),
+    import_state(_, dataset_1, ArrayId, _),
     final_array_state(ArrayId, StateId),
     column_name(_, StateId, ColumnName).
 

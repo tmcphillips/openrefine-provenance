@@ -9,7 +9,7 @@ xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 ['$RULES_DIR/general_rules'].
 ['$RULES_DIR/query_rules'].
 ['$RULES_DIR/report_rules'].
-['cleaning_history'].
+['dataset_1'].
 
 %set_prolog_flag(unknown, fail).
 
@@ -20,7 +20,7 @@ banner( 'Report 1',
 [user].
 r1() :-
 
-    import_state('biblio.csv', _, _, ImportStateId),
+    import_state(_, dataset_1, _, ImportStateId),
     array_header(ImportStateId, Header),
     writeln(Header).
 
@@ -35,7 +35,7 @@ banner( 'Report 2',
 [user].
 r2() :-
 
-    import_state('biblio.csv', _, ArrayId, _),
+    import_state(_, dataset_1, ArrayId, _),
     final_array_state(ArrayId, FinalStateId),
     array_header(FinalStateId, Header),
     writeln(Header).
