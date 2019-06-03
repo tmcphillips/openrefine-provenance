@@ -4,6 +4,8 @@
 
 source ../settings.sh
 
+DATASET_ID=${1:-'dataset_1'}
+
 xsb --quietload --noprompt --nofeedback --nobanner << END_XSB_STDIN
 
 ['$RULES_DIR/general_rules'].
@@ -27,8 +29,8 @@ column_rename(State1, Name1, State2, Name2) :-
     State2 > State1,
     Name2 \== Name1.
 
-d1() :-
-    import_state(_, dataset_1, Array, ImportState),
+d1(Dataset) :-
+    import_state(_, Dataset, Array, ImportState),
     final_array_state(Array, FinalState),
     column_rename(ImportState, OriginalName, FinalState, FinalName),
     fmt_write('The column originally named "%S\" was ultimately named "%S".\n', fmt(OriginalName, FinalName)),
@@ -37,7 +39,7 @@ d1() :-
     true.
 
 end_of_file.
-d1().
+d1(${DATASET_ID}).
 %-------------------------------------------------------------------------------
 
 
@@ -51,8 +53,8 @@ column_with_updated_cell_value(Column) :-
     PrevContentId \== nil,
     cell(Cell, Column, _).
 
-d2() :-
-    import_state(_, dataset_1, Array, _),
+d2(Dataset) :-
+    import_state(_, Dataset, Array, _),
     final_array_state(Array, FinalState),
     column_with_updated_cell_value(Column),
     column_name(Column, FinalState, ColumnName),
@@ -62,7 +64,7 @@ d2() :-
     true.
 
 end_of_file.
-d2().
+d2(${DATASET_ID}).
 %-------------------------------------------------------------------------------
 
 %-------------------------------------------------------------------------------
@@ -94,8 +96,8 @@ cell_indices(Cell, State, ColIndex, RowIndex) :-
     column_index(ColId, State, ColIndex),
     row_index(RowId, State, RowIndex).
 
-d3() :-
-    import_state(_, dataset_1, Array, _),
+d3(Dataset) :-
+    import_state(_, Dataset, Array, _),
     state(State, Array, _),
     state_with_multiple_cell_updates(State),
     fmt_write('Multiple cells were assigned new values at step %S:\n\n', arg(State)),
@@ -107,7 +109,7 @@ d3() :-
     true.
 
 end_of_file.
-d3().
+d3(${DATASET_ID}).
 %-------------------------------------------------------------------------------
 
 nl.
