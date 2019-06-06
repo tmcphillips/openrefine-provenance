@@ -9,7 +9,7 @@ r1()
 
 
 ---------------------------------------------------------------------------------------------------
-Report 2 : Print the names of the columns in order at the initially imported state
+Report 2 : Print the names of the columns in order at the final state
 
 r2()
 ...................................................................................................
@@ -17,13 +17,9 @@ r2()
 
 
 ---------------------------------------------------------------------------------------------------
-Report 3 : Print the names of the columns in the order at any intermediate states
+Report 3 : Print the names of the columns in order at any intermediate states
 
 r3()
 ...................................................................................................
-| Author | Book Title | Date |
- |
- |
-| Author | Book Title | Date |
- |
- |
+At state 18: | Author | Book Title | Date | 
+At state 19: | Author | Book Title | Date | 

@@ -5,7 +5,7 @@
 % source(SourceId, SourceUri, SourceFormat).
 source(source_7, 'biblio.csv', 'text/csv').
 
-% dataset(DatasetId, SourceId, ImportId, ArrayId).
+% dataset(DatasetId, SourceId, ArrayId).
 dataset(dataset_3, source_7, array_9).
 
 % array(ArrayId, DatasetId).
@@ -67,17 +67,14 @@ row_position(row_pos_31, row_6, 17, nil).
 row_position(row_pos_32, row_7, 17, row_6).
 row_position(row_pos_33, row_8, 17, row_7).
 
-%%%% STATE AFTER THREE COLUMN RENAME OPERATIONS %%%%%
+%%%% STATE AFTER TWO COLUMN REORDER OPERATIONS %%%%%
 
-% state(StateId, ArrayId, PreviousStateId).
+
 state(18, array_9, 17).
-state(19, array_9, 18).
-state(20, array_9, 19).
-
-% column_schema(ColumnSchemaId, ColumnId, StateId, ColumnType, ColumnName, PreviousColumnId, PreviousColumnSchemaId).
 column_schema(col_schema_7, col_2, 18, 'string', 'Author',       nil, col_schema_5).
 column_schema(col_schema_8, col_1, 18, 'string', 'Book Title', col_2, col_schema_4).
 column_schema(col_schema_9, col_3, 18, 'string', 'Date',       col_1, col_schema_6).
-
+state(19, array_9, 18).
+state(20, array_9, 19).
 column_schema(col_schema_10, col_3, 20, 'string', 'Date',       col_2, col_schema_9).
 column_schema(col_schema_11, col_1, 20, 'string', 'Book Title', col_3, col_schema_8).

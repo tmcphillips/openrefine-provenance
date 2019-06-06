@@ -9,12 +9,14 @@
 #mode nostring "\""
 #define DEBUG_CONTEXT(name) CURRENT_CONTEXT=name
 #define DEBUG_VAR(varname) fmt_write("debug_var(%S, varname, '%S').\n", arg(CURRENT_CONTEXT, varname))
+#define DEBUG_LOG(message)  fmt_write("debug_log(%S, '%S').\n", arg(CURRENT_CONTEXT, message))
 #mode pop
 
 #else
 
 #define DEBUG_CONTEXT(name) true
 #define DEBUG_VAR(varname) true
+#define DEBUG_LOG(message) true
 
 #endif
 
@@ -34,12 +36,8 @@
 %    writeln('|').
 
 array_header_remainder(StateId, ColumnId, HeaderStartingFromNextColumn, CompleteHeader) :-
-    DEBUG_CONTEXT('array_header_remainder/4'),
-    DEBUG_VAR(ColumnId), DEBUG_VAR(HeaderStartingFromNextColumn),
     column_schema_at_state(ColumnSchemaId, ColumnId, StateId),
-    DEBUG_VAR(ColumnSchemaId),
     column_schema(ColumnSchemaId, _, _, _, ColumnName, PrevColumnId, _),
-    DEBUG_VAR(PrevColumnId),
     fmt_write_string(HeaderStartingFromCurrentColumn, "| %s %s", arg(ColumnName, HeaderStartingFromNextColumn)),
     array_header_remainder(StateId, PrevColumnId, HeaderStartingFromCurrentColumn, CompleteHeader)
     ;
@@ -52,4 +50,8 @@ array_header(StateId, Header) :-
     column_schema(ColumnSchemaId, _, _, _, ColumnName, PrevColumnId, _),
     DEBUG_VAR(ColumnSchemaId), DEBUG_VAR(ColumnName),
     fmt_write_string(HeaderForLastColumn, "| %s |", arg(ColumnName)),
-    array_header_remainder(StateId, PrevColumnId, HeaderForLastColumn, Header).
+    DEBUG_LOG('ABOUT TO CALL array_header_remainder/4 with...'),
+    DEBUG_VAR(StateId), DEBUG_VAR(PrevColumnId), DEBUG_VAR(HeaderForLastColumn),
+    once(array_header_remainder(StateId, PrevColumnId, HeaderForLastColumn, Header)),
+    DEBUG_LOG('ABOUT TO RETURN Header'),
+    DEBUG_VAR(Header).

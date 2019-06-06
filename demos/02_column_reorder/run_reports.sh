@@ -21,7 +21,8 @@ banner( 'Report 1',
 r1() :-
 
     import_state('biblio.csv', _, _, ImportStateId),
-    print_array_header(ImportStateId).
+    array_header(ImportStateId, Header),
+    writeln(Header).
 
 end_of_file.
 r1().
@@ -29,14 +30,15 @@ r1().
 
 %-------------------------------------------------------------------------------
 banner( 'Report 2',
-        'Print the names of the columns in order at the initially imported state',
+        'Print the names of the columns in order at the final state',
         'r2()').
 [user].
 r2() :-
 
     import_state('biblio.csv', _, ArrayId, _),
     final_array_state(ArrayId, FinalStateId),
-    print_array_header(FinalStateId).
+    array_header(FinalStateId, Header),
+    writeln(Header).
 
 end_of_file.
 r2().
@@ -44,10 +46,12 @@ r2().
 
 
 %-------------------------------------------------------------------------------
+
 banner( 'Report 3',
-        'Print the names of the columns in the order at any intermediate states',
+        'Print the names of the columns in order at any intermediate states',
         'r3()').
 [user].
+
 r3() :-
 
     import_state('biblio.csv', _, ArrayId, ImportStateId),
@@ -55,7 +59,8 @@ r3() :-
     state(StateId, ArrayId, _),
     StateId \== ImportStateId,
     StateId \== FinalStateId,
-    print_array_header(StateId),
+    array_header(StateId, Header),
+    fmt_write("At state %S: %S \n", arg(StateId, Header)),
     fail
     ;
     true.
