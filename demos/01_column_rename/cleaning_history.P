@@ -55,7 +55,7 @@ value(val_27, '1975').
 value(val_28, '1985').
 value(val_29, '2006').
 
-% column_schema(ColumnSchemaId, ColumnId, StateId, ColumnType, ColumnName, PreviousColumnId, PreviousColumnSchemaId).
+% column_schema(ColumnSchemaId, ColumnId, StateId, ColumnType, ColumnName, PrevColumnId, PreviousColumnSchemaId).
 column_schema(col_schema_4, col_1, 17, 'string', 'Book Title', nil, nil).
 column_schema(col_schema_5, col_2, 17, 'string', 'Author', col_1, nil).
 column_schema(col_schema_6, col_3, 17, 'string', 'Date', col_2, nil).

@@ -1,3 +1,25 @@
+
+:- compiler_options([xpp_on]).
+# mode standard cpp
+
+%#define DEBUG
+
+#ifdef DEBUG
+
+#mode push
+#mode nostring "\""
+#define DEBUG_CONTEXT(name) CURRENT_CONTEXT=name
+#define DEBUG_VAR(varname) fmt_write("debug_var(%S, varname, '%S').\n", arg(CURRENT_CONTEXT, varname))
+#mode pop
+
+#else
+
+#define DEBUG_CONTEXT(name) true
+#define DEBUG_VAR(varname) true
+
+#endif
+
+
 % These rules should be compatible with both Datalog and standard Prolog.
 
 :- table import_state/4.
@@ -16,10 +38,15 @@ column_rename(DatasetId, ArrayId, StateId, ColumnName, NewColumnName) :-
 
 %:- table last_column/3.
 last_column(StateId, ColumnId, ColumnSchemaId) :-
+    DEBUG_CONTEXT(last_column),
     column_schema_at_state(ColumnSchemaId, ColumnId, StateId),
-%    fmt_write('last_column -> ColumnId=%S ColumnSchemaId=%S\n', arg(ColumnId, ColumnSchemaId)),
-    column_schema_at_state(SchemaIdOfNextColumn, _, StateId),
-    not column_schema(SchemaIdOfNextColumn, _, _, _, _, ColumnId, _).
+    DEBUG_VAR(ColumnId),
+    DEBUG_VAR(ColumnSchemaId),
+    not (
+        column_schema_at_state(SchemaIdOfNextColumn, _, StateId),
+        DEBUG_VAR(SchemaIdOfNextColumn),
+        column_schema(SchemaIdOfNextColumn, _, _, _, _, ColumnId, _)
+    ).
 
 :- table first_column/3.
 first_column(StateId, ColumnId, ColumnSchemaId) :-

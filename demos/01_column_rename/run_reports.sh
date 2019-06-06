@@ -21,7 +21,8 @@ banner( 'Report 1',
 r1() :-
 
     import_state('biblio.csv', _, _, ImportStateId),
-    print_array_header(ImportStateId).
+    array_header(ImportStateId, Header),
+    writeln(Header).
 
 end_of_file.
 r1().
@@ -36,7 +37,8 @@ r2() :-
 
     import_state('biblio.csv', _, ArrayId, _),
     final_array_state(ArrayId, FinalStateId),
-    print_array_header(FinalStateId).
+    array_header(FinalStateId, Header),
+    writeln(Header).
 
 end_of_file.
 r2().
@@ -44,18 +46,18 @@ r2().
 
 
 %-------------------------------------------------------------------------------
-banner( 'Report 3',
-        'Print the values in the first row at the initially imported state',
-        'r3()').
-[user].
-r3() :-
-
-    import_state('biblio.csv', _, _, ImportStateId),
-    row_position(_, RowId, ImportStateId, _),
-    print_row(RowId, ImportStateId).
-
-end_of_file.
-r3().
+%banner( 'Report 3',
+%        'Print the values in the first row at the initially imported state',
+%        'r3()').
+%[user].
+%r3() :-
+%
+%    import_state('biblio.csv', _, _, ImportStateId),
+%    row_position(_, RowId, ImportStateId, _),
+%    print_row(RowId, ImportStateId).
+%
+%end_of_file.
+%r3().
 %-------------------------------------------------------------------------------
 
 
