@@ -2,7 +2,7 @@
 
 source ../settings.sh
 
-testfilepattern=${1:-'test*.P'}
+testfilepattern=${1:-'test*.pl'}
 testfiles=($testfilepattern)
 
 for testfile in "${testfiles[@]}" ; do
@@ -10,10 +10,10 @@ for testfile in "${testfiles[@]}" ; do
     echo "Running tests in $testfile..."
     echo
 
-    test_file_base=${testfile%.P}
+    test_file_base=${testfile%.pl}
 
     test_name_pattern='^[[:space:]]*test[_a-zA-Z0-9]*()'
-    readarray test_names_array < <(grep $test_name_pattern ${test_file_base}.P | cut -d "(" -f1 )
+    readarray test_names_array < <(grep $test_name_pattern ${test_file_base}.pl | cut -d "(" -f1 )
 
     test_names="[ "
     delimiter=""

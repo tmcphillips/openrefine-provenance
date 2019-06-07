@@ -8,14 +8,16 @@
 
 #mode push
 #mode nostring "\""
-#define DEBUG_CONTEXT(name) CURRENT_CONTEXT=name
+#define DEBUG_CONTEXT(name) CURRENT_CONTEXT=name, fmt_write("\ndebug_context(%S)\n", arg(CURRENT_CONTEXT))
 #define DEBUG_VAR(varname) fmt_write("debug_var(%S, varname, '%S').\n", arg(CURRENT_CONTEXT, varname))
+#define DEBUG_LOG(message)  fmt_write("debug_log(%S, '%S').\n", arg(CURRENT_CONTEXT, message))
 #mode pop
 
 #else
 
 #define DEBUG_CONTEXT(name) true
 #define DEBUG_VAR(varname) true
+#define DEBUG_LOG(message) true
 
 #endif
 
@@ -50,7 +52,9 @@ last_column(StateId, ColumnId, ColumnSchemaId) :-
 
 :- table first_column/3.
 first_column(StateId, ColumnId, ColumnSchemaId) :-
+    DEBUG_CONTEXT('first_column/3'),
     column_schema_at_state(ColumnSchemaId, ColumnId, StateId),
+    DEBUG_VAR(ColumnId), DEBUG_VAR(ColumnSchemaId),
     column_schema(ColumnSchemaId, ColumnId, _, _, _, nil, _).
 
 :- table first_row/3.
@@ -110,12 +114,17 @@ schema_of_previous_column(ColumnSchemaId, SchemaIdForPreviousColumn, StateId) :-
 
 % RULE : column_index/3
 column_index(ColumnId, StateId, ColumnIndex) :-
+    DEBUG_CONTEXT('column_index/3 - BRANCH 1'),
+    DEBUG_VAR(ColumnId), DEBUG_VAR(StateId),
     first_column(StateId, ColumnId, _),
     ColumnIndex = 1.
 
 column_index(ColumnId, StateId, ColumnIndex) :-
-    column_schema_at_state(ColumnSchemaId, ColumnId, StateId),
-    column_schema(ColumnSchemaId, _, _, _, _, PreviousColumnId, _),
+    DEBUG_CONTEXT('column_index/3 - BRANCH 2'),
+    DEBUG_VAR(ColumnId), DEBUG_VAR(StateId),
+    column_schema_at_state(ColSchemaId, ColumnId, StateId),
+    DEBUG_VAR(ColSchemaId),
+    column_schema(ColSchemaId, _, _, _, _, PreviousColumnId, _),
     column_index(PreviousColumnId, StateId, PreviousColumnIndex),
     ColumnIndex is PreviousColumnIndex + 1.
 
