@@ -126,29 +126,3 @@ test__schema_of_previous_column__second_state_middle_column() :-
 test__schema_of_previous_column__second_state_right_column() :-
     schema_of_previous_column(col_schema_15, SchemaIdForPreviousColumn, 0),
     SchemaIdForPreviousColumn == col_schema_14.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% test array_header/2
-
-test__array_header__before_first_state() :-
-    not array_header(5, _).
-
-test__array_header__first_state() :-
-    array_header(6, Header),
-    Header == '| left column at state 6 | middle column at state 6 | right column at state 6 |'.
-
-test__array_header__second_state() :-
-    array_header(7, Header),
-    Header == '| left column at state 6 | middle column at state 7 | right column at state 7 |'.
-
-test__array_header__between_second_and_third_state() :-
-    array_header(8, Header),
-    Header == '| left column at state 6 | middle column at state 7 | right column at state 7 |'.
-
-test__array_header__at_third_state() :-
-    array_header(9, Header),
-    Header == '| left column at state 9 | middle column at state 9 | right column at state 9 |'.
-
-test__array_header__after_third_state() :-
-    array_header(10, Header),
-    Header == '| left column at state 9 | middle column at state 9 | right column at state 9 |'.

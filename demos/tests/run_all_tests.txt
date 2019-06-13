@@ -1,3 +1,12 @@
+Running tests in test_array_header.pl...
+
+test_array_header|test__array_header__before_first_state                                           | ok
+test_array_header|test__array_header__first_state                                                  | ok
+test_array_header|test__array_header__second_state                                                 | ok
+test_array_header|test__array_header__between_second_and_third_state                               | ok
+test_array_header|test__array_header__at_third_state                                               | ok
+test_array_header|test__array_header__after_third_state                                            | ok
+
 Running tests in test_array_states.pl...
 
 test_array_states|test__final_array_state__only_state_is_final_state                               | ok
@@ -49,12 +58,6 @@ test_column_order|test__schema_of_previous_column__second_state_right_column    
 test_column_order|test__schema_of_previous_column__second_state_left_column                        | ok
 test_column_order|test__schema_of_previous_column__second_state_middle_column                      | ok
 test_column_order|test__schema_of_previous_column__second_state_right_column                       | ok
-test_column_order|test__array_header__before_first_state                                           | ok
-test_column_order|test__array_header__first_state                                                  | ok
-test_column_order|test__array_header__second_state                                                 | ok
-test_column_order|test__array_header__between_second_and_third_state                               | ok
-test_column_order|test__array_header__at_third_state                                               | ok
-test_column_order|test__array_header__after_third_state                                            | ok
 
 Running tests in test_column_schema_at_state.pl...
 
