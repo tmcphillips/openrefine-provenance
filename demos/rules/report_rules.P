@@ -33,8 +33,7 @@
 %print_row(RowId, StateId) :-
 %    first_column(StateId, FirstColumnId, _),
 %    print_remainder_of_row(RowId, StateId, FirstColumnId),
-%    writeln('|').
-
+%    writeln('|').s
 
 prepend_remaining_array_header(_StateId, ColumnId, Header, Header) :-
     ColumnId == nil.
