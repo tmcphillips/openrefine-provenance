@@ -2,7 +2,7 @@
 
 ### Background
 - Considering submitting a paper to [Research Objects 2019](https://researchobject.github.io/ro2019/) workshop.
-- 
+
 - Would like to use this as an opportunity to:
 	
 	- Make the case for *transparency* being the ultimate goal of provenance and reproducibility.
