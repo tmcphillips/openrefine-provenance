@@ -37,18 +37,36 @@
 
 prepend_remaining_array_header(_StateId, ColumnId, Header, Header) :-
     ColumnId == nil.
-
-prepend_remaining_array_header(StateId, ColumnId, HeaderStartingFromNextColumn, UpdatedHeader) :-
-    DEBUG_CONTEXT('prepend_remaining_array_header/4'),
-    DEBUG_VAR(StateId),
+prepend_remaining_array_header(StateId, ColumnId, HeaderStartingFromNextColumn, CompleteHeader) :-
     column_schema_at_state(ColumnSchemaId, ColumnId, StateId),
     column_schema(ColumnSchemaId, _, _, _, ColumnName, PrevColumnId, _),
     fmt_write_string(HeaderStartingFromCurrentColumn, "| %s %s", arg(ColumnName, HeaderStartingFromNextColumn)),
-    prepend_remaining_array_header(StateId, PrevColumnId, HeaderStartingFromCurrentColumn, UpdatedHeader).
+    prepend_remaining_array_header(StateId, PrevColumnId, HeaderStartingFromCurrentColumn, CompleteHeader).
 
 array_header(StateId, CompleteHeader) :-
-    DEBUG_CONTEXT('array_header/2'),
-    DEBUG_VAR(StateId),
     last_column(StateId, ColumnId, _),
-    prepend_remaining_array_header(StateId, ColumnId, '|', CompleteHeader),
-    DEBUG_VAR(CompleteHeader).
+    prepend_remaining_array_header(StateId, ColumnId, '|', CompleteHeader).
+
+prepend_remaining_array_row(_RowId, _StateId, ColumnId, Row, Row) :-
+    ColumnId == nil.
+prepend_remaining_array_row(RowId, StateId, ColumnId, RowStartingFromNextColumn, CompleteRow) :-
+    DEBUG_CONTEXT('prepend_remaining_array_row/5'),
+    DEBUG_VAR(ColumnId),
+    DEBUG_VAR(RowId),
+    cell(CellId, ColumnId, RowId),
+    DEBUG_VAR(CellId),
+    content(_, CellId, 1, ValueId, _),
+    value(ValueId, Value),
+    DEBUG_VAR(Value),
+    fmt_write_string(RowStartingFromCurrentColumn, "| %s %s", arg(Value, RowStartingFromNextColumn)),
+    DEBUG_VAR(RowStartingFromCurrentColumn),
+    column_schema_at_state(ColumnSchemaId, ColumnId, StateId),
+    column_schema(ColumnSchemaId, _, _, _, _, PrevColumnId, _),
+    DEBUG_VAR(PrevColumnId),
+    prepend_remaining_array_row(RowId, StateId, PrevColumnId, RowStartingFromCurrentColumn, CompleteRow).
+
+array_row(RowId, StateId, CompleteRow) :-
+    DEBUG_CONTEXT('array_row/3'),
+    last_column(StateId, ColumnId, _),
+    prepend_remaining_array_row(RowId, StateId, ColumnId, '|', CompleteRow),
+    DEBUG_VAR(CompleteRow).
