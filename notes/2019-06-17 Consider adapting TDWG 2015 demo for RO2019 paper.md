@@ -225,4 +225,10 @@
     MCZ:Mala:249963,,"(Gmelin, 1791)",magellanicus,Placopecten,Pectinidae,Pectinoida,Bivalvia,Mollusca,Animalia,Mr. Francis N. Balch,1904-06-01/1904-06-30,4-Jun,"Prince Edward Islands, Pleasant River",,Canada,"North America, Canada"
     MCZ:Mala:74068,Pecten nodosus,"(Linnaeus, 1758)",nodosus,Nodipecten,Pectinidae,Pectinoida,Bivalvia,Mollusca,Animalia,[no agent data],,[date unknown],St. Thomas,,West Indies,West Indies
     ```
+### Opportunities for queries
 
+- Although how the data was cleaned is reasonably clear from looking at the input and output files, along with the  log messages, answering queries by eye is not practical for larger data sets.  Nor is sufficient information kept during cleaning to support many queries.
+
+- In principle the above data cleaning workflow should be doable in OpenRefine, at least manually.
+
+- Modeling the provenance of the cleaned data set should provide opportunities for advanced, science-oriented queries of the cleaning process.
