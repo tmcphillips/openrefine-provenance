@@ -1,4 +1,4 @@
-## 2019-06-18-b Clean dataset manually using OpenRefine
+## 2019-06-18-b Load dataset into OpenRefine
 
 ### Background
 
@@ -45,6 +45,21 @@
     05:19:58.415 [       database-extension] Database Functions Registered successfully... (8ms)
     05:19:58.434 [       DatabaseModuleImpl] *** Database Extension Module Initialization Completed!!*** (19ms)
     ```
-- Loaded the data file  `demo_input.csv` into a new OpenRefine project:
-  ![](https://lh3.googleusercontent.com/T-sYheCQa8L6c0FK7H220_TKV6RpKlLRMw2x86fbyXRlZitqio9Qk-v-GpaqWQREfOod9vTJXJfp)
+
+- Loaded the data file  `demo_input.csv` into a new OpenRefine project, accepting default parsing options.
+
+- After several minutes noted that the working directory contains:
+
+    ```console
+    tmcphill@circe-win10:~/GitRepos/openrefine-provenance/demos/04_paper_demo/openrefine$ tree
+    .
+    ├── 2333511138787.project
+    │   ├── data.zip
+    │   └── metadata.json
+    ├── dbextension
+    ├── workspace.json
+    └── workspace.old.json
+    
+    2 directories, 4 files 
+    ```
 
