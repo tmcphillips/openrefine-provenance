@@ -23,7 +23,7 @@ class WoRMSService(object):
         the taxon name.  If exactly one match is returned, this function retrieves the
         Aphia record for that ID and returns it.
         """
-        aphia_id = self._worms.getAphiaID(name);
+        aphia_id = self._worms.getAphiaID(name)
         if aphia_id is None or aphia_id == -999:         # -999 indicates multiple matches
             return None
         else:
@@ -36,7 +36,7 @@ class WoRMSService(object):
         The invoked Aphia names service returns a list of list matches.  This function
         returns a match only if exactly one match is returned by the AphiaNameService.
         """
-        matches = self._worms.matchAphiaRecordsByNames(name, marine_only);
+        matches = self._worms.matchAphiaRecordsByNames(name, marine_only)
         if len(matches) == 1 and len(matches[0]) == 1:
             return matches[0][0]
         else:
@@ -65,21 +65,21 @@ class WoRMSService(object):
                 return False, None
 
 if __name__ == '__main__':
-    """ Demonstration of class usage"""
+    # Demonstration of class usage
 
     # create an instance of WoRMSService
     ws = WoRMSService()
 
     # Use the exact taxon name lookup service
     matched_record = ws.aphia_record_by_exact_taxon_name('Mollusca')
-    print matched_record['scientificname']
+    print(matched_record['scientificname'])
 
     # Use the fuzzy taxon name lookup service
     matched_record = ws.aphia_record_by_fuzzy_taxon_name('Architectonica reevi')
-    print matched_record['scientificname']
+    print(matched_record['scientificname'])
 
     # use the automatic failover from exact to fuzzy name lookup
     was_exact_match, matched_record = ws.aphia_record_by_taxon_name('Architectonica reevi')
-    print matched_record['scientificname']
-    print was_exact_match
+    print(matched_record['scientificname'])
+    print(was_exact_match)
 

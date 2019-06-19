@@ -44,7 +44,7 @@ def clean_data_using_worms(
     for original_record in input_data:
 
         record_num += 1
-        print
+        print()
         timestamp('Reading input record {0:03d}.'.format(record_num))
 
     # @END read_input_data_records
@@ -202,7 +202,7 @@ def clean_data_using_worms(
 
     # @END write_clean_data_set
 
-    print
+    print()
     timestamp("Wrote {0} accepted records to '{1}'.".format(accepted_record_count, cleaned_data_file_name))
     timestamp("Wrote {0} rejected records to '{1}'.".format(rejected_record_count, rejected_data_file_name))
 
@@ -211,8 +211,8 @@ def clean_data_using_worms(
 
 def timestamp(message):
     current_time = time.time()
-    timestamp = datetime.fromtimestamp(current_time).strftime('%Y-%m-%d %H:%M:%S')
-    print "{0}  {1}".format(timestamp, message)
+    current_timestamp = datetime.fromtimestamp(current_time).strftime('%Y-%m-%d %H:%M:%S')
+    print("{0}  {1}".format(current_timestamp, message))
 
 
 if __name__ == '__main__':
