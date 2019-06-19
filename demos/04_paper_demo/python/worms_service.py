@@ -1,4 +1,3 @@
-
 from suds.client import Client
 
 class WoRMSService(object):
@@ -68,18 +67,17 @@ if __name__ == '__main__':
     # Demonstration of class usage
 
     # create an instance of WoRMSService
-    ws = WoRMSService()
+    worms = WoRMSService()
 
     # Use the exact taxon name lookup service
-    matched_record = ws.aphia_record_by_exact_taxon_name('Mollusca')
-    print(matched_record['scientificname'])
+    record = worms.aphia_record_by_exact_taxon_name('Mollusca')
+    print(record['scientificname'])
 
     # Use the fuzzy taxon name lookup service
-    matched_record = ws.aphia_record_by_fuzzy_taxon_name('Architectonica reevi')
-    print(matched_record['scientificname'])
+    record = worms.aphia_record_by_fuzzy_taxon_name('Architectonica reevi')
+    print(record['scientificname'])
 
     # use the automatic failover from exact to fuzzy name lookup
-    was_exact_match, matched_record = ws.aphia_record_by_taxon_name('Architectonica reevi')
-    print(matched_record['scientificname'])
+    was_exact_match, record = worms.aphia_record_by_taxon_name('Architectonica reevi')
+    print(record['scientificname'])
     print(was_exact_match)
-
