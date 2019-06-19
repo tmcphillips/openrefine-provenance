@@ -25,13 +25,13 @@
 
 - Added a requirements.txt file specifying the single dependency:
 
-    ```bash
+    ```console
     $ cat requirements.txt
     suds-jurko==0.6
     ```
 - Created a virtual environment for running the data cleaning script with Python 3:
 
-    ```bash
+    ```console
     $ python3 -m venv .venv_04_paper_demo
     
     $ . .venv_04_paper_demo/bin/activate
@@ -59,7 +59,7 @@
 
 - Successfully ran data cleaning script using Python3:
 
-    ```bash
+    ```console
     (.venv_04_paper_demo) $ which python3
     /mnt/c/Users/tmcphill/GitRepos/openrefine-provenance/demos/04_paper_demo/python/.venv_04_paper_demo/bin/python3
 
