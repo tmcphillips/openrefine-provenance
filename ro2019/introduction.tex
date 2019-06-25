@@ -35,19 +35,19 @@ Challenges of reproducibility
 			Do not be surprised if computational sciences not representative of science generally.
 		Specific implications for Research Objects
 			Take care to define R* words.
-			Do not expect efforts to achieve computational reproducibility to enable reproduce science generally.
+			Do not expect efforts to achieve computational repeatability to enable reproducible science generally.
 
-		Challenges of computational reproducibility
+		Challenges of computational replicability
 			The fundamental limitations of computers are well understood.
 				Finite precision arithmetic, different word sizes on different processors, round-off errors impose limits on scientific computations and 
-					their repeatability across different computing environments.
+					their replicability across different computing environments.
 				Virtual machines and containers do not address these issues. Full emulation is required to run the same binary in identical fashion
-					on a different processor, and this is typically slow.
+					on a different processor.  This is typically slow.
 				These limitations are even more challenging to manage reproducibly because programs typically are compiled, meaning that the
 					exact sequence of machine instructions executed even by a single processor cannot generally be controlled.  A different compiler,
 					or a newer version of the same compiler will yield a different sequence of machine instructions.
-				Yet this is the easiest kind of computational reproducibility to talk about and achieve.
-			Reproducing the software running the program is particularly challenging in practice.
+				Yet this is the easiest kind of computational replicability to talk about and achieve.
+			Replicating the software running the program is particularly challenging in practice.
 				How can we ensure that the same 'bitstream' for two executions is identical?
 				Even holding the computer hardware and compiler version constant, programs depend on language libraries, OS libraries, and system calls.
 				Much scientific software also depends directly and (and even more) indirectly on large numbers of 3rd-party libraries.
@@ -55,3 +55,14 @@ Challenges of reproducibility
 				of the exact same executable.
 				Recompiling or even just rerunning the "same" program a week later can result in a completely different effective instruction stream.
 				
+		Challenges reproducing computing environments
+			Limitations of containers...
+			The problem of time.
+
+	What is reproducibility really for?
+	
+		Achieving meaningful replicability even for the computational parts of research is very challenging.
+		But this is no reason to give up hope.  
+		Replicability is a means to an end--justification of scientific results--and Research Objects can help us achieve that end by other means.
+		What is most exciting about Research Objects is that they can achieve this end despite the difficulty of computational replicability.
+		And the primary means by which Research Objects can due this is by providing transparency.
