@@ -1,41 +1,59 @@
 \section{Introduction}
 
 	The foundation of modern science  is the expectation that the observations, experiments, and
-		predictions that comprise scientific research be independently verifiable by others.
+		tests of predictions that comprise scientific research be independently verifiable by others.
 	This requirement often is referred to as reproducibility (or replicability).
 	Digital computing approaches make it possible to repeat exactly certain computational aspects of research
 		to an extent that exceeds what can be achieved when observing or experimenting with natural 
 		phenomena in the physical world.  
 	It generally is expected that computational processes, the implementation of hardware and software 
-		enabling those processes, and the outputs of those processes all can be repeated exactly.
+		enabling those processes, and the outputs of those processes all can be repeated exactly--at least in principle.
 	Where computing makes up a significant fraction of scientific research, the terms reproducibility and
-		replicability often are associated with this rather different expectation. 
-	Moreover, while this expectation may be realizable in principle, in practice the complexities of real-world
-		hardware and software make this kind of reproducibility very challenging to achieve except in very limited cases.
+		replicability have come to associated with this rather different (radically different actually) expectation of 
+		exact repeatability. 
+	Moreover, while this expectation of exact repeatability may be realizable in principle, in practice the complexities of real-world
+		hardware and software make  computational repeatedability very challenging to achieve in practice except in very limited cases.
 	Currently much effort is going into expanding the fraction of scenarios in which the computational
-		components of research can be repeated exactly over ranges of time and space relevant to scientific 
+		components of research can be automatically repeated exactly over ranges of time and space relevant to scientific 
 		research and discourse.
-	These efforsts are important for the research community to pursue, and for science funding
+	These efforts are important for the research community to pursue, and for science funding
 		agencies to support, especially because the computing industry generally does not have 
 		requirements for exact repeatability across signficant spans of time.
 	However, it also is crucial to note that the concept of exact repeatability of the kind pursued by these efforts is 
 		qualitatively different from the concept of reproducibility (or replicability), that underlies the natural sciences.
-	It is even more important to realize that scientific reproducibility generally is not simply a weaker form of computational
+	It is even more important to realize that scientific reproducibility is not simply a weaker form of computational
 		replicability.  
-	The relationship between replicability and reproducibility as defined here is not one of degree.
+	The relationship between repeatability and reproducibility as defined here is not one of degree.
 	In particular, achieving computational replicability does not automatically deliver scientific reproducibility.
 	This is both bad and good news.
-	The bad news is that it is possible to put much effort into achieving computational replicability without delivering
+	The bad news is that it is possible to put much effort into achieving computational repeatability without delivering
 		the kind of reproducibility that is critical for producing trustworthy science.
 	The good news is that scientifically-meaningful reproducibility can be realized in cases (or over spans of time)
-		where computational replicability is either impossible or impractical given existing technology.
+		where computational repeatability is either impossible or impractical given readily available technology.
 	Reseachers in the natural sciences are comfortable with the idea that it may not be possible to exactly
 		repeat all reported observations, procedures, and experimental results.
 	They do not see this concession to real-world practicalities as a contradiction to their demand that science be reproducible.
-	What the natural sciences actually demand is that:
+	What the natural sciences actually do demand is that:
 		(a) research procedures be repeatable by others in principle
 		(b) the means of repeating the work be subject to review and evaluation
-		(c) this review and evaluation be possible without actually repeating the work
+		(c) such review and evaluation be possible without actually repeating the work
+		(d) it not be required to repeat the exacts taken in reported research to reproduce the results
+	In other words, in the natural sciences it is actually considered a problem if exact repetition of the steps taken in reported research
+		is required either to evaluate the work or to reproduce results.
+	The reason this is good news for computation-intensive research is that is not necessary to achieve or maintain perfect repeatability
+		of the computational components of research in order for scientists to consider the work reproducible and therefore trustworthy.
+	However, this also means that the standards, technologies, and computational best-practices that we develop and advocate
+		in fact support scientific reproducibility. Pursuing and supporting exact computational repeatedly is not enough.
+	In this paper we argue that the necessary ingredient of reproducible research that can easily be left out when supporting computational
+		repeatability is transparency.
+	We emphasisze that the area in which computer science has much to offer in supporting transparency is in modeling, recording, and recording
+		the provenance of research artifacts, but for provenance to support reprodudibility it must support science-oriented queries--
+		questions about the science was performed where the answers to these questions allow others to evaluate the scientific
+		quality of the work and to learn what is necessary to reproduce the results without blindly repeating every step taken in the
+		original work.
+	And we suggest that Research Objects and related approaches are the ideal vehicle for storing and make provenance queryable
+		in this way, thus supporting true scientific reproducibility.
+
 
 Challenges of reproducibility
 
