@@ -4,7 +4,7 @@
 
 Modern science is founded on the expectation that the observations, experiments, and
 	predictions that comprise scientific research be independently verifiable by others.
-This requirement, referred to either as the \emph{reproducibility} of 
+This requirement, referred to as the \emph{reproducibility} of 
 	science, applies not only to the products of research studies (\emph{results}, 
 	\emph{conclusions}, \emph{models}, \emph{data products}, \emph{predictions}), but also to the 
 	activities comprising a study that ultimately give rise to these products (\emph{methods}, 
@@ -35,13 +35,14 @@ Even when attempts are made to confirm the reproducibility of particular studies
 	the natural sciences generally do not expect the products of research to be repeated exactly.
 The vast majority of quantitative observations made of real world phenonema using scientific instruments
 	are associated with limited precision and other intrinsic uncertainties that must themselves be characterized
-	and well understood for science baed on them to be reproducible.
+	and well understood for science based on them to be considered reproducible (no error bars on graph => not
+	reproducible).
 It is a hallmark of trustworthy science that quantitative observations and claims be inseparable from the uncertainty
 	in the reported values ultimately deriving from these uncertainties in measurement and the resulting
 	propagation of errors through data analysis.
 
-In contrast, digital computing approaches make it possible to repeat exactly certain computational aspects of research
-	to an extent that exceeds what can be achieved when observing natural sphenomena in the physical world.  
+In contrast, digital computing approaches make it possible to repeat \emph{exactly} certain computational aspects of research
+	to an extent that far exceeds what can be achieved when observing natural sphenomena in the physical world.  
 It generally is expected that computational processes, the implementation of hardware and software 
 	enabling those processes, and the outputs of those processes all can be repeated exactly--at least in principle.
 Where computing makes up a significant fraction of scientific research, there is a risk that the longstanding
@@ -70,35 +71,48 @@ It is both bad and good news that exact, computational repeatability is not tant
 The bad news is that it is possible to put much effort into achieving computational repeatability without delivering
 	the kind of reproducibility that is critical for producing trustworthy science.
 The good news is that scientifically-meaningful reproducibility can be realized in cases (or over spans of time)
-	where computational repeatability is either impossible or impractical given readily available technology.
-In this paper we propose that the older concept of reproducibility of that permeates the natural sciences has a very
-	useful role to even where digital computing makes exact repeatability a theoretical possibility.
+	where computational repeatability is either impossible or impractical given the limitiations of 
+	readily available technology and affordable resources.
+In this paper we propose that the older concept of reproducibility that permeates the natural sciences has a very
+	useful role even where digital computing makes exact repeatability a theoretical possibility.
 
  Reseachers in the natural sciences are comfortable with the idea that it is not possible to exactly
 	repeat all reported observations, procedures, and experimental results.
 They do not see this concession to real-world practicalities as a contradiction to their demand that science be reproducible.
 What the natural sciences actually do demand is that 
 	(a) research procedures be repeatable by others in principle.
-	(b) The means of repeating the work be subject to review and evaluation.  
+	(b) The means of repeating the work be subject to review and evaluation. 
 	(c) Such review and evaluation be possible without actually repeating the work.
-	And that (d) it not be required to repeat the exacts taken in reported research to reproduce results.
-
 To be clear, in the natural sciences it is actually considered a \emph{problem} if exact repetition of the steps
 	taken in reported research is required either to evaluate the work or to reproduce results.
 
 The reason this is good news for computation-intensive research is that it is not necessary to achieve or 
 	maintain perfect repeatability of the computational components of research in order for scientists to 
 	consider the work reproducible and therefore trustworthy.
-However, this also means that the standards, technologies, and computational best-practices that we develop and advocate
-	in fact support scientific reproducibility.
-Pursuing and supporting exact computational repeatedly is not enough.
-In this paper we argue that the necessary ingredient of reproducible research most at risk of left out when supporting computational
+However, this also means that it is critical that the standards, technologies, and computational best-practices that
+	we develop and advocate in fact support scientific reproducibility.
+Pursuing and supporting exact computational repeatability is not enough.
+Indeed, as we will show below, computational repeatability can be thought of as a dimension of research
+	reproducibility \emph{orthogonal} to transparency.
+Consequently, it is possible to achieve computational repeatability without providing research transparency--and vice versa.
+And while exact repeatability is not an essential element of reproducibilty, transparency is.
+
+\textbf{Research Objects for research transparency}.
+
+In this paper we argue that the dimension of reproducible research most at risk of neglect when supporting computational
 	repeatability is transparency.
-We emphasisze that an area in which computer science has much to offer in supporting transparency is in the modeling, recording, 
-	and querying of the provenance of research artifacts.
-But we also point out that for provenance to support reprodudibility it must support science-oriented queries.
-Provenance must be able to answer questions about the science that was performed--not just the computations.
-Answers to these questions must enable others to evaluate the scientific quality of the work, and to learn what is necessary to 
-	reproduce the results without blindly repeating every step taken in the original work.
-And we suggest that Research Objects and related approaches are the ideal vehicle for storing and make provenance queryable
-	in this way, thus supporting true scientific reproducibility.
+It is well established that that an area in which computer science has much to offer in supporting transparency is in the
+	modeling, recording, and querying of the provenance of research artifacts.
+What we emphasize here is that for provenance to support reprodudibility it must support science-oriented queries.
+Provenance must be able to answer questions about the \emph{science} that was performed--not just the 
+	sequence, dependencies, and flow of data through computational steps.
+The answers to these questions must enable others to evaluate the scientific quality of the work, and to learn what is necessary to 
+	reproduce the results without blindly repeating every step taken in the original work, and to build on the work
+	with confidence.
+And it must be possible for researchers unversed in the detailed metadata specifications of Research Objects and the PROV standard,
+	to pose these questions and receive answers meaningful for evaluating, using, and building on the
+	processes and products of prior research.
+We suggest that Research Objects and related approaches are the ideal vehicle for storing and make provenance queryable
+	in this way.
+Research Objects thus can support scientific reproducibility even in the face of the many practical challenges to exact 
+	computational repeatability.
