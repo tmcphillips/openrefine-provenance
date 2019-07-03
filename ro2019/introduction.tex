@@ -7,18 +7,19 @@ Modern science is founded on the expectation that the observations, experiments,
 This requirement, referred to as the \emph{reproducibility} of 
 	science, applies not only to the products of research studies (\emph{results}, 
 	\emph{conclusions}, \emph{models}, \emph{data products}, \emph{predictions}), but also to the 
-	activities comprising a study that ultimately give rise to these products (\emph{methods}, 
+	activities that ultimately give rise to these products (\emph{methods}, 
 	\emph{protocols}, \emph{workflows}); the materials employed in these 
-	research actitivties (\emph{reagents}, \emph{instruments}, \emph{software}); and the conditions 
-	under which which these activities are carried out (\emph{instrument settings}, \emph{software parameters},
+ 	activities (\emph{reagents}, \emph{instruments}, \emph{software}); and the conditions 
+	under which which these activities are carried out (\emph{instrument settings}, 
+	\emph{software parameters},
 	\emph{computing environments}).  When sufficient details are available
 	such that the research products and methods can be reviewed, interpreted, and
 	evaluated by other researchers \emph{without} repeating the work, a study is said to be 
 	\emph{transparent}.
 
 While it is true that studies attempting primarily to reproduce previous results are relatively rare in the
-	natural sciences, even the most groundbreaking studies in these fields include components	
-	that explicitly or implicitly confirm the reproducibility of previous results and reported procedures.
+	pure natural sciences, even the most groundbreaking studies in these fields include components	
+	that explicitly or implicitly confirm the reproducibility of previously reported results and procedures.
 The expectation is that new studies will reliably produce meaningful results consistent with previous work 
 	only if the prior work on which it is based or relates to is reproducible.
 In this sense, the whole of basic research in the natural sciences can be seen as an ongoing, massively-parallel
@@ -35,21 +36,20 @@ Even when attempts are made to confirm the reproducibility of particular studies
 	the natural sciences generally do not expect the products of research to be repeated exactly.
 The vast majority of quantitative observations made of real world phenonema using scientific instruments
 	are associated with limited precision and other intrinsic uncertainties that must themselves be characterized
-	and well understood for science based on them to be considered reproducible (no error bars on graph => not
-	reproducible).
+	and well understood for science based on them to be considered reproducible.
 It is a hallmark of trustworthy science that quantitative observations and claims be inseparable from the uncertainty
 	in the reported values ultimately deriving from these uncertainties in measurement and the resulting
 	propagation of errors through data analysis.
 
 In contrast, digital computing approaches make it possible to repeat \emph{exactly} certain computational aspects of research
-	to an extent that far exceeds what can be achieved when observing natural sphenomena in the physical world.  
+	to an extent that far exceeds what can be achieved when observing natural phenomena in the physical world.  
 It generally is expected that computational processes, the implementation of hardware and software 
 	enabling those processes, and the outputs of those processes all can be repeated exactly--at least in principle.
-Where computing makes up a significant fraction of scientific research, there is a risk that the longstanding
-	understanding of reproducibility in in the sciences can be conflated with this new, radically different 
-	expectation of exact repeatability. 
+Where computing makes up a significant fraction of scientific research, there is risk that this new, radically different 
+	expectation of exact repeatability be conflated with the longstanding understanding of reproducibility in 
+	the basic sciences. 
 
-Moreover, while exact repeatability of computational experiments and analyses may be realizable in principle, 
+Moreover, while computational experiments and analyses may be exactly repeatable in principle, 
 	in practice the complexities of real-world hardware and software make computational repeatability 
 	very challenging to achieve in practice except in very limited cases.
 Currently much effort is going into expanding the fraction of scenarios in which the computational
@@ -67,18 +67,18 @@ Achieving computational repeatability does not automatically deliver scientific 
 
 \textbf{Reproducibility by other means.}
 
-It is both bad and good news that exact, computational repeatability is not tantamount to reprodubility.
-The bad news is that it is possible to put much effort into achieving computational repeatability without delivering
+In a sense it is both bad and good news that exact computational repeatability is not tantamount to reprodubility.
+The bad news, perhaps, is that it is possible to put much effort into achieving computational repeatability without delivering
 	the kind of reproducibility that is critical for producing trustworthy science.
 The good news is that scientifically-meaningful reproducibility can be realized in cases (or over spans of time)
-	where computational repeatability is either impossible or impractical given the limitiations of 
-	readily available technology and affordable resources.
-In this paper we propose that the older concept of reproducibility that permeates the natural sciences has a very
+	where computational repeatability is either impossible or impractical given the limitiations
+	available technology and affordable resources.
+In this paper we propose that the older concept of reproducibility that permeates the basic, natural sciences has a very
 	useful role even where digital computing makes exact repeatability a theoretical possibility.
 
  Reseachers in the natural sciences are comfortable with the idea that it is not possible to exactly
 	repeat all reported observations, procedures, and experimental results.
-They do not see this concession to real-world practicalities as a contradiction to their demand that science be reproducible.
+They do not at all see this as a contradiction to their demand that science be reproducible.
 What the natural sciences actually do demand is that 
 	(a) research procedures be repeatable by others in principle.
 	(b) The means of repeating the work be subject to review and evaluation. 
@@ -86,14 +86,15 @@ What the natural sciences actually do demand is that
 To be clear, in the natural sciences it is actually considered a \emph{problem} if exact repetition of the steps
 	taken in reported research is required either to evaluate the work or to reproduce results.
 
-The reason this is good news for computation-intensive research is that it is not necessary to achieve or 
-	maintain perfect repeatability of the computational components of research in order for scientists to 
+The reason this is good news, then, is that it is not necessary to achieve or 
+	maintain perfect repeatability of the computational components of research for scientists to 
 	consider the work reproducible and therefore trustworthy.
-However, this also means that it is critical that the standards, technologies, and computational best-practices that
-	we develop and advocate in fact support scientific reproducibility.
-Pursuing and supporting exact computational repeatability is not enough.
-Indeed, as we will show below, computational repeatability can be thought of as a dimension of research
-	reproducibility \emph{orthogonal} to transparency.
+At that same time it is important to recognize how critically important it is that the standards, technologies, 
+	computational best-practices, infrasture we develop and advocate in fact support scientific reproducibility.
+It simply is not enough to pursue and support exact computational repeatability where we can, and to get as close
+	to exact reproducibility otherwise.
+Rather, computational repeatability is best seen as one dimension of research reproducibility, one \emph{orthogonal} to 
+	the dimension transparency.
 Consequently, it is possible to achieve computational repeatability without providing research transparency--and vice versa.
 And while exact repeatability is not an essential element of reproducibilty, transparency is.
 
