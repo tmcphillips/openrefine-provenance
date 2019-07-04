@@ -1,92 +1,105 @@
 \section{Terminology}
 
-	Recent years have seen a growing debate over the meanings of the terms reproducible and replicable,
-		and relationships between the two.  Should one term imply a greater adherence to the procedures
-		taken in the original research?  Should one term be reserved for the activities a researcher performs
-		to assess the reliability of their own procedures, experiments, and results; leaving the other term to
-		refer to activities centered on assessing the quality of the results of others?  Which term should be used
-		to mean what? As alluded to in the introduction, the entry of digitial computing into scientific research
-		has further complicated these issues by introducing the possibility of exact repeatability.
-	For the purposes of this paper we will continue to reserve the terms reproducibility and replicability to
-		qualities demanded of scientific research whether digital computers are involved or not.  We use the
-		term repeatability to refer to quality of computations that is desirable so far as computers are involved
-		in research, but do not consider repeatability in this sense to be a prerequisite of reproducibility or
-		replicability even when computers are used in research.
-	For the relative meanings of reproducibility and replicability, we follow here the recommendations of the Federation 
-		of American Societies for Experimental Biology, an organization comprising twenty-nine scientific 
-		societies and representing over 105,000 practicing researchers:
+Despite broad acceptance of the importance of general idea of reproducibility sciences, 
+	recent years have seen a growing debate over the precise meanings of the terms
+	\emph{reproducible} and \emph{replicable}, and the relationship between the two.
+For example, should one term imply a greater adherence to the procedures and methods employed
+	in the original research?
+Should one term be reserved for the activities a researcher performs to assess the reliability of their own procedures, 
+	experiments, and results; leaving the other term to refer to activities centered on assessing the quality of 
+	the results of others?  
+Which term should be used to mean what? And what value is there in distinguishing reproducibility from replicability
+	at all?
 
-		Replicability: the ability to duplicate (i.e., repeat) a prior result using the same
-		source materials and methodologies. This term should only be used when
-		referring to repeating the results of a specific experiment rather than an
-		entire study.
+As an example of an effort to distinguish reproducibility and replicability the FASEB recommendations are illuminating:
 
-		Reproducibility: the ability to achieve similar or nearly identical results using comparable materials and methodologies. 
-		This term may be used when specific findings from a study are obtained by an independent group of researchers
+	Replicability: the ability to duplicate (i.e., repeat) a prior result using the same
+	source materials and methodologies. This term should only be used when
+	referring to repeating the results of a specific experiment rather than an
+	entire study.
 
-	Note that by these definitions repliciating a result implies following the processes reported in the original work more closely ("same 
-		source mateirals and methodologies"), than when reproducing a result ("comparable materials and methodologies").  
-	Neither definition refers specifically to computed results and both apply to experimental results.  In contrast, the recent report from the National
-		Academy of Sciences reverses the relative fidelity implied by the terms 'reproducibility' and 'replicability':
+	Reproducibility: the ability to achieve similar or nearly identical results using comparable materials and methodologies. 
+	This term may be used when specific findings from a study are obtained by an independent group of researchers
 
-	Reproducibility is obtaining consistent results using the same input data, computational
-		steps, methods, and code, and conditions of analysis. 
+Footnote: The Federation of American Societies for Experimental Biology comprises twenty-nine distinct scientific 
+	societies together representing over 105,000 practicing researchers.
 
-	Replicability is obtaining consistent results across studies aimed at answering the same
-		scientific question, each of which has obtained its own data.
+According to these definitions, \emph{replicability} indicates a higher level of fidelity than does \emph{reproducibility}, 
+	both with respect to the prior result to be confirmed, and to the materials and methodologies employed.
+Replicability also appears more likely for the original researchers (they presumably have access to the "same source materials"
+	and are in the best position to use the same methologies), whereas reproducibility is considered feasible for
+	"an independent group of researchers". 
 
 
-	Perhaps most intriguing about the NAS definitions is that experiments not carried out entirely in silico apparently are left with only term
-		to describe them: replicability. Satisfying the definition of reproducibility requires "computational steps" and "code", and  
-		the report goes on to clarify that reproducibility "is synonymous with 'computational reproducibility,' and the terms are
-		used interchangeably in this report."
 
-	FASEB also defines transparency in a manner consistent with our usage here:
+Neither definition refers specifically to computed results and both apply to experimental results.  In contrast, the recent report from the National
+	Academy of Sciences reverses the relative fidelity implied by the terms 'reproducibility' and 'replicability':
 
-		Transparency:  the reporting of experimental materials and methods in a manner that provides enough information 
-		for others to independently assess and/or reproduce experimental findings
+Reproducibility is obtaining consistent results using the same input data, computational
+	steps, methods, and code, and conditions of analysis. 
 
-	In contrast, the NAS report essentially makes reproducibility a prerequisite of transparency: "When a researcher transparently
-		reports a study and makes available the underlying digital artifacts, such as data and code, the results should be 
-		computationally reproducible."   
+Replicability is obtaining consistent results across studies aimed at answering the same
+	scientific question, each of which has obtained its own data.
 
-	We take the position that it transparency is essential to science, whereas reproducibility as defined by the NAS is not necessarily possible, as detailed below.
 
-	Footnote or note at end of paper:
+Perhaps most intriguing about the NAS definitions is that experiments not carried out entirely in silico apparently are left with only term
+	to describe them: replicability. Satisfying the definition of reproducibility requires "computational steps" and "code", and  
+	the report goes on to clarify that reproducibility "is synonymous with 'computational reproducibility,' and the terms are
+	used interchangeably in this report."
 
-			Cell and molecular biologists study both replication and reproduction as natural processes.
-			DNA replicates :  high fidelity, variation not desired, ingredients indistiguishable, errors are corrected on the fly.
-			Organisms reproduce:  lower fidelity expected, variation desired, different ingredients acceptable.
-			Cells have replisomes, complex molecular machines where DNA replication occurs, and copying errors are detected and corrected.
-			In origin of life research a crucial debate is over 'replication first' (DNA World) or
+FASEB also defines transparency in a manner consistent with our usage here:
+
+	Transparency:  the reporting of experimental materials and methods in a manner that provides enough information 
+	for others to independently assess and/or reproduce experimental findings
+
+In contrast, the NAS report essentially makes reproducibility a prerequisite of transparency: "When a researcher transparently
+	reports a study and makes available the underlying digital artifacts, such as data and code, the results should be 
+	computationally reproducible."   
+
+We take the position that it transparency is essential to science, whereas reproducibility as defined by the NAS is not necessarily possible, as detailed below.
+
+Footnote or note at end of paper:
+
+		Cell and molecular biologists study both replication and reproduction as natural processes.
+		DNA replicates :  high fidelity, variation not desired, ingredients indistiguishable, errors are corrected on the fly.
+		Organisms reproduce:  lower fidelity expected, variation desired, different ingredients acceptable.
+		Cells have replisomes, complex molecular machines where DNA replication occurs, and copying errors are detected and corrected.
+		In origin of life research a crucial debate is over 'replication first' (DNA World) or
  					'metabolism first' (aka reproduction first, i.e. without replicating genetic material).
-			These terminologies with biology are well established.
-			Biologists also have a rich and well-defined vocabulary to describe replicability of experimental measurements and results.
-			Commonly distinguish two kinds of experimental 'replicates':  technical replicates, and biological replicates.
+		These terminologies with biology are well established.
+		Biologists also have a rich and well-defined vocabulary to describe replicability of experimental measurements and results.
+		Commonly distinguish two kinds of experimental 'replicates':  technical replicates, and biological replicates.
  			Reality is that the terminology is well established in large branches of science already.
 
-		Need for reproduction/replication to mean different things in different fields
+	Need for reproduction/replication to mean different things in different fields
 
-			The relationships of corresponding concepts across fields is one of analogy, not identity.
-			Exact repeatability is at least theoretically possible and sometimes practical under realistic assumptions when an experiment
-				is entirely in silico and isolated from the outside world.
-			As soon as observation of the real world is involved, exact repeatability often is impossible.
-			Neither of the types of replicates in experimental biology are exact, although both are measures of repeatability.
-			There often is no way to repeat exactly an experiment that involves scientific instruments, physical samples, or experimental apparatus.
-			In contrast, it is not unreasonable to talk about exactly repeating a purely computational experiment, at least by the original researcher,
-				on the same hardware, close in time to the original experiment.
-			In reality, computational repeatability is not as easy as sometimes assumed (see below), but fundamentally this is
-				a different situation than when a scientific instrument is involved or observations are made of the external world.
+		The relationships of corresponding concepts across fields is one of analogy, not identity.
+		Exact repeatability is at least theoretically possible and sometimes practical under realistic assumptions when an experiment
+			is entirely in silico and isolated from the outside world.
+		As soon as observation of the real world is involved, exact repeatability often is impossible.
+		Neither of the types of replicates in experimental biology are exact, although both are measures of repeatability.
+		There often is no way to repeat exactly an experiment that involves scientific instruments, physical samples, or experimental apparatus.
+		In contrast, it is not unreasonable to talk about exactly repeating a purely computational experiment, at least by the original researcher,
+			on the same hardware, close in time to the original experiment.
+		In reality, computational repeatability is not as easy as sometimes assumed (see below), but fundamentally this is
+			a different situation than when a scientific instrument is involved or observations are made of the external world.
 
-		Our approach to terminology
+	Our approach to terminology
 
-			Respect differences between fields of research and different expectations with regard to reproducibility.
-			Do not expect standardization to even be meaningful (never mind politically achievable) across domains.
-			Instead, only use the R* words in ways that make their meanings clear in context.
-			Do not be surprised if computational sciences turn out not to be representative of science generally.
+		Respect differences between fields of research and different expectations with regard to reproducibility.
+		Do not expect standardization to even be meaningful (never mind politically achievable) across domains.
+		Instead, only use the R* words in ways that make their meanings clear in context.
+		Do not be surprised if computational sciences turn out not to be representative of science generally.
 
-		Specific implications for our contributions to the Research Objects field
+	Specific implications for our contributions to the Research Objects field
 
-			Take care to define R* words precisely when expressing desiderata, describing features, or making or comparing claims about capabilities.
-			Do not expect efforts to achieve computational repeatability alone to enable "reproducible science" generally.
+		Take care to define R* words precisely when expressing desiderata, describing features, or making or comparing claims about capabilities.
+		Do not expect efforts to achieve computational repeatability alone to enable "reproducible science" generally.
 
+As alluded to in the introduction, the entry of digitial computing into scientific research
+	has further complicated these issues somewhat by introducing the possibility of exact repeatability.
+For the purposes of this paper we will continue to reserve the terms reproducibility and replicability to
+	qualities demanded of scientific research whether digital computers are involved or not.
+We use the term repeatability to refer to quality of computations that is desirable so far as computers are involved
+	in research, but do not consider repeatability in this sense to be a prerequisite of reproducibility or
+	replicability even when computers are used in research.
