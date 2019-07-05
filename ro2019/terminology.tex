@@ -1,9 +1,11 @@
 \section{Terminology}\label{sec-terminology}
 
-What are some specific ways that Research Objects \cite{bechhofer2013whya} can help make scientific research more transparent?  Many of the objectives and current capabilities of Research Objects already can be seen as supporting
+What are some specific ways that Research Objects \cite{bechhofer2013whya} can help 
+	make scientific research more transparent?  
+Many of the objectives and current capabilities of Research Objects already can be seen as supporting
 	transparency.
-Examples of Research Objects support research reproducibility by enhancing transparency include, e.g., \cite{mecum2018preservingc} among others
-\cite{DBLP:conf/eScience/2018}. 
+Examples of Research Objects support research reproducibility by enhancing transparency include, e.g., 
+	\cite{mecum2018preservingc} among others \cite{DBLP:conf/eScience/2018}. 
 
 
 In the remainder of this paper we propose that Research Objects can help in additional ways that not
@@ -25,13 +27,16 @@ ROs can help, not just be providing a place to make such declarations, but by pr
 The current debate over the meaning of key terms describing 
 	scientific reproducibility are motivated primarily by a desire to avoid just such confusion \cite{drummond2009replicability,goodman2016what,rauber16primad,herouxtoward,plesser2018reproducibility,barba2018terminologies,committeeonreproducibilityandreplicabilityinscience2019reproducibility}.
 The recommendations from the Federation of
-American Societies for Experimental Biology (FASEB) \cite{FASEB2016enhancing} cite ``lack of uniform definitions to describe the problem''
+	American Societies for Experimental Biology\footnote{FASEB is a federation of twenty-nine distinct scientific societies representing 105,000 
+	practicing researchers in the biological sciences.} 
+	(FASEB) 
+	\cite{FASEB2016enhancing} cite ``lack of uniform definitions to describe the problem''
 	as one of the top three factors that ``impede the ability to reproduce experimental results.''
- The report National Academy of Sciences Committee on Reproducibility and Replicability of Science \cite{committeeonreproducibilityandreplicabilityinscience2019reproducibility} states
+ The recent report from the National Academy of Sciences (NAS) Committee on Reproducibility and Replicability of Science \cite{committeeonreproducibilityandreplicabilityinscience2019reproducibility} asserts
 	that ``the difficulties in assessing reproducibility and replicability are complicated by this absence of
 	standard definitions for these terms.''
 
-The recommendations of these two organizations are representatives of numerous recent studies, papers, 
+The recommendations from these two organizations are representative of numerous recent studies, papers, 
 	and proposed definitions intended to enhance reproducibility by providing a uniform terminology
 	for describing it.  
 The FASEB recommendations originate in one domain of science while the NAS definitions explicitly 
@@ -57,12 +62,14 @@ The FASEB definitions\footnote{in accordance with the terminology around \emph{r
 According to FASEB, \emph{replicability} indicates a higher degree of fidelity than does \emph{reproducibility}, 
 	both with respect to the prior result to be confirmed, and to the materials and methodologies employed.
 Replicability also appears likely more feasible for the original researchers (they presumably have access to the 
-	``same source materials'' and are in the best position to use the same methodologies), whereas reproducibility is 
+	``same source materials'' and are in the best position to use the ``same methodologies''), whereas reproducibility is 
 	feasible for ``an independent group of researchers''. 
-Both definitions may be applied to experimental results, but neither definition precludes application to in silico 
+Both definitions may be applied to experimental results, but neither definition precludes application to \emph{in silico} 
 	experiments or to the computational elements of laboratory studies.
 
-        In contrast, the definitions in the recent report from the National Academy of Sciences reverses the relative fidelity implied by the terms `reproducibility' and `replicability' \cite[p.4]{committeeonreproducibilityandreplicabilityinscience2019reproducibility}: \begin{quote}
+ In contrast, the definitions in the recent report from the National Academy of Sciences reverses the relative
+	 fidelity implied by the terms `reproducibility' and `replicability' \cite[p.4]{committeeonreproducibilityandreplicabilityinscience2019reproducibility}: 
+\begin{quote}
 	\textbf{Reproducibility} is obtaining consistent results using the same input data, computational
 	steps, methods, and code, and conditions of analysis.  \medskip
 
@@ -71,14 +78,17 @@ Both definitions may be applied to experimental results, but neither definition 
 \end{quote}
       
 The NAS definition of \emph{replicability} is most similar to the FASEB definition of \emph{reproducibility}.
-This reversal of the meanings of these terms between various research domains is well documented.
-This aspect of the disagreement over terminologies is in a sense trivial, although the NAS rightly 
-	states that the ``different meanings and uses across science and engineering'' has ``led to confusion in collectively 
+The reversal of the meanings of these terms between various research domains is well documented within the NAS report.
+This aspect of the disagreement over terminologies is in a sense trivial, although the NAS likely is correct in  
+	asserting that the ``different meanings and uses across science and engineering'' has ``led to confusion in collectively 
 	understanding problems in reproducibility and replicability.''
-It is interesting that the NAS report does not suggest new terms for referring to the \emph{technical replicates} 
-	and  \emph{biological replicates} so important in experimental biology, should biologists adopt the recommendation 
-	of restricting \emph{replication} to ``obtaining consistent results across studies''.\footnote{The NAS report section \emph{Precision of Measurement} quotes a portion of the International Vocabulary of
-	Metrology that twice employs the term \emph{replicate measurement}.
+Far more notably, the NAS report does not suggest new terms for referring to the \emph{technical replicates} 
+	and  \emph{biological replicates} so important in experimental biology--should biologists adopt the recommendation 
+	of restricting \emph{replication} to ``obtaining consistent results across studies''.\footnote{
+		The NAS report section \emph{Precision of Measurement} quotes a portion of the International Vocabulary of
+		Metrology that twice employs the term \emph{replicate measurement}.
+	}
+\footnote{
 What might come as news to biologists is the assertion that the ``[NAS] committee adopted specific definitions'' of 
 	reproducibility and replicability, ``which are otherwise interchangeable in everyday discourse.''
 Not only is the high-fidelity \emph{replication} of DNA (in the \emph{replisome}) and the lower fidelity \emph{reproduction}
@@ -88,16 +98,20 @@ of organisms a matter for everyday discourse for the many biologists who study t
 	(for example through sex) and the reproduction of scientific results across studies where, again, some variation is both 
 	expected and desirable.}
 
-      A far more intriguing aspect of the NAS definitions \cite{committeeonreproducibilityandreplicabilityinscience2019reproducibility} is that experiments not carried out entirely in silico apparently are
-      left with only the term \emph{replicability}.  Satisfying the definition of reproducibility requires ``computational steps'' and ``code'', and the report goes on to clarify
+ An even more intriguing aspect of the NAS definitions \cite{committeeonreproducibilityandreplicabilityinscience2019reproducibility} 
+	is that experiments not carried out 
+	entirely \emph{in silico} apparently are left only with the term \emph{replicability}.  
+Satisfying the NAS definition of \emph{reproducibility} requires 
+	``computational steps'' and ``code'', and the report goes on to clarify
 	that reproducibility ``is synonymous with computational reproducibility,''  and ``the terms are used interchangeably in this report.''
-Indeed the executive summary of the report states not only that ``We define reproducibility to mean computational reproducibility''
+Indeed the executive summary of the report states not only that ``We define reproducibility to mean computational reproducibility'',
 	but also that ``the committee adopted definitions that are intended to apply across all fields of science.''
 The clear implication is that the term \emph{reproducible} only can be applied to the computational components of research.
 Because this term is analogous to \emph{replicable} as defined by FASEB, the NAS definitions do not provide a vocabulary 
 	that would enable experimentalists to report the intrinsic repeatability of their own methods, measurements, and results. 
 
-        Intriguing similarities and differences also appear in definitions of \textbf{transparency}. According to FASEB \cite{FASEB2016enhancing}, \emph{transparency} is: 
+Analogous similarities and differences also appear in definitions and usages of the term \emph{transparency}. 
+According to FASEB \cite{FASEB2016enhancing}, \textbf{transparency} is: 
 \begin{quote}
 	The reporting of experimental materials and methods in a manner that provides enough information 
 	for others to independently assess and/or reproduce experimental findings
@@ -108,27 +122,29 @@ while the NAS report \cite{committeeonreproducibilityandreplicabilityinscience20
 	the results should be computationally reproducible.
       \end{quote}
  
-\noindent According to the latter definition, transparency, like reproducibility, requires digital artifacts which could be of concern to
-	those expecting experimental procedures to be transparent.
-However both definitions imply that transparency is a necessary \emph{component} of reproducibility, a position that
-	suggests a role for Research Objects to play in the resolution of this terminological conundrum.
-        In short, we propose that:
-        \begin{itemize}
-        \item  \bf Users of ROs should be provided with a vocabulary for asserting and querying the reproducibility
+\noindent According to the to NAS usage of the term, transparency is associated with digital artifacts.  
+This could be of concern to those expecting experimental procedures to be transparent as well.
+What is more important, however, is what the two concepts of transparency have in common.
+Both definitions imply that transparency is a necessary \emph{component} of reproducibility.
+This shared insight suggests a role for Research Objects to play in the resolution of this terminological conundrum.
+In short, we propose that:
+        \begin{quote}
+        \bf Users of ROs should be provided with a vocabulary for asserting and querying the reproducibility
           of studies, results, and methods along multiple dimensions.
-      \end{itemize}
+      \end{quote}
 
 Namespaces would support multiple definitions of terms without conflict.
 Synonym relationships and other mappings between the vocabularies would enable reasoning about reproducibility
 	 and support assertions and queries phrased using terminologies selected by the user.
 
-         For example, a researcher publishing an RO might assert that the study is reproducible \emph{sensu} \textsf{WholeTale}.  Another researcher filtering discovered ROs by the property \textsf{NAS::reproducible} would find this study
-         either if \textsf{WT::reproducible} had been found to imply \textsf{NAS::reproducible} generally, or if other assertions made by the author
-         about the Object satisfy the requirements of the latter term in conjunction with the implications of \textsf{WT::reproducible}.
+         For example, a researcher publishing an RO might assert that the study is reproducible \emph{sensu} \textsf{Whole Tale}.  Another researcher filtering discovered ROs by the property \textbf{NAS::reproducible} would find this study
+         either if \textbf{WT::reproducible} had been found to imply \textbf{NAS::reproducible} generally, or if other assertions made by the author
+         about the RO satisfy the requirements of the latter term in conjunction with the implications of \textbf{WT::reproducible}.
 
-         Going forward, the Whole Tale project aims to explore the various terminologies for reproducibility with the goal of identifying what might be considered to be the principle components of reproducibility in science as a whole.  As a community we could then determine how various terms and definitions can be seen as compositions of these components.  This in turn would reveal how RO infrastructure should reason about these terms, and how claims made in terms of one set of definitions could be converted to claims using another set of definitions.
-
-
+         Going forward, the Whole Tale project aims to explore the various terminologies surrounding reproducibility with the goal of identifying what might be considered the ``principle components'' of reproducibility in science as a whole.  Together we could then determine how various terms and definitions,
+that have been put forward to meet the needs of particular research communities, can be seen as compositions of these shared components.  
+This in turn would reveal how RO infrastructure should reason about these terms, 
+	and how claims made in terms of one set of definitions could be converted to claims using another set of definitions.
 
 
 %%% Local Variables: 
