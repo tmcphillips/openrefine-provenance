@@ -2,46 +2,48 @@
 
 What are some specific ways that Research Objects can help make scientific research more transparent?
 Many of the objectives and current capabilities of Research Objects already can be seen as supporting 
-	transparancy.
+	transparency.
 Examples of Research Objects support research reproducibility by enhancing transparency include...
+
 In the remainder of this paper we propose that Research Objects can help in additional ways that not
-	just enhance the transparency of research but also ensure that transparency, and other elements
-	of scientific reproducibility, can be achieved, described, and shared meaningfully for all domains
-	of research, including those that include both an experimental and computational elements.
+	just enhance the transparency of research, but also ensure that transparency and other key elements
+	of scientific reproducibility can be achieved, described, and shared meaningfully for all domains
+	of research---including those that include both an experimental and computational elements.
 
 The first way in which Research Objects can help is by helping researchers safely navigate the 
-	terminlogical quagmire surrounding the definitions of terms such as \emph{reproducible},
-	\emph{replicable}, and \emph{transparency} themselves.
+	terminological quagmire surrounding the definitions of terms such as \emph{reproducible},
+	\emph{replicable}, and \emph{transparency}.
 A very simple yet important use case for Research Objects could be the declaration of the senses in
 	which the research study and results associated with the Object are in fact reproducible, replicable,
 	computationally repeatable, and so on.
 Before extending or depending on others' works, methods, or results in their own studies, researchers
-	reasonably want to know if that previous work is reproducible in various sense of the word.
+	reasonably want to know if that previous work is reproducible in various senses of the word.
 Research Objects can help, not just be providing a place to make such declarations, but by preventing
-	minunderstandings of what is meant by particular terms.
+	misunderstandings of what is meant by particular terms.
 
-The current debate (FOOTNOTE: We use this term loosely.)  over the meaning of key terms describing 
+The current debate over the meaning of key terms describing 
 	scientific reproducibility are motivated primarily by a desire to avoid just such confusion.
 The recommendations from the Federation of
 	American Societies for Experimental Biology (FASEB) cite "lack of uniform definitions to describe the problem" 
 	as one of the top three factors that "impede the ability to reproduce experimental results."
- The National Academy of Sciences Committe on Reproducibility and Replicability of Science states
+ The report National Academy of Sciences Committee on Reproducibility and Replicability of Science states
 	that "the difficulties in assessing reproducibility and replicability are complicated by this absence of
 	standard definitions for these terms."
-These recommendations are representatives of numerous recen studies, papers, and proposed definitions
-	intended to help enhance reproducibiltity by providing a uniform terminology.  
-Some of these efforts, such as the FASEB recommendations, originate in one domain of science,
-	while others, represented by NAS report, explicitly "are intended to apply across all fields of science."
-Given the interdisciplinary character of modern research---and in particular the ubiquity of computing 
-	across all disciplines of science--it is hard to argue against attempts to facilitate communication about
-	reproducibility across science as a whole.
 
-What can be surprising to researchers new to this "debate" is how many ways the resulting definitions
-	can actually differ.
+The recommendations of these two organizations are representatives of numerous recent studies, papers, 
+	and proposed definitions intended to enhance reproducibility by providing a uniform terminology
+	for describing it.  
+The FASEB recommendations originate in one domain of science while the NAS definitions explicitly 
+	"are intended to apply across all fields of science."
+Given the interdisciplinary character of modern research---and in particular the ubiquity of computing in science---it 
+	is hard to argue against attempts to facilitate communication about reproducibility across science as a whole.
+
+What can be surprising to researchers new to this debate is how many ways the proposed definitions
+	can differ.
 First, there is disagreement over which term, \emph{reproducibility} or \emph{replicability}, indicates
 	 a greater adherence to the procedures, material,  and methods employed in the original research.
-The FASEB defiinitions, in accordance with the terminology around \emph{replicates} described in section 4
-	requires from \emph{replicability} a greater fidelity to the original study:
+The FASEB definitions (in accordance with the terminology around \emph{replicates} described in section 4)
+	require from \emph{replicability} a greater fidelity to the original study:
 
 	Replicability: the ability to duplicate (i.e., repeat) a prior result using the same
 	source materials and methodologies. This term should only be used when
@@ -51,13 +53,13 @@ The FASEB defiinitions, in accordance with the terminology around \emph{replicat
 	Reproducibility: the ability to achieve similar or nearly identical results using comparable materials and methodologies. 
 	This term may be used when specific findings from a study are obtained by an independent group of researchers
 
-According to the FASEB definitions, \emph{replicability} indicates a higher degree of fidelity than does \emph{reproducibility}, 
+According to FASEB, \emph{replicability} indicates a higher degree of fidelity than does \emph{reproducibility}, 
 	both with respect to the prior result to be confirmed, and to the materials and methodologies employed.
-Replicability also appears more likely feasible for the original researchers (they presumably have access to the 
-	"same source materials" and are in the best position to use the same methologies), whereas reproducibility is 
-	assumed feasible also for "an independent group of researchers". 
-Bothe definitions apply to experimental results, and while neither refer specifically to computed results, they also
-	do not exclude appylying the terms to in silico experiments or computational elements of laboratory studies.
+Replicability also appears likely more feasible for the original researchers (they presumably have access to the 
+	"same source materials" and are in the best position to use the same methodologies), whereas reproducibility is 
+	feasible for "an independent group of researchers". 
+Both definitions may be applied to experimental results, but neither definition precludes application to in silico 
+	experiments or to the computational elements of laboratory studies.
 
  In contrast, the definitions in the recent report from the National Academy of Sciences reverses the relative fidelity
 implied by the  terms 'reproducibility' and 'replicability':
@@ -68,8 +70,8 @@ implied by the  terms 'reproducibility' and 'replicability':
 	Replicability is obtaining consistent results across studies aimed at answering the same
 	scientific question, each of which has obtained its own data.
 
-The NAS definition of replicability is most simillar to the FASEB definition of reproducibility, and this relative reverals 
-	of the meanings of these terms between various research domains is well documented.
+The NAS definition of replicability is most similar to the FASEB definition of reproducibility.
+This reversal of the meanings of these terms between various research domains is well documented.
 This aspect of the disagreement over terminologies is in a sense trivial, although the NAS rightly 
 	states that the "different meanings and uses across science and engineering" has "led to confusion in collectively 
 	understanding problems in reproducibility and replicability."
@@ -78,85 +80,54 @@ It is interesting that the NAS report does not suggest new terms for referring t
 	of restricting \emph{replication} to "obtaining consistent results across studies".
 FOOTNOTE: The NAS report section "Precision of Measurement" quotes a portion of the International Vocabulary of
 	Metrology that twice employs the term \emph{replicate measurement}.
-What might come as news to biologists is the asssertion that the NAS "committee adopted specific definitions" of 
+What might come as news to biologists is the assertion that the NAS "committee adopted specific definitions" of 
 	reproducibility and replicability, "which are otherwise interchangeable in everyday discourse."
 Not only is the high-fidelity \emph{replication} of DNA (in the \emph{replisome}) and the lower fidelity \emph{reproduction}
 	of organisms  matters for everyday discourse for the many biologists study these processes in nature or employ them in the lab,
 	it is easy to see an analogy between replication of DNA and careful replication of measurements and samples
-	in the lab on the one hand, and on the other the reproduction of organisms where variation is encourage in nature
+	in the lab on the one hand, and on the other the reproduction of organisms where variation is encouraged in nature
 	(for example through sex) and the reproduction of scientific results across studies where, again, some variation is both 
 	expected and desirable.
 
-Perhaps most intriguing about the NAS definitions is that experiments not carried out entirely in silico apparently are left with only term
-	to describe them: replicability. Satisfying the definition of reproducibility requires "computational steps" and "code", and  
-	the report goes on to clarify that reproducibility "is synonymous with 'computational reproducibility,' and the terms are
-	used interchangeably in this report."
+A far more intriguing aspect of the NAS definitions is that experiments not carried out entirely in silico apparently are 
+	left with only the term \emph{replicability}.
+Satisfying the definition of reproducibility requires "computational steps" and "code", and the report goes on to clarify 
+	that reproducibility "is synonymous with computational reproducibility,"  and "the terms are used interchangeably in this report."
+Indeed the executive summary of the report states not only that "We define reproducibility to mean computational reproducibility" 
+	but also that "the committee adopted definitions that are intended to apply across all fields of science."
+The clear implication is the term \emph{reproducible} only can be applied only to the computational components of research.
+Because this term is analogous to \emph{replicable} as defined by FASEB, the NAS definitions do not provide a vocabulary 
+	that would enable experimentalists to report the intrinsic repeatability of their own methods, measurements, and results. 
 
-FASEB also defines transparency in a manner consistent with our usage here:
-The FASEB recommendations also provide a definition of \emph{transparency}:
+Intriguing similarities and differences also appear in definitions of transparency. According to FASEB, transparency is
 
-	Transparency:  the reporting of experimental materials and methods in a manner that provides enough information 
+	The reporting of experimental materials and methods in a manner that provides enough information 
 	for others to independently assess and/or reproduce experimental findings
 
-In contrast, the NAS report essentially makes reproducibility a prerequisite of transparency: "When a researcher transparently
-	reports a study and makes available the underlying digital artifacts, such as data and code, the results should be 
-	computationally reproducible."   
+While the NAS report states:
 
-We take the position that it transparency is essential to science, whereas reproducibility as defined by the NAS is not necessarily possible, as detailed below.
+	When a researcher transparently reports a study and makes available the underlying digital artifacts, such as data and code, 
+	the results should be computationally reproducible.
 
-Footnote or note at end of paper:
+According to the latter definition, transparency, like reproducibility, requires digital artifacts which could be of concern to
+	those expecting experimental procedures to be transparent.
+However both definitions imply that transparency is a necessary \emph{component} of reproducibility, a position that
+	suggests a role for Research Objects to play in the resolving this terminological conundrum.
 
-		Cell and molecular biologists study both replication and reproduction as natural processes.
-		DNA replicates :  high fidelity, variation not desired, ingredients indistiguishable, errors are corrected on the fly.
-		Organisms reproduce:  lower fidelity expected, variation desired, different ingredients acceptable.
-		Cells have replisomes, complex molecular machines where DNA replication occurs, and copying errors are detected and corrected.
-		In origin of life research a crucial debate is over 'replication first' (DNA World) or
- 					'metabolism first' (aka reproduction first, i.e. without replicating genetic material).
-		These terminologies with biology are well established.
-		Biologists also have a rich and well-defined vocabulary to describe replicability of experimental measurements and results.
-		Commonly distinguish two kinds of experimental 'replicates':  technical replicates, and biological replicates.
- 			Reality is that the terminology is well established in large branches of science already.
+In short, we propose that users of Research Objects be provided with a vocabulary for asserting and querying the reproducibility
+	of studies, results, and methods along multiple dimensions. 
+Namespaces would support multiple definitions of terms without conflict.
+Synonym relationships and other mappings between the vocabularies would enable reasoning about reproducibility
+	 and support assertions and queries phrased using terminologies selected by the user.
+For example, a researcher publishing a research object might assert that the study is reproducible \emph{sensu} Whole Tale.
+Another researcher filtering discovered Research Objects by the property NAS::reproducible would find this study
+	either if WT::reproducible had been found to imply NAS::reproducible generally, or if other assertions made by the author
+	about the Object satisfy the requirements of the latter term in conjunction with the implications of  WT::reproducible.
 
-	Need for reproduction/replication to mean different things in different fields
-
-		The relationships of corresponding concepts across fields is one of analogy, not identity.
-		Exact repeatability is at least theoretically possible and sometimes practical under realistic assumptions when an experiment
-			is entirely in silico and isolated from the outside world.
-		As soon as observation of the real world is involved, exact repeatability often is impossible.
-		Neither of the types of replicates in experimental biology are exact, although both are measures of repeatability.
-		There often is no way to repeat exactly an experiment that involves scientific instruments, physical samples, or experimental apparatus.
-		In contrast, it is not unreasonable to talk about exactly repeating a purely computational experiment, at least by the original researcher,
-			on the same hardware, close in time to the original experiment.
-		In reality, computational repeatability is not as easy as sometimes assumed (see below), but fundamentally this is
-			a different situation than when a scientific instrument is involved or observations are made of the external world.
-
-	Our approach to terminology
-
-		Respect differences between fields of research and different expectations with regard to reproducibility.
-		Do not expect standardization to even be meaningful (never mind politically achievable) across domains.
-		Instead, only use the R* words in ways that make their meanings clear in context.
-		Do not be surprised if computational sciences turn out not to be representative of science generally.
-
-	Specific implications for our contributions to the Research Objects field
-
-		Take care to define R* words precisely when expressing desiderata, describing features, or making or comparing claims about capabilities.
-		Do not expect efforts to achieve computational repeatability alone to enable "reproducible science" generally.
-
-As alluded to in the introduction, the entry of digitial computing into scientific research
-	has further complicated these issues somewhat by introducing the possibility of exact repeatability.
-For the purposes of this paper we will continue to reserve the terms reproducibility and replicability to
-	qualities demanded of scientific research whether digital computers are involved or not.
-We use the term repeatability to refer to quality of computations that is desirable so far as computers are involved
-	in research, but do not consider repeatability in this sense to be a prerequisite of reproducibility or
-	replicability even when computers are used in research.
-
-
-WT research topic:  identify the principle components of reproducibility in science as a whole, and determine how the various
-defintions of the R* terms can be seen as compositions of these components.  Show how claims in terms of one defintion can be
-converted to claims using another definition.
-
-
-Opportunity for ROs:  distinguish between different kinds of reproducibility and replicability and enable researchers to determine
-precisely what claims are being made, or have been confirmed about a study as a whole or parts of a study.
+Going forward, the Whole Tale project aims to explore the various terminologies for reproducibility with the goal of identifying 
+	what might be considered to be the principle components of reproducibility in science as a whole.
+As a community we could then determine how various terms and definitions can be seen as compositions of these components.
+This in turn would reveal how Research Object infrastructure should reason about these terms, and  how claims 
+	made in terms of one set of definitions could be converted to claims using another set of definitions.
 
 
