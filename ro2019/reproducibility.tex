@@ -1,4 +1,4 @@
-\section{Reproducibility in science}
+\section{Reproducibility in science}\label{sec-reproducibility}
 
 Modern science is founded on the expectation that the observations, experiments, and
 	predictions that comprise scientific research be independently verifiable by others.
@@ -23,7 +23,8 @@ The expectation is that new studies will reliably produce meaningful results con
 	only if the prior work on which they are based or otherwise relates to is reproducible.
 In this sense, the whole of basic research in the natural sciences can be seen as an ongoing, massively-parallel
 	reproducibility study that also happens to produce a steady stream of new results.
-Exceptions to this pattern occur when studies appear to overturn well-established understandings of nature,
+Exceptions to this pattern occur when studies appear to overturn
+well-established understandings of nature \cite{kuhn1962structure},
 	violate the expectations of how research in a particular field is to be carried out, or otherwise cause controversy.
 In these cases direct attempts may be made to reproduce results by duplicating as carefully as possible
 	the reported methods and conditions described in the controversial study.
@@ -53,7 +54,7 @@ A researcher attempting to duplicate another's work can expect to see greater de
 
 This asymmetry between the original researcher and another repeating the work is reflected in the longstanding
 	distinction between \emph{reproducibility} and \emph{replicability} in experimental biology.  
-In Section 4 we will examine definitions of these terms jointly adopted by twenty-nine research
+In  Section\,\ref{sec-repeatability}  we will examine definitions of these terms jointly adopted by twenty-nine research
 	societies in the biological sciences.  
 For now we note that the notion of \emph{replicates}, repeated measurements made to quantify 
 	experimental variability, is represented by a rich literature.
@@ -62,8 +63,14 @@ The term \emph{technical replicates}, for example, refers to repeated measuremen
 These are used to assess the variation intrinsic to the procedure, apparatus, and instrument employed.
 \emph{Biological replicates} represent measurements made on different but equivalent samples.
 In practice both generally are performed by the original researcher under conditions otherwise
-	held as constant as possible.
+	held as constant as possible.\footnote{Generating multiple gigabytes of raw data requiring intensive computational analysis for each replicate, Next-Generation Sequencing (NGS) represent just one sub-domain where the reproducibility 
+	terminologies in the natural sciences and in computing
+        unavoidably collide.}
 
-FOOTNOTE: Generating multiple gigabytes of raw data requiring intensive computational analysis for each replicate, 
-	Next-Generation Sequencing (NGS) represent just one sub-domain where the reproducibility 
-	terminologies in the natural sciences and in computing unavoidably collide.
+% BL: not sure where exactly the footnote should be attached ... 
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End: 

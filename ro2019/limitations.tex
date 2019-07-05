@@ -1,4 +1,4 @@
-\section{Computational Challenges}
+\section{Computational Challenges}\label{sec-limitations}
 
 		The fundamental limitations computers impose on replicability of program executions are well known.
 
@@ -27,7 +27,7 @@
 			Even holding the computer hardware and compiler version constant, programs depend on language libraries, OS libraries, and system calls.
 			Much scientific software also depends directly and indirectly on large numbers of 3rd-party libraries.
 			Only direct dependencies can be controlled reliably at build-time.  And many dependencies are via shared libraries that can change between executions
-				of the exact same executable--no recompile is needed to get a new effective executable.
+				of the exact same executable---no recompile is needed to get a new effective executable.
 			Footnote:  Fans of the Go programming language are bringing back the static executable.
 			Recompiling or even just rerunning the "same" program a week later can result in a completely different effective instruction stream.
 
@@ -76,6 +76,13 @@
 
 		Achieving meaningful replicability even for the computational parts of research is very challenging.
 		But this is no reason to give up hope.
-		Replicability is a means to an end--justification of scientific results--and Research Objects can help us achieve that end by other means.
+		Replicability is a means to an end---justification of scientific results---and Research Objects can help us achieve that end by other means.
 		What is most exciting about Research Objects is that they can achieve this end despite the difficulty of computational replicability.
 		And the primary means by which Research Objects can due this is by providing transparency.
+
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End: 
