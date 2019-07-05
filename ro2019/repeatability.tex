@@ -1,81 +1,60 @@
-\section{Computational Challenges}
+\section{Computational Repeatability}
 
-		The fundamental limitations computers impose on replicability of program executions are well known.
+In contrast to expectations in the experimental natural sciences,, digital computing make it 
+	possible to repeat \emph{exactly} certain computational aspects of research, even by \emph{different} 
+	researchers using \emph{different} computers.  
+Indeed, it generally is expected that computational processes, the implementation of hardware and software 
+	enabling those processes, and the outputs of those processes all can be repeated exactly by others--at least in principle.
+This potential of exact repeatability is unquestionably of enormous value to any field of research employing computers,
+	and certainly will contribute to the ability of researchers in every field to reproduce or build on others' work.
+At the same time, there is at least some risk of this new expectation of exact repeatability being conflated 
+	(consciously or unconsciously) with the longstanding understanding of reproducibility in the basic sciences. 
+It is essential that the new concept be kept distinct.
 
-			Finite precision arithmetic, different word sizes on different processors, round-off errors, etc, impose limits on scientific computations and
-				their replicability across different computing environments.
-			Virtual machines and containers do not address these issues. Full emulation is required to run the same binary in identical fashion
-				on a different processor.  This is typically slow.
-			These limitations are even more challenging to manage reproducibly because programs typically are compiled, meaning that the
-				exact sequence of machine instructions executed even by a single processor cannot generally be controlled.  A different compiler,
-				or a newer version of the same compiler will yield a different sequence of machine instructions.
+Moreover, while computational experiments and analyses may be exactly repeatable in principle, 
+	in practice the complexities of real-world hardware and software currently make computational repeatability 
+	challenging to achieve in practice except over very limited time scales.
+Because of the obvious value that exact repeatability brings when it is feasible, it is important that we work to
+	expand the fraction of scenarios in which the computational components of research can be automatically 
+	repeated exactly over ranges of time and space relevant to scientific research and discourse.
+These efforts are particularly important for the research community to pursue, and for science funding
+	agencies to support, because the computing industry generally does not have requirements for exact 
+	repeatability across significant spans of time.
 
-		Replicating the outputs of a program is far from straightforward
+However, we emphasize that the concept of exact repeatability is 
+	qualitatively different from the concept of reproducibility that underlies the natural sciences.
+In particular, scientific reproducibility is not simply a weaker form of computational repeatability.  
+\emph{Approximating or achieving computational repeatability does not automatically deliver scientific reproducibility.}
 
-			Observing that a program or set of programs can be executed again is not sufficient to conclude that the underlying computation
-				was replicated.  The outputs of the programs must be checked for equivalence.
-			Because of the expected variation in run time behavior of programs due to the issues above, checking that outputs of a program
-				run are equivalent to the outputs of a run of that program is not always as simple as
-				comparing the outputs for bitwise identity.
-			Robustly checking for equivalence of output generally must be confirmed in some way other than comparing files at the bit level.
-			Footnote: The excellent practice of including accurate provenance and other meaningful metadata in data file headers makes it
-				even more unlikley that outputs from different runs will be bitwise-identical.
+It is in a sense both bad and good news that exact computational repeatability is not tantamount to scientific reproducibility.
+The disappointing news, perhaps, is that it is possible to put much effort into achieving computational repeatability,
+	exact where practical and inexact otherwise,
+	without delivering the kind of reproducibility that is critical for producing trustworthy science.
+The good news is that scientifically meaningful reproducibility can be realized in cases (or over spans of time)
+	where computational repeatability is impractical due to the limitations of available technology or affordable resources.
+Thus, the older concept of reproducibility that permeates the basic natural sciences has a very
+	useful role even where digital computing makes exact repeatability a theoretical possibility.
 
-		Replicating just the software running the program is challenging in practice
+ Researchers in the natural sciences are comfortable with the idea that it is not possible to exactly
+	repeat all reported observations, procedures, and experimental results.
+They do not see this as a contradiction to their demand that science be reproducible.
+What the natural sciences actually do demand is that 
+	(a) research procedures be repeatable by others in principle;
+	(b) the means of repeating the work be subject to review and evaluation; 
+	and (c) such review and evaluation be possible \emph{without} actually repeating the work.
+To be perfectly clear about the third demand: in the natural sciences it is actually considered a 
+	\emph{problem} if exact repetition of the steps taken in reported research is required either
+	to evaluate the work or to reproduce results.
 
-			How can we ensure that the stream of instructions sent to the processor for two executions is identical?
-			Even holding the computer hardware and compiler version constant, programs depend on language libraries, OS libraries, and system calls.
-			Much scientific software also depends directly and indirectly on large numbers of 3rd-party libraries.
-			Only direct dependencies can be controlled reliably at build-time.  And many dependencies are via shared libraries that can change between executions
-				of the exact same executable--no recompile is needed to get a new effective executable.
-			Footnote:  Fans of the Go programming language are bringing back the static executable.
-			Recompiling or even just rerunning the "same" program a week later can result in a completely different effective instruction stream.
-
-		Even reproducing computing environments is hard
-
-			Containers and their discontents
-				Footnote:  By 'discontents' we do not mean that we object to the use of containers, but rather than we are not content with container technology alone.
-				There currently is much enthusiasm around containers as a means of reproducing computing environments and making computational science replicable.
-				Whole Tale is one of several projects leveraging the capabilities of containers for this purpose.  Others include Binder and Code Ocean.
-				In Whole Tale it is recognized that containers alone cannot satisfy researcher's needs for sharing their computing environments and computations.
-				Rather, container technology such as Docker provide an invaluable tool for the reproducible science software stack architect.
-				A major motivation for funding (and continuing to fund) projects like Whole Tale is that the containers on their own are insufficient as means
-					to making computational science reproducible, and it is not practical for individual researchers and groups to use containers
-					and other technology to actually achieve scientifically meaningful reproducibility over periods longer than the publication-cycle time scale.
-
-			What containers do not do
-				Despite what sound like suggestions to the contrary in the literature, container technology such as Docker do not ensure computational replicability,
-					and do not on their own solve any of the problems of computational replicability described above.
-				What containers do provide a very convenient means for executing customized computing environments on behalf of researchers, withot having to run
-					an entire virtual machine for each environment.
-				In common with virtual machine technology, containers do not abstract or hide the underlying hardware architecture of the computer on which they run.
-				They do not abstract the underlying operating system, but simply use the Linux kernel on the host.  Kernel parameter settings on the host apply to
-					all containers running on the host (reference famous blog post on the topic "Containers Do Not Contain").
-				Rebuilding an image from its Dockerfile specification is not guaranteed to yield the same image.  It general it will not.
-				Container images, once they are built, are not guaranteed to run on future releases of the container host.
-				They also do not ensure that computations run within the container will replicable in the feature.
-
-			What containers are for
-				What containers are good for is precisely what they were to do for the computing industry:  enable developers to write and test code in a
-					computing environment of a developer's choosing that can then be replicated on a very short time scale (hours or days) in staging
-					and production environments.
-				Containers also are good at managing conflicts in dependencies between different components of a multiprocess software architecture.
-				Using containers to 'contain' dependencies in this way is most effective when an application can be split across multiple containers running in concert.
-				The model of one container, one computing environment does not lend itself to dependency isolation.
-
-			The problem of time and dependencies
-				An emerging threat to reproducibility of computational science is the spread misconception that sharing the definition of a container image,
-					e.g. by including a Dockerfile in the Git repo for the project, is a guarantee that others (or even the original researcher) will be able to
-					recreate the corresponding image and computing environment it represents.
-				Researchers making this assumption may be less likely to preserve all of the information actually required to reproduce their computations.
-				A major reason a Dockerfile is not enough is that the implicit dependencies of the built environment are constantly changing.
-				This is well known to anyone working directly with Docker, or other container technologies.
-				Here we will give a single example of the implications of this issue for reproducible science.
-
-	What is reproducibility really for?
-
-		Achieving meaningful replicability even for the computational parts of research is very challenging.
-		But this is no reason to give up hope.
-		Replicability is a means to an end--justification of scientific results--and Research Objects can help us achieve that end by other means.
-		What is most exciting about Research Objects is that they can achieve this end despite the difficulty of computational replicability.
-		And the primary means by which Research Objects can due this is by providing transparency.
+Consequently, it is not necessary to achieve or 
+	maintain perfect repeatability of the computational components of research for scientists to 
+	consider a study reproducible and therefore trustworthy.
+At the same time it is important that the standards, technologies, 
+	computational best-practices, and infrastructure we develop and advocate in fact support scientific reproducibility.
+It is not enough, in the long run, to pursue and support exact computational repeatability where we can, 
+	and to get as close as possible otherwise.
+Rather, computational repeatability is best seen as a dimension of research reproducibility \emph{orthogonal} to 
+	the dimension of transparency.
+It is possible to achieve computational repeatability without providing research transparency---and vice versa.
+Moreover, exact repeatability is not an essential element of scientific reproducibility in the broadest sense of the term.
+Transparency arguably is.
