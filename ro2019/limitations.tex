@@ -11,7 +11,7 @@ The aim would be for researchers publishing their work via ROs to be fully aware
 	of the implications of the claims they make about the computations represented
 	by the RO.
 Researchers discovering, evaluating, or using the Research Object for further research
-	 would be able to make sense of these claims unambiguously.
+	 would be able to interpret these claims unambiguously.
 The implications for the possibilities of rerunning, reproducing, or exactly repeating the
 	computations described in the RO under different conditions would be clear
 	to all parties.
@@ -41,7 +41,7 @@ In the case of hiding hardware differences, time is on our side---or can be if w
 
 In many other cases, time works against repeatability.
 A Dockerfile that today correctly produces the software environment in which computations were originally
-	performed likely will not do so a year from now--if it builds at all.
+	performed may not do so a year from now--if it builds at all.
 Due to the dependencies of most scientific software on packages not
 	bundled with the language compiler or runtime (with these packages typically depending on 
 	other packages, and so on), the chances of rebuilding or rerunning software
@@ -63,22 +63,23 @@ We can characterize the various dimensions in which computing technology current
 	of existing technologies (Docker, Singularity, Jupyter, etc) and software stacks (Binder, Whole Tale, etc)
 	onto these dimensions.
 As new technologies that better (or differently) support computational reproducibility emerge or gain acceptance,
-	the capabilities of these tools can be mapped as well, and the common, underlying model can be enhanced as needed.
+	the capabilities of these tools can be mapped as well; and the common, underlying model can be enhanced as needed.
  
 The advantage of including such capabilities in Research Objects is that researchers could be made aware
 	of the implications of the various technologies, programming environments, and specification
 	standards they choose to use employ.
 It is easy to imagine a current-day researcher intending to enable others to reproduce their computational
-	results sharing any custom source code or scripts in a Git repository, along with a short Dockerfile
+	results by sharing any custom source code or scripts in a Git repository, along with the Dockerfile
 	they used to create the computing environment in which they worked.
 While this is laudable, and almost certainly better than nothing, in many cases it is likely the researcher's
-	expectations with regard to how these actions will or will not ensure reproducibility exceed
+	expectations with regard to how these actions will ensure reproducibility will exceed
 	what is actually the case.
-If instead the researcher composed their study as a Research Object, they could be prompted by whatever
-	software environment they are using to create the RO for their expectations about reproducibility.
-They may then find that a Dockerfile that does not specify the version of the base image is not sufficient
+If instead the researcher composed their study as a Research Object, they could be prompted---by whatever
+	software environment they are using to create the RO---for details about their precise expectations with 
+	regard to reproducibility.
+They may then find that a Dockerfile that does not specify the version of the base image, for example, is not sufficient
 	to meet their expectations.
-When faced with the current limitations of available technology they may choose to archive the Docker image, 
+When faced with the current limitations of available technology they may choose to archive the Docker image itself, 
 	or even a virtual machine image, while still being made aware of the limitations associated with these alternative
 	approaches.
 
@@ -88,11 +89,11 @@ Or that it depends on a software package no longer available in the Ubuntu Apt R
 The archived Docker image referenced in the RO might no longer be compatible with the latest version of Docker.  
 These are all challenging issues to discover, debug, and remediate even for experts in these technologies.
 Making Research Objects \emph{transparent} with respect to their actual reproducibility capabilities would be a
-	enormous step forward for making the computational components of scientific research reproducible and
+	step forward for making the computational components of scientific research reproducible and
 	transparent.
 
 This, too, is an area that Whole Tale is investigating.  Our aim is to make the actual implications of the
-	reproducibility capabilities we offer completely transparent, including (or especially their limitations).
+	reproducibility capabilities we offer completely transparent, including (or especially) their limitations.
 Similarly, when providing users means for exporting Tales in other formats, we are committed to highlighting
 	to researchers the advantages and disadvantages of the various options with respect to reproducibility.
 	
