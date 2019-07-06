@@ -1,86 +1,101 @@
-\section{Computational Challenges}\label{sec-limitations}
+\section{Maintaining repeatability}\label{sec-limitations}
 
-		The fundamental limitations computers impose on replicability of program executions are well known.
+Another way Research Objects can contribute to scientific transparency is by
+	clarifying claims about computational repeatability.
+Just as the overall scientific reproducibility of a study represented by a Research Object
+	might be described precisely in terms of individual components required to 
+	satisfy particular (namespaced) definitions of \emph{reproducible} or \emph{replicable},
+	additional statements could be made about the various dimensions of computational
+	reproducibility in particular.
+The aim would be for researchers publishing their work via ROs to be fully aware
+	of the implications of the claims they make about the computations represented
+	by the RO.
+Researchers discovering, evaluating, or using the Research Object for further research
+	 would be able to make sense of these claims unambiguously.
+The implications for the possibilities of rerunning, reproducing, or exactly repeating the
+	computations described in the RO under different conditions would be clear
+	to all parties.
 
-			Finite precision arithmetic, different word sizes on different processors, round-off errors, etc.\  impose limits on scientific computations and
-				their replicability across different computing environments.
-			Virtual machines and containers do not address these issues. Full emulation is required to run the same binary in identical fashion
-				on a different processor.  This is typically slow.
-			These limitations are even more challenging to manage reproducibly because programs typically are compiled, meaning that the
-				exact sequence of machine instructions executed even by a single processor cannot generally be controlled.  A different compiler,
-				or a newer version of the same compiler will yield a different sequence of machine instructions.
+As discussed above, \emph{exact repeatability} promises increasingly to be a powerful,
+	new addition to the modern researcher's repertoire of reproducibility techniques.
+At the same time, there appears to be (possibly growing) confusion over what is actually 
+	possible in terms of computational reproducibility generally, exact repeatability 
+	specifically, and the conditions required to achieve them in practice.
 
-		Replicating the outputs of a program is far from straightforward
+The fundamental limitations computers impose on the exact replicability of program executions
+	are well known.
+At the lowest level, finite precision arithmetic, differing word sizes between processors,
+	the effects of round-off errors, and the implications of choosing between different 
+	mathematically equivalent orderings of operations all have the potential to 
+	impose limits on the replicability of scientific computations across different computing environments.
+Virtual machines and software containers cannot fully address issues at this level.
 
-			Observing that a program or set of programs can be executed again is not sufficient to conclude that the underlying computation
-				was replicated.  The outputs of the programs must be checked for equivalence.
-			Because of the expected variation in run time behavior of programs due to the issues above, checking that outputs of a program
-				run are equivalent to the outputs of a run of that program is not always as simple as
-				comparing the outputs for bitwise identity.
-			Robustly checking for equivalence of output generally must be confirmed in some way other than comparing files at the bit level.
-			Footnote: The excellent practice of including accurate provenance and other meaningful metadata in data file headers makes it
-				even more unlikley that outputs from different runs will be bitwise-identical.
+The fact that we can expect options such as full-processor emulation, either in software or on customizable hardware, 
+	to provide better guarantees of exact computational repeatability under more circumstances
+	over time reveals the true crux of the problem.
+What we can expect from computers in terms of reproducibility in general, and exact
+	repeatability in particular, is changing quickly---and likely will continue to do so for the
+	foreseeable future.
+In the case of hiding hardware differences, time is on our side---or can be if we happen to save the
+	information actually needed to enable exact re-execution of our analyses in the future.
 
-		Replicating just the software running the program is challenging in practice
+In many other cases, time works against repeatability.
+A Dockerfile that today correctly produces the software environment in which computations were originally
+	performed likely will not do so a year from now--if it builds at all.
+Due to the dependencies of most scientific software on packages not
+	bundled with the language compiler or runtime (with these packages typically depending on 
+	other packages, and so on), the chances of rebuilding or rerunning software
+	equivalent to that used to produce a result in a Research Object decreases
+	rapidly with time.
+Fortunately, time also works for us in this dimension as well, as new ways of specifying software
+	environments and archiving dependencies emerge.
+But again the issue arises---are we saving the right information to enable computational repeatability
+	in the future?
 
-			How can we ensure that the stream of instructions sent to the processor for two executions is identical?
-			Even holding the computer hardware and compiler version constant, programs depend on language libraries, OS libraries, and system calls.
-			Much scientific software also depends directly and indirectly on large numbers of 3rd-party libraries.
-			Only direct dependencies can be controlled reliably at build-time.  And many dependencies are via shared libraries that can change between executions
-				of the exact same executable---no recompile is needed to get a new effective executable.
-			Footnote:  Fans of the Go programming language are bringing back the static executable.
-			Recompiling or even just rerunning the "same" program a week later can result in a completely different effective instruction stream.
+What Research Objects can offer here is analogous to the proposed function of mediating between competing
+	and contradictory definitions of reproducibility and replicability.
+Rather than trying to anticipate all future developments in the area of computational reproducibility,
+	and representing computing environments, software dependencies, and machine information
+	in a way that we hope will be usable by future technologies, we can take the pluralistic
+	path here as well. 
+We can characterize the various dimensions in which computing technology currently supports---or fails to
+	support---exact repeatability; then create mappings from the specific capabilities
+	of existing technologies (Docker, Singularity, Jupyter, etc) and software stacks (Binder, Whole Tale, etc)
+	onto these dimensions.
+As new technologies that better (or differently) support computational reproducibility emerge or gain acceptance,
+	the capabilities of these tools can be mapped as well, and the common, underlying model can be enhanced as needed.
+ 
+The advantage of including such capabilities in Research Objects is that researchers could be made aware
+	of the implications of the various technologies, programming environments, and specification
+	standards they choose to use employ.
+It is easy to imagine a current-day researcher intending to enable others to reproduce their computational
+	results sharing any custom source code or scripts in a Git repository, along with a short Dockerfile
+	they used to create the computing environment in which they worked.
+While this is laudable, and almost certainly better than nothing, in many cases it is likely the researcher's
+	expectations with regard to how these actions will or will not ensure reproducibility exceed
+	what is actually the case.
+If instead the researcher composed their study as a Research Object, they could be prompted by whatever
+	software environment they are using to create the RO for their expectations about reproducibility.
+They may then find that a Dockerfile that does not specify the version of the base image is not sufficient
+	to meet their expectations.
+When faced with the current limitations of available technology they may choose to archive the Docker image, 
+	or even a virtual machine image, while still being made aware of the limitations associated with these alternative
+	approaches.
 
-		Even reproducing computing environments is hard
+Researchers evaluating an RO similarly could probe its reproducibility capabilities.  One might discover for example
+	that an RO comes with a Dockerfile that currently references a non-existent base image.  
+Or that it depends on a software package no longer available in the Ubuntu Apt Repository.  
+The archived Docker image referenced in the RO might no longer be compatible with the latest version of Docker.  
+These are all challenging issues to discover, debug, and remediate even for experts in these technologies.
+Making Research Objects \emph{transparent} with respect to their actual reproducibility capabilities would be a
+	enormous step forward for making the computational components of scientific research reproducible and
+	transparent.
 
-			Containers and their discontents
-				Footnote:  By 'discontents' we do not mean that we object to the use of containers, but rather than we are not content with container technology alone.
-				There currently is much enthusiasm around containers as a means of reproducing computing environments and making computational science replicable.
-				Whole Tale is one of several projects leveraging the capabilities of containers for this purpose.  Others include Binder and Code Ocean.
-				In Whole Tale it is recognized that containers alone cannot satisfy researcher's needs for sharing their computing environments and computations.
-				Rather, container technology such as Docker provide an invaluable tool for the reproducible science software stack architect.
-				A major motivation for funding (and continuing to fund) projects like Whole Tale is that the containers on their own are insufficient as means
-					to making computational science reproducible, and it is not practical for individual researchers and groups to use containers
-					and other technology to actually achieve scientifically meaningful reproducibility over periods longer than the publication-cycle time scale.
-
-			What containers do not do
-				Despite what sound like suggestions to the contrary in the literature, container technology such as Docker do not ensure computational replicability,
-					and do not on their own solve any of the problems of computational replicability described above.
-				What containers do provide a very convenient means for executing customized computing environments on behalf of researchers, withot having to run
-					an entire virtual machine for each environment.
-				In common with virtual machine technology, containers do not abstract or hide the underlying hardware architecture of the computer on which they run.
-				They do not abstract the underlying operating system, but simply use the Linux kernel on the host.  Kernel parameter settings on the host apply to
-					all containers running on the host (reference famous blog post on the topic "Containers Do Not Contain").
-				Rebuilding an image from its Dockerfile specification is not guaranteed to yield the same image.  It general it will not.
-				Container images, once they are built, are not guaranteed to run on future releases of the container host.
-				They also do not ensure that computations run within the container will replicable in the feature.
-
-			What containers are for
-				What containers are good for is precisely what they were to do for the computing industry:  enable developers to write and test code in a
-					computing environment of a developer's choosing that can then be replicated on a very short time scale (hours or days) in staging
-					and production environments.
-				Containers also are good at managing conflicts in dependencies between different components of a multiprocess software architecture.
-				Using containers to 'contain' dependencies in this way is most effective when an application can be split across multiple containers running in concert.
-				The model of one container, one computing environment does not lend itself to dependency isolation.
-
-			The problem of time and dependencies
-				An emerging threat to reproducibility of computational science is the spread misconception that sharing the definition of a container image,
-					e.g. by including a Dockerfile in the Git repo for the project, is a guarantee that others (or even the original researcher) will be able to
-					recreate the corresponding image and computing environment it represents.
-				Researchers making this assumption may be less likely to preserve all of the information actually required to reproduce their computations.
-				A major reason a Dockerfile is not enough is that the implicit dependencies of the built environment are constantly changing.
-				This is well known to anyone working directly with Docker, or other container technologies.
-				Here we will give a single example of the implications of this issue for reproducible science.
-
-	What is reproducibility really for?
-
-		Achieving meaningful replicability even for the computational parts of research is very challenging.
-		But this is no reason to give up hope.
-		Replicability is a means to an end---justification of scientific results---and Research Objects can help us achieve that end by other means.
-		What is most exciting about Research Objects is that they can achieve this end despite the difficulty of computational replicability.
-		And the primary means by which Research Objects can due this is by providing transparency.
-
-
+This, too, is an area that Whole Tale is investigating.  Our aim is to make the actual implications of the
+	reproducibility capabilities we offer completely transparent, including (or especially their limitations).
+Similarly, when providing users means for exporting Tales in other formats, we are committed to highlighting
+	to researchers the advantages and disadvantages of the various options with respect to reproducibility.
+	
 
 %%% Local Variables: 
 %%% mode: latex
