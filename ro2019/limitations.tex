@@ -30,7 +30,8 @@ At the lowest level, finite precision arithmetic, differing word sizes between p
 	impose limits on the replicability of scientific computations across different computing environments.
 Virtual machines and software containers cannot fully address issues at this level.
 
-The fact that we can expect options such as full-processor emulation, either in software or on customizable hardware, 
+The fact that we can expect options such as full-processor emulation, either in software~\cite{QEMU} 
+	or on customizable hardware, 
 	to provide better guarantees of exact computational repeatability under more circumstances
 	over time reveals the true crux of the problem.
 What we can expect from computers in terms of reproducibility in general, and exact
@@ -60,7 +61,8 @@ Rather than trying to anticipate all future developments in the area of computat
 	path here as well. 
 We can characterize the various dimensions in which computing technology currently supports---or fails to
 	support---exact repeatability; then create mappings from the specific capabilities
-	of existing technologies (Docker, Singularity, Jupyter, etc) and software stacks (Binder, Whole Tale, etc)
+	of existing technologies (Docker~\cite{docker2019}, Singularity~\cite{Singularity2019}, Jupyter~\cite{jupyter2019}, etc) 
+	and software stacks (Binder~\cite{Binder_2018}, Whole Tale~\cite{WT2019}, etc)
 	onto these dimensions.
 As new technologies that better (or differently) support computational reproducibility emerge or gain acceptance,
 	the capabilities of these tools can be mapped as well; and the common, underlying model can be enhanced as needed.
